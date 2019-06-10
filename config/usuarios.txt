@@ -1,0 +1,17 @@
+Admin - 1
+Técnicos - 2
+Clientes - 3
+
+Usuarios Admin
+admin1 - admin123
+admin2 - admin123
+
+Usuarios Técnicos
+maria - tecnico123
+alirio - tecnico123
+daniel - tecnico123
+
+Usuarios Clientes
+jose - cliente123
+paola - cliente123
+alexis - cliente123
