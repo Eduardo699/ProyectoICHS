@@ -22,13 +22,47 @@
 			return $contenedor->fetch_all();
 		}
 
-		public function ejecutarActualizacion($sql){
-			$this->conexion->query($sql);
-		}
-
 		public function cerrarConexion(){
 			$this->conexion->close();
 		}
+
+		public function ejecutarActualizacion($sql, $correcto, $mal){
+			require_once('../vistas/scripts.php');
+			if($this->conexion->query($sql)){
+				echo "<script>
+					setTimeout(function(){
+						Swal.fire({
+							type: 'success',
+							title: 'Hecho!',
+							text: '$correcto con éxito',
+							showConfirmButton: false,
+							timer: 3000,
+						});
+					},1);
+					setTimeout(function(){
+						self.location = '../home.php';
+					},1500);
+				</script>";
+			}
+			else{
+				echo "<script>
+					setTimeout(function(){
+						Swal.fire({
+							type: 'error',
+							title: 'Error :(',
+							text: 'No se pudo $mal',
+							showConfirmButton: false,
+							timer: 2750,
+						});
+					},1);
+					setTimeout(function(){
+							self.location = '../home.php';
+						},1250);
+				</script>";
+			}
+		}//termina ejecutarActualizacion
+
+
 
 	}
 

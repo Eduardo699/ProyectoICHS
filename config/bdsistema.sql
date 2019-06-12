@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
@@ -50,7 +50,7 @@ INSERT INTO `categoria` (`idCategoria`, `tipo`, `nombre`, `descripcion`, `estado
 (7, 'Hardware', 'Motherboard', 'Fallos en la placa madre', 1),
 (8, 'Hardware', 'Batería CMOS', 'Fallos en el encendido de la PC o desconfiguración en la hora o fecha', 1),
 (9, 'Software', 'Sistema Operativo', 'Fallas generales del sistema operativo', 1),
-(10, 'Sofware', 'Office', 'Problemas al utilizar la paquetería de Office', 1),
+(10, 'Software', 'Office', 'Problemas al utilizar la paquetería de Office', 1),
 (11, 'Software', 'Controlador', 'Problemas debido a la falta o desactualización de los drivers', 1);
 
 -- --------------------------------------------------------

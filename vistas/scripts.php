@@ -5,8 +5,11 @@
 
 <link rel="stylesheet" type="text/css" href="../plugins/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../plugins/fontawesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
+<!--link rel="stylesheet" type="text/css" href="../css/sweetalert.css"-->
 
 <script src="../plugins/jquery.min.js"></script>
 <script src="../plugins/bootstrap/popper.min.js"></script>
 <script src="../plugins/bootstrap/bootstrap.min.js"></script>
 <script src="../plugins/fontawesome/js/all.min.js"></script>
+<script type="text/javascript" src="../js/sweetalert2.min.js"></script>
