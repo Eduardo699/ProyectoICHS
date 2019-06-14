@@ -69,7 +69,7 @@ $(document).ready(function(){
                 var id = $(this).attr('id');
                 var array = id.split(".");
                 id = array[0];
-                id= '../controladores/Cliente.controlador.php?a=elim&IdCliente=' + id;
+                id= '../controladores/Tecnico.controlador.php?a=elim&idTecnico=' + id;
                Swal.fire({
                   title: 'Eliminado!',
                   text: 'El registro ha sido eliminado satisfactoriamente.',
@@ -99,7 +99,7 @@ $(document).ready(function(){
                     usuario = arreglo[i];
                 }
             }
-            cargarCliente2(id, usuario);
+            cargarTecnico2(id, usuario);
         }  
     });
 
@@ -107,13 +107,13 @@ $(document).ready(function(){
 
  function buscarDatos(){
       $.ajax({
-        url: '../dao/Clientes.dao.php',
+        url: '../dao/Tecnico.dao.php',
         type: 'POST',
         dataType: 'html',
         data: {consulta: parametro, valor: valor},
       })
       .done(function(respuesta){
-        $("#cuerpoTablaClientes").replaceWith(respuesta);
+        $("#cuerpoTablaTecnicos").replaceWith(respuesta);
             imprimirAltura();
       })
       .fail(function(){
@@ -121,18 +121,18 @@ $(document).ready(function(){
       })
 }
 
-function cargarCliente(){      
+function cargarTecnico(){      
         $.ajax({                
-            url: 'formClientes.php',
+            url: 'formTecnico.php',
             success: function(response){                                    
-                $('#resultado').load('formClientes.php');
+                $('#resultado').load('formTecnico.php');
             }
     });
 }
 
-function cargarCliente2(id){
+function cargarTecnico2(id){
     $.ajax({
-        url: 'formModificarCliente.php',
+        url: 'formModificarTecnico.php',
         type: 'POST',
         dataType: 'html',
         data: {id: id},

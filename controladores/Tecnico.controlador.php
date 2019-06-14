@@ -1,40 +1,40 @@
 <?php
-	require_once('../modelos/clsCliente.php');
-	require_once('../dao/Clientes.dao.php');
+	require_once('../modelos/clsTecnico.php');
+	require_once('../dao/Tecnico.dao.php');
 
 	switch ($_GET['a']) {
 		case 'ingr':
-			$obj = new clsCliente();
-			$obj->setId('Hola3');
+			$obj = new clsTecnico();
+			$obj->setId(5);
 			$obj->setNombre($_POST['nombre']);
-			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
-			$obj->setIdDept($_POST['dep']);
+			$obj->setEspecialidad($_POST['especialidad']);
+			$obj->setFechaNac($_POST['fecha']);
 			$obj->setIdUser(1);
 			$obj->setEstado(1);
-			clsCLienteDao::agregarRegistro($obj);
+			clsTecnicoDao::agregarRegistro($obj);
 		break;
 		case 'edit':
-			$obj = new clsCliente();
-			$obj->setId($_POST['idCliente']);
+			$obj = new clsTecnico();
+			$obj->setId($_POST['idTecnico']);
 			$obj->setNombre($_POST['nombre']);
-			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
-			$obj->setIdDept($_POST['dep']);
+			$obj->setEspecialidad($_POST['especialidad']);
+			$obj->setFechaNac($_POST['fecha']);
 			$obj->setIdUser(1);
 			$obj->setEstado(1);
 			
-			clsClienteDao::modificarRegistro($obj);
+			clsTecnicoDao::modificarRegistro($obj);
 		break;
 		case 'elim':
-			$obj = new clsCliente();
-			$obj->setId($_GET['IdCliente']);
+			$obj = new clsTecnico();
+			$obj->setId($_GET['idTecnico']);
 			$obj->setEstado(0);
-			clsClienteDao::eliminarRegistro($obj);
+			clsTecnicoDao::eliminarRegistro($obj);
 		break;
 	}
 

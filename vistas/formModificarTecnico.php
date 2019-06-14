@@ -1,12 +1,19 @@
 <?php  
-require_once('../dao/Clientes.dao.php');
+require_once('../dao/Tecnico.dao.php');
 require_once "scripts.php";
+
+if(isset($_POST['id'])){
+		$obj = clsTecnicoDao::obtenerRegistroPorId($_POST['id']);
+		echo "<script>var tipo = '". $obj[1] ."';</script>";
+	}
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Formulario de Usuarios</title>
+	<title>Formulario de Técnicos</title>
 </head>
 <style type="text/css">
 
@@ -34,6 +41,18 @@ body{
 
 </style>
 <script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#cmbTipo").val(tipo);
+		
+		$(document).keydown(function(e){ 
+        	if (e.keyCode == 27){
+        		location.reload();
+        	}  
+    	});
+
+	});
+</script>
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -41,73 +60,73 @@ body{
 				
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<form id="formUsuarios" action="../controladores/Cliente.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
+						<form id="formUsuarios" action="../controladores/Tecnico.controlador.php?a=edit" method="POST" enctype="multipart/form-data">					
 							<div class="form-row">
 							    <div class="form-group col-md-12">
 							    	<br>
+							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnico">
 							      	<label for="txtNombre">Nombre Completo</label>
-							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre">
+							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" value="<?=$obj[1]?>">
 							      	<div id="mensajeUsername" class=""></div>
-							    </div>
-							</div>
-							<div class="form-row">
-							    <div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtFecha">Fecha de nacimiento</label>
-							      	<input type="date" class="form-control" id="txtFecha" name="fecha">
-							      	<div id="mensajePassword" class=""></div>
-							    </div>
+									
 
+
+							    </div>
+								
+
+
+							</div>
+
+								<div class="form-row">
 							    <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtDireccion">Dirección</label>
-							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtDireccion" name="direccion">
+							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtDireccion" name="direccion" value="<?=$obj[2]?>">
+							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	
+							    </div>
+
+							    <div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtTelefono">Teléfono</label>
+							      	<input placeholder="Ej. 7809-0932" type="text" class="form-control" id="txtTelefono" name="telefono" value="<?=$obj[3]?>">
 							      	<div id="mensajeConfirmPassword" class=""></div>
 							    </div>
+
+							   
 							</div>
 
 							<div class="form-row">
-							<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtTelefono">Teléfono</label>
-							      	<input placeholder="Ej. 7809-0932" type="text" class="form-control" id="txtTelefono" name="telefono">
-							      	<div id="mensajeConfirmPassword" class=""></div>
-							    </div>
+							
 							
 
 							
 							<div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtDui">DUI</label>
-							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui">
+							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui" value="<?=$obj[4]?>">
 							      	<div id="mensajeConfirmPassword" class=""></div>
 							    </div>
+
+							    <div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtEspecialidad">Especialidad</label>
+							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtEspecialidad" name="especialidad" value="<?=$obj[5]?>">
+							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	
+							    </div>
+
 							</div>
 
 							<div class="form-row">
-							    <div class="form-group col-md-6">
+							    
+							      	 <div class="form-group col-md-6">
 							    	<br>
-							      	<label for="cmbDepartamento">Departamento</label>
-							      	<select class="custom-select" id="cmbDepartamento" name="dep">
-							      		<option disabled selected value="">--Seleccione una opción--</option>
-							      		<?php
-
-        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
-
-               
-
-                $query = "Select * from departamento";
-                $result = mysqli_query($conexion, $query) or die ("Ocurrio un error");
-                while (($row = mysqli_fetch_array($result)) != NULL) {
-                echo '<option value="'.$row["idDepartamento"].'">'.$row["nombre"].'</option>';
-                
-                }
-                
-
-                ?>
-							      	</select>
-							      	<div id="mensajeRol" class=""></div><br><br>
+							      	<label for="txtFecha">Fecha de nacimiento</label>
+							      	<input type="date" class="form-control" id="txtFecha" name="fecha" value="<?=$obj[6]?>">
+							      	<div id="mensajePassword" class=""></div>
 							    </div>
+							   
 
 							      <div class="form-group col-md-6">
 							    	<br>
@@ -116,7 +135,7 @@ body{
 							      		<option disabled selected value="">--Seleccione una opción--</option>
 							      		<?php
 
-        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
+        $conexion = mysqli_connect("localhost","root","","bdicsh") or die ("Error en la conexión con la Base de Datos");
 
                
                 
@@ -144,7 +163,7 @@ body{
 
 							<div class="row">
 							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
-							    	<input type="submit" value="Agregar" name="enviar" class="btn btn-dark">
+							    	<input type="submit" value="Modificar" name="enviar" class="btn btn-dark">
 							    </div>
 							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
 							    	<input id="resetear" type="reset" value="Borrar" name="borrrar" class="btn btn-dark">

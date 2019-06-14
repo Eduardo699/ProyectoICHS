@@ -41,6 +41,18 @@ body{
 
 </style>
 <script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#cmbTipo").val(tipo);
+		
+		$(document).keydown(function(e){ 
+        	if (e.keyCode == 27){
+        		location.reload();
+        	}  
+    	});
+
+	});
+</script>
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -97,10 +109,22 @@ body{
 							    	<br>
 							      	<label for="cmbDepartamento">Departamento</label>
 							      	<select class="custom-select" id="cmbDepartamento" name="dep">
-							      		<option disabled selected>--Seleccione una opción--</option>
-							      		<option value="1">Opción 1</option>
-							      		<option value="2">Opción 2</option>
-							      		<option value="3">Opción 3</option>
+							      		<option disabled selected value="">--Seleccione una opción--</option>
+							      		<?php
+
+        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
+
+               
+
+                $query = "Select * from departamento";
+                $result = mysqli_query($conexion, $query) or die ("Ocurrio un error");
+                while (($row = mysqli_fetch_array($result)) != NULL) {
+                echo '<option value="'.$row["idDepartamento"].'">'.$row["nombre"].'</option>';
+                
+                }
+                
+
+                ?>
 							      	</select>
 							      	<div id="mensajeRol" class=""></div><br><br>
 							    </div>
@@ -109,28 +133,33 @@ body{
 							    	<br>
 							      	<label for="usuarioC">Identificador de usuario</label>
 							      	<select class="custom-select" id="usuarioC" name="usuario">
-							      		<option disabled selected>--Seleccione una opción--</option>
-							      		<option value="1">Opción 1</option>
-							      		<option value="2">Opción 2</option>
-							      		<option value="3">Opción 3</option>
+							      		<option disabled selected value="">--Seleccione una opción--</option>
+							      		<?php
+
+        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
+
+               
+                
+                $query = "Select userid, username from usuario where rol='1' AND NOT EXISTS (Select * from cliente)";
+                $result = mysqli_query($conexion, $query) or die ("Ocurrio un error");
+                
+                while (($row = mysqli_fetch_array($result)) != NULL) {
+                
+                
+                echo '<option value="'.$row["userid"].'">'.$row["username"].'</option>';
+                
+                
+                
+                }
+                
+
+                ?>
 							      	</select>
 							      	<div id="mensajeAvatar" class=""></div><br><br>
 							    </div>
 							</div>	
 							
-							<div class="form-row">
-							    <div class="form-group col-md-6">
-							    	<br>
-							      	<label for="cmbEstado">Estado</label>
-							      	<select class="custom-select" id="cmbEstado" name="estado">
-							      		<option disabled selected>--Seleccione una opción--</option>
-							      		<option value="1">Opción 1</option>
-							      		<option value="2">Opción 2</option>
-							      		<option value="3">Opción 3</option>
-							      	</select>
-							      	<div id="mensajeRol" class=""></div><br><br>
-							    </div>
-							</div>
+							
 
 
 							<div class="row">
