@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php require'../controladores/controlsesion.php'; ?><html lang="es">
 <head>
 	<title>Inicio</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="./css/main.css">
-	<link rel="stylesheet" type="text/css" href="plugins/fontawesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="plugins/bootstrap/bootstrap.min.css">
-	<script src="plugins/bootstrap/popper.min.js"></script>
+	<link rel="stylesheet" href="../css/main.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/fontawesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="../plugins/bootstrap/bootstrap.min.css">
+	<script src="../plugins/bootstrap/popper.min.js"></script>
 </head>
 <body>
 	<!-- SideBar -->
@@ -21,7 +20,7 @@
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="imagenes/avatar.jpg" alt="UserIcon">
+					<img src="../imagenes/avatar.jpg" alt="UserIcon">
 					<figcaption class="text-center text-titles">User Name</figcaption>
 				</figure>
 				<ul class="full-box list-unstyled text-center">
@@ -113,147 +112,91 @@
 				</li>
 			</ul>
 		</nav>
-		<!-- Content page -->
+
+<script type="text/javascript">	
+
+
+		$(document).ready(function(){
+
+			validarPermisos();
+
+		});
+
+
+funtion validarpermisos(){
+
+				//FUNCION PARA VALIDAR PERMISOS DE USUARIOS
+		function validarPermisos(){
+		//VARIABLE QUE ME ALMACENA LOS ELEMENTOS DEL MENU PARA CADA USUARIO
+		var elementos = "";
+		if (rol==3) {
+			elementos+="";
+			elementos+="";
+			elementos+="";
+			elementos+="";
+
+		}
+
+		if (rol==2) {
+			elementos+="";
+			elementos+="";
+			elementos+="";
+			elementos+="";
+
+		}
+
+
+
+		if(rol==1){
+			//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL ADMIN
+			elementos+='<article class="full-box tile"><div class="full-box tile-title text-center text-titles text-uppercase">Tickets abiertos</div><div class="full-box tile-icon text-center"><i class="far fa-file-alt"></i></div><div class="full-box tile-number text-titles"><p class="full-box">7</p><small>Tickets</small></div></article>';
+
+			elementos+='<article class="full-box tile"><div class="full-box tile-title text-center text-titles text-uppercase">Tickets Cerrados</div><div class="full-box tile-icon text-center"><i class="fas fa-file-import"></i></div><div class="full-box tile-number text-titles"><p class="full-box">10</p><small>Tickets</small></div></article>';
+
+			elementos+='<article class="full-box tile"><div class="full-box tile-title text-center text-titles text-uppercase">Asignar un ticket</div><div class="full-box tile-icon text-center"><i class="fas fa-calendar-check"></i></div><div class="full-box tile-number text-titles"><p class="full-box">7</p><small>Tickets</small></div></article>';
+
+			elementos+='<article class="full-box tile"><div class="full-box tile-title text-center text-titles text-uppercase">Cerrar un ticket</div><div class="full-box tile-icon text-center"><i class="fas fa-calendar-times"></i></div><div class="full-box tile-number text-titles"><p class="full-box">7</p><small>Tickets</small></div></article>';
+
+			elementos+='<article class="full-box tile"><div class="full-box tile-title text-center text-titles text-uppercase">Crear un ticket</div><div class="full-box tile-icon text-center"><i font-size="20px" class="far fa-calendar"></i></div><div class="full-box tile-number text-titles"><p class="full-box">70</p><small>Tickets</small></div></article>';
+
+		}
+		//LA FUNCION APPEND ME AGREGA LO QUE HAY EN ELEMENTOS (LOS ELEMENTOS DEL MENU) INMEDIATAMENTE DESPUES DEL DIV CON ID DE #MENU
+		$("#menu").after(elementos);
+	}
+
+</script>
+
+ <?php if (!isset($_SESSION['usuario'])){
+	
+
+}
+else{
+	echo "<script>var rol = '". $_SESSION["rol"] ."'</script>";
+}
+
+if(isset($_GET['form'])){
+	echo "<script>var form = '". $_GET["form"] ."'</script>";
+}
+ ?>
+
+
+<!--contenido de la pagina-->
+
 		<div class="container-fluid">
 			<div class="page-header">
 			  <h1 class="text-titles">Sistema <small>Tickets</small></h1>
 			</div>
 		</div>
-		<div class="full-box text-center" style="padding: 30px 10px;">
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets abiertos
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="far fa-file-alt"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets Cerrados
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-file-import"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">10</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Asignar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-check"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Cerrar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-times"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Crear un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i font-size="20px" class="far fa-calendar"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">70</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-			
-		</div>
-
-		<div class="contenedor">
-		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles">Systema <small>Tickets</small></h1>
+		
+		<div class="full-box text-center" style="padding: 30px 10px;" >
+			<div id="menu">
+				
 			</div>
-		</div>
-		<div class="full-box text-center" style="padding: 30px 10px;">
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets abiertos
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="far fa-file-alt"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets Cerrados
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-file-import"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">10</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Asignar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-check"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Cerrar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-times"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Crear un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i font-size="20px" class="far fa-calendar"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">70</p>
-					<small>Tickets</small>
-				</div>
-			</article>
+			<div id="mostrador">
 			
-		</div>
+
+			</div>			
+	</div>
 		
 	</div>
 		
@@ -333,13 +276,13 @@
 	  	</div>
 	</div>
 	<!--====== Scripts -->
-	<script src="./js/jquery-3.1.1.min.js"></script>
-	<script src="./js/sweetalert2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/material.min.js"></script>
-	<script src="./js/ripples.min.js"></script>
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="./js/main.js"></script>
+	<script src="../js/jquery-3.1.1.min.js"></script>
+	<script src="../js/sweetalert2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/material.min.js"></script>
+	<script src="../js/ripples.min.js"></script>
+	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../js/main.js"></script>
 	<script>
 		$.material.init();
 	</script>

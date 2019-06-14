@@ -2,27 +2,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>LogIn</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./css/main.css">
 </head>
-<body class="cover" style="background-image: url(imagenes/tec.jpg);">
-	<form action="vistas/home.php" method="" autocomplete="off" class="full-box logInForm">
+<body class="cover" style="background-image: url(imagenes/tec.jpg); color: white;">
+	<form action="" method="post" autocomplete="off" class="full-box logInForm">
 		<p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
 		<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta</p>
 		<div class="form-group label-floating">
-		  <label class="control-label" for="UserEmail">E-mail</label>
-		  <input class="form-control"  type="text" required="">
-		  <p class="help-block">Escribe tú E-mail</p>
+		  <label class="control-label" for="UserEmail">Nombre de usuario</label>
+		  <input class="form-control"  type="text" required="" name="UserEmail" style="color: white;">
+		  <p class="help-block">Escribe tú nombre de usuario</p>
 		</div>
 		<div class="form-group label-floating">
 		  <label class="control-label" for="UserPass">Contraseña</label>
-		  <input class="form-control" id="UserPass" type="text" required="">
+		  <input class="form-control" id="UserPass" type="password" required="" name="UserPass" style="color: white;">
 		  <p class="help-block">Escribe tú contraseña</p>
 		</div>
 		<div class="form-group text-center">
-			<input type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger">
+			<input type="submit" value="Iniciar sesión" class="btn btn-raised btn-danger"  name="login">
 		</div>
 	</form>
 	<?php 
@@ -30,25 +30,24 @@
 	if(!empty($_POST['login'])){
 		$usuario = $_POST["UserEmail"];
 		$contra = hash("sha256", $_POST["UserPass"]);
-		 $obj=new clsConexion();
-		$res=$obj->ejecutarconsulta("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
+
+		$con=new mysqli("localhost","root","","bdsistema");
+		$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
 		
 
-		if($rs->num_rows>0){
-			while($row = mysqli_fetch_array($rs)){
+		if($res->num_rows>0){
+			while($row = mysqli_fetch_array($res)){
 				session_start();
-				$_SESSION["usuario"]=$row["usuario"];
-				$_SESSION["id"]=$row["id"];
+				$_SESSION["usuario"]=$row["username"];
+				$_SESSION["id"]=$row["userid"];
 				$_SESSION["rol"]=$row["rol"];
-				header('Location:index.php');
+				header('Location:vistas/home.php');
 			}
 
 		}else{
-			echo "Usuario o contraseña no son válidos";
+			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos</center></div>";
 		}
 		
-	}else{
-		echo "Llene el formulario";
 	}
 
  ?>
