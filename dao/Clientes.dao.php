@@ -61,6 +61,37 @@ class clsClienteDAO{
 			return $contenedor;
 		}
 
+		public static function correlativoCliente(){
+			$con = new clsConexion();
+			$query = "SELECT idCliente from cliente";
+			$contenedor = $con->ejecutarConsulta($query);
+
+			$i = 0;
+			$mayor = 0;
+			foreach ($contenedor as $row) {
+
+				$aux = strlen($row[0]);
+				
+				$res = substr($row[0], 6,$aux);
+
+				if ($i == 0) {
+					$mayor = $res;
+				}
+
+				else{
+					if ($res>$mayor) {
+						$mayor = $res;
+					}
+				}
+
+				$i++;
+			}
+
+			$con->cerrarConexion();
+			return $mayor;
+		}
+
+
 	public static function listarDatos($parametro, $valor){
 		$con = new clsConexion();
 		if($parametro == 1){
