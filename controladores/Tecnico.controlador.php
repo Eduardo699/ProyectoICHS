@@ -5,27 +5,33 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 			$obj = new clsTecnico();
-			$obj->setId(5);
+
+			$co = clsTecnicoDao::correlativoTecnico();
+			$co++;
+
+			$year = date("y");
+			$obj->setId($_POST['codigo'].$year.$co);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
 			$obj->setEspecialidad($_POST['especialidad']);
 			$obj->setFechaNac($_POST['fecha']);
-			$obj->setIdUser(1);
+			$obj->setIdUser($_POST['usuario']);
 			$obj->setEstado(1);
 			clsTecnicoDao::agregarRegistro($obj);
 		break;
 		case 'edit':
 			$obj = new clsTecnico();
 			$obj->setId($_POST['idTecnico']);
+			$obj->setIdRes($_POST['idTecnicoRes']);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
 			$obj->setEspecialidad($_POST['especialidad']);
 			$obj->setFechaNac($_POST['fecha']);
-			$obj->setIdUser(1);
+			$obj->setIdUser($_POST['usuario']);
 			$obj->setEstado(1);
 			
 			clsTecnicoDao::modificarRegistro($obj);

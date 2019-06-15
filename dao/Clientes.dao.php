@@ -17,7 +17,7 @@ class clsClienteDAO{
 
 		public static function modificarRegistro($cli){
 			$con = new clsConexion();
-			$query = "UPDATE cliente set nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
+			$query = "UPDATE cliente set idCliente='".$cli->getIdRes()."', nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
 			$con->ejecutarActualizacion($query,"Cliente modificado","modificar el cliente");
 			$con->cerrarConexion();
 		}
@@ -60,6 +60,37 @@ class clsClienteDAO{
 			$con->cerrarConexion();
 			return $contenedor;
 		}
+
+		public static function correlativoCliente(){
+			$con = new clsConexion();
+			$query = "SELECT idCliente from cliente";
+			$contenedor = $con->ejecutarConsulta($query);
+
+			$i = 0;
+			$mayor = 0;
+			foreach ($contenedor as $row) {
+
+				$aux = strlen($row[0]);
+				
+				$res = substr($row[0], 6,$aux);
+
+				if ($i == 0) {
+					$mayor = $res;
+				}
+
+				else{
+					if ($res>$mayor) {
+						$mayor = $res;
+					}
+				}
+
+				$i++;
+			}
+
+			$con->cerrarConexion();
+			return $mayor;
+		}
+
 
 	public static function listarDatos($parametro, $valor){
 		$con = new clsConexion();

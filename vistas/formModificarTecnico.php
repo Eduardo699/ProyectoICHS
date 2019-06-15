@@ -42,6 +42,88 @@ body{
 <script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+
+		
+	var nombre1 = "";
+	var nombre2 = "";
+	var apellido1 = "";
+	var apellido2 = "";
+
+
+	var nombre1txt = "";
+	var nombre2txt = "";
+	var apellido1txt = "";
+	var apellido2txt = "";
+
+	var code1 = "";
+	var code2 = "";
+	var code3 = "";
+	var code4 = "";
+
+	var aux = "";
+
+
+
+	var cadena = $("#txtNombre").val();
+	var codigo = $("#txtCodigo").val();
+	numbers = codigo.substring(0,4);
+	correc = codigo.substring(4);
+	console.log(correc);
+	console.log(numbers);
+	var separador = " ";
+
+	arreglo = cadena.split(separador);
+
+	console.log(arreglo);
+
+	aux = arreglo[0];
+	aux1 = arreglo[1];
+	aux2 = arreglo[2];
+	aux3 = arreglo[3];
+
+	code1 = numbers[0];
+	code2 = numbers[1];
+	code3 = numbers[2];
+	code4 = numbers[3];
+
+
+
+	$("#txtNombre1").val(arreglo[0]);
+	$("#txtNombre2").val(arreglo[1]);
+	$("#txtApellido1").val(arreglo[2]);
+	$("#txtApellido2").val(arreglo[3]);
+
+
+	
+
+	$('#txtNombre1').change(function() {
+		aux = $(this).val();
+		$("#txtNombre").val(aux+" "+aux1+" "+aux2+" "+aux3);
+		code1 = aux.substr(0,1).toUpperCase();
+        $("#txtCodigo").val(code1+code2+code3+code4+correc);
+});
+
+	$('#txtNombre2').change(function() {
+		aux1 = $(this).val();
+		$("#txtNombre").val(aux+" "+aux1+" "+aux2+" "+aux3);
+		code2 = aux1.substr(0,1).toUpperCase();
+        $("#txtCodigo").val(code1+code2+code3+code4+correc);
+});
+
+	$('#txtApellido1').change(function() {
+		aux2 = $(this).val();
+		$("#txtNombre").val(aux+" "+aux1+" "+aux2+" "+aux3);
+		code3 = aux2.substr(0,1).toUpperCase();
+        $("#txtCodigo").val(code1+code2+code3+code4+correc);
+});
+
+		$('#txtApellido2').change(function() {
+		aux3 = $(this).val();
+		$("#txtNombre").val(aux+" "+aux1+" "+aux2+" "+aux3);
+		code4 = aux3.substr(0,1).toUpperCase();
+        $("#txtCodigo").val(code1+code2+code3+code4+correc);
+});
+		
 		$("#cmbTipo").val(tipo);
 		$("#usuarioC").val(us);
 		
@@ -65,13 +147,47 @@ body{
 							    <div class="form-group col-md-12">
 							    	<br>
 							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnico">
+							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnicoRes" id="txtCodigo">
 							      	<label for="txtNombre">Nombre Completo</label>
-							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" value="<?=$obj[1]?>">
+							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" value="<?=$obj[1]?>" readonly>
 							      	<div id="mensajeUsername" class=""></div>
+							    </div>
+			
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtNombre1">Primer Nombre</label>
+							      	<input placeholder="Primer nombre" type="text" class="form-control" id="txtNombre1" name="txtNombre1">
+							      	<div id="mensajeUsername" class=""></div>
+										</div>
+									
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtNombre2">Segundo Nombre</label>
+							      	<input placeholder="Segundo nombre" type="text" class="form-control" id="txtNombre2" name="txtNombre2">
+							      	<div id="mensajeUsername" class=""></div>
+							    </div>
+							</div>
+							
+							<div class="form-row">
+								<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtApellido1">Primer Apellido</label>
+							      	<input placeholder="Primer apellido" type="text" class="form-control" id="txtApellido1" name="txtApellido1">
+							      	<div id="mensajeUsername" class=""></div>
+										</div>
+									
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtApellido2">Segundo Apellido</label>
+							      	<input placeholder="Segundo apellido" type="text" class="form-control" id="txtApellido2" name="txtApellido2">
+							      	<div id="mensajeUsername" class=""></div>
+							    </div>
+
+							    	
 									
 
 
-							    </div>
+							
 								
 
 

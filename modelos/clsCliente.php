@@ -5,6 +5,7 @@ class clsCliente
 {
 	
 	private $id;
+	private $idRes;
 	private $nombre;
 	private $fechaNac;
 	private $direccion;
@@ -18,6 +19,7 @@ class clsCliente
 	function __construct()
 	{
 		$this->id = "";
+		$this->idRes;
 		$this->nombre = "";
 		$this->fechaNac = "";
 		$this->direccion = "";
@@ -33,6 +35,10 @@ class clsCliente
 
 	public function getId(){
 		return $this->id;
+	}
+
+	public function getIdRes(){
+		return $this->idRes;
 	}
 
 	public function getNombre(){
@@ -71,6 +77,10 @@ class clsCliente
 
  	public function setId($value){
  		$this->id = $value;
+ 	}
+
+ 	public function setIdRes($value){
+ 		$this->idRes = $value;
  	}
 
  	public function setNombre($value){
