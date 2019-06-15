@@ -21,26 +21,30 @@
 		$("#enviar").click(function(){
 			var ruta = "";
 			if(r1==true){
-				ruta = "reportes/report1.php?f1=" + para1 + "&f2=" + para2;
+				para1+= " 00:00:00";
+				para2+= " 23:59:29";
+				ruta = "reportes/reporte1.php?f1=" + para1 + "&f2=" + para2;
 			}
 			else if(r2==true){
-				ruta = "reportes/report2.php?f1=" + para1 + "&f2=" + para2;
+				para1+= " 00:00:00";
+				para2+= " 23:59:29";
+				ruta = "reportes/reporte2.php?f1=" + para1 + "&f2=" + para2;
 			}
 			else if(r3==true){
 				var valor = $("#cmbParametro").val();
-				ruta = "reportes/report3.php?tipo=" + valor;
+				ruta = "reportes/reporte3.php?tipo=" + valor;
 			}
 			else if(r4==true){
 				var valor = $("#cmbParametro").val();
-				ruta = "reportes/report4.php?cat=" + valor;
+				ruta = "reportes/reporte4.php?cat=" + valor;
 			}
 			else if(r5==true){
 				var valor = $("#cmbParametro").val();
-				ruta = "reportes/report4.php?dep=" + valor;
+				ruta = "reportes/reporte5.php?dep=" + valor;
 			}
 			else if(r6==true){
-				var valor = $("#cmbIdPro").val();
-				ruta = "reportes/report5.php?tec="+ valor;
+				var valor = $("#cmbParametro").val();
+				ruta = "reportes/reporte6.php?tec=" + valor;
 			}	
 			$("#formReportes").attr('action',ruta);
 			$("#formReportes").submit();
