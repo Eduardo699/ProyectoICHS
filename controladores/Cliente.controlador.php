@@ -5,11 +5,7 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 			$obj = new clsCliente();
-
-			$co = clsClienteDao::correlativoCliente();
-
-			$year = date("y");
-			$obj->setId($_POST['codigo'].$year.$co++);
+			$obj->setId('Hola3');
 			$obj->setNombre($_POST['nombre']);
 			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
@@ -19,7 +15,6 @@
 			$obj->setIdUser(1);
 			$obj->setEstado(1);
 			clsCLienteDao::agregarRegistro($obj);
-
 		break;
 		case 'edit':
 			$obj = new clsCliente();
