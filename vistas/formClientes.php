@@ -34,6 +34,54 @@ body{
 
 </style>
 <script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
+<script>
+	
+
+	$(document).ready(function () {
+
+	var nombre1 = "";
+	var nombre2 = "";
+	var apellido1 = "";
+	var apellido2 = "";
+
+	var code1 = "";
+	var code2 = "";
+	var code3 = "";
+	var code4 = "";
+
+    $("#txtNombre1").keyup(function () {
+        nombre1 = $(this).val();
+        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
+        code1 = nombre1.substr(0,1);
+        $("#txtCodigo").val(code1+code2+code3+code4);
+    });
+
+    $("#txtNombre2").keyup(function () {
+        nombre2 = $(this).val();
+        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);  
+        code2 = nombre2.substr(0,1);
+        $("#txtCodigo").val(code1+code2+code3+code4);
+    });
+
+    $("#txtApellido1").keyup(function () {
+        apellido1 = $(this).val();
+        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2); 
+        code3 = apellido1.substr(0,1);
+        $("#txtCodigo").val(code1+code2+code3+code4);
+    });
+
+    $("#txtApellido2").keyup(function () {
+        apellido2 = $(this).val();
+        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2); 
+        code4 = apellido2.substr(0,1);
+        $("#txtCodigo").val(code1+code2+code3+code4);
+    });
+
+
+
+
+});
+</script>
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -43,13 +91,43 @@ body{
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
 						<form id="formUsuarios" action="../controladores/Cliente.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
 							<div class="form-row">
-							    <div class="form-group col-md-12">
-							    	<br>
-							      	<label for="txtNombre">Nombre Completo</label>
+							    
+							    	
 							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre">
+							      	<input placeholder="Código" type="text" class="form-control" id="txtCodigo" name="codigo">
+
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtNombre1">Primer Nombre</label>
+							      	<input placeholder="Primer nombre" type="text" class="form-control" id="txtNombre1" name="txtNombre1">
+							      	<div id="mensajeUsername" class=""></div>
+										</div>
+									
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtNombre2">Segundo Nombre</label>
+							      	<input placeholder="Segundo nombre" type="text" class="form-control" id="txtNombre2" name="txtNombre2">
 							      	<div id="mensajeUsername" class=""></div>
 							    </div>
 							</div>
+							
+							<div class="form-row">
+								<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtApellido1">Primer Apellido</label>
+							      	<input placeholder="Primer apellido" type="text" class="form-control" id="txtApellido1" name="txtApellido1">
+							      	<div id="mensajeUsername" class=""></div>
+										</div>
+									
+									<div class="form-group col-md-6">
+							    	<br>
+							      	<label for="txtApellido2">Segundo Apellido</label>
+							      	<input placeholder="Segundo apellido" type="text" class="form-control" id="txtApellido2" name="txtApellido2">
+							      	<div id="mensajeUsername" class=""></div>
+							    </div>
+							</div>
+							
+
 							<div class="form-row">
 							    <div class="form-group col-md-6">
 							    	<br>
