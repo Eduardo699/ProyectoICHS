@@ -29,7 +29,8 @@
 	require'modelos/clsConexion.php';
 	if(!empty($_POST['login'])){
 		$usuario = $_POST["UserEmail"];
-		$contra = hash("sha256", $_POST["UserPass"]);
+		//$contra = hash("sha256", $_POST["UserPass"]);
+		$contra = $_POST["UserPass"];
 
 		$con=new mysqli("localhost","root","","bdsistema");
 		$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
@@ -41,7 +42,7 @@
 				$_SESSION["usuario"]=$row["username"];
 				$_SESSION["id"]=$row["userid"];
 				$_SESSION["rol"]=$row["rol"];
-				header('Location:vistas/home.php');
+				header('Location:vistas/dashboard.php');
 			}
 
 		}else{

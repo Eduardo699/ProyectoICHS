@@ -40,7 +40,7 @@
 						});
 					},1);
 					setTimeout(function(){
-						self.location = '../home.php';
+						self.location = '../vistas/dashboard.php';
 					},1500);
 				</script>";
 			}
@@ -56,7 +56,7 @@
 						});
 					},1);
 					setTimeout(function(){
-							self.location = '../home.php';
+							self.location = '../vistas/dashboard.php';
 						},1250);
 				</script>";
 			}

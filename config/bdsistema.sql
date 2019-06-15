@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2019 a las 17:41:20
+-- Tiempo de generación: 15-06-2019 a las 11:04:39
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -77,6 +77,7 @@ CREATE TABLE `cliente` (
 
 INSERT INTO `cliente` (`idCliente`, `nombreCompleto`, `fechaNac`, `direccion`, `telefono`, `dui`, `userid`, `idDepartamento`, `estado`) VALUES
 ('AJPC194', 'Alexis Josue Pérez Cruz', '1987-06-23', 'La Libertad, Antiguo Cuscatlán, col. los naranjos ', '7590-3214', '95674328-3', 8, 7, 1),
+('Hola3', 'mariano arce', '2019-06-04', 'calle concepcion', '7485-9658', '95862498-9', 1, 5, 1),
 ('JARC192', 'José Adalberto Rivera Cruz', '1985-03-01', 'La Libertad, Zaragoza, condominio los otakus #2', '7676-0502', '43215867-0', 6, 3, 1),
 ('JCRP191', 'Juan Carlos Romero Portilllo', '1990-05-02', 'La Libertad, Santa Tecla, calle Principal #12', '7676-0909', '43520061-2', 10, 1, 1),
 ('KASA196', 'Karla Abigail Sosa Aguilar', '1990-07-04', 'San Salvador, col. Robles', '7532-1345', '78633245-9', 13, 4, 1),
@@ -231,7 +232,16 @@ INSERT INTO `usuario` (`username`, `password`, `avatar`, `rol`, `userid`) VALUES
 ('alexis', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 12),
 ('karla', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 13),
 ('rafael', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 14),
-('rocio', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 15);
+('rocio', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 15),
+('amilcar', 'cliente123', 'user5.jpg', 2, 16),
+('jorge', 'admin123', 'usuario8.jpg', 1, 17),
+('alan10', 'admin123', 'defecto.jpg', 1, 18),
+('manuel', 'cliente123', 'user3.jpg', 2, 19),
+('andrea10', 'tecnico123', 'defecto.jpg', 3, 20),
+('angy10', 'cliente123', 'usuario2.jpg', 2, 21),
+('urrutia', 'cliente123', 'user5.jpg', 2, 22),
+('mariano', 'admin123', 'usuario3.jpg', 1, 24),
+('ilarios', 'admin123', 'usuario4.jpg', 1, 25);
 
 --
 -- Índices para tablas volcadas
@@ -318,7 +328,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas

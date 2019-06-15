@@ -31,6 +31,6 @@
 			break;
 	}
 
-	header("Location: ../vistas/indexUsuarios.php");
+	//header("Location: ../vistas/indexUsuarios.php");
 
 ?>
