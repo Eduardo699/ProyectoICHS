@@ -90,21 +90,9 @@ body{
 							      	<label for="cmbDepartamento">Departamento</label>
 							      	<select class="custom-select" id="cmbDepartamento" name="dep">
 							      		<option disabled selected value="">--Seleccione una opción--</option>
-							      		<?php
-
-        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
-
-               
-
-                $query = "Select * from departamento";
-                $result = mysqli_query($conexion, $query) or die ("Ocurrio un error");
-                while (($row = mysqli_fetch_array($result)) != NULL) {
-                echo '<option value="'.$row["idDepartamento"].'">'.$row["nombre"].'</option>';
-                
-                }
-                
-
-                ?>
+							      		<?php foreach(clsClienteDao::listarDepartamentos() as $fila): ?>
+							      			<option value="<?= $fila[0]?>"><?= $fila[1]?></option>
+							      		<?php endforeach ?>
 							      	</select>
 							      	<div id="mensajeRol" class=""></div><br><br>
 							    </div>
@@ -114,44 +102,25 @@ body{
 							      	<label for="usuarioC">Identificador de usuario</label>
 							      	<select class="custom-select" id="usuarioC" name="usuario">
 							      		<option disabled selected value="">--Seleccione una opción--</option>
-							      		<?php
-
-        $conexion = mysqli_connect("localhost","root","","bdsistema") or die ("Error en la conexión con la Base de Datos");
-
-               
-                
-                $query = "Select userid, username from usuario where rol='1' AND NOT EXISTS (Select * from cliente)";
-                $result = mysqli_query($conexion, $query) or die ("Ocurrio un error");
-                
-                while (($row = mysqli_fetch_array($result)) != NULL) {
-                
-                
-                echo '<option value="'.$row["userid"].'">'.$row["username"].'</option>';
-                
-                
-                
-                }
-                
-
-                ?>
+							      		<?php foreach(clsClienteDao::listarUsuarios() as $fila): ?>
+							      			<option value="<?= $fila[0]?>"><?= $fila[1]?></option>
+							      		<?php endforeach?>
 							      	</select>
 							      	<div id="mensajeAvatar" class=""></div><br><br>
 							    </div>
 							</div>	
 							
+							<br><br>
 							<div class="form-row">
-							    
-
-							<div class="row">
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
-							    	<input type="submit" value="Agregar" name="enviar" class="btn btn-dark">
-							    </div>
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
-							    	<input id="resetear" type="reset" value="Borrar" name="borrrar" class="btn btn-dark">
-							    </div>
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
-							    	<button type="button" class="btn btn-dark" data-dismiss="modal">Regresar</button>
-							    </div>
+								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
+									<input type="submit" class="btn btn-dark" name="enviar" value="Agregar">
+								</div>
+								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
+									<input id="resetear" type="reset" class="btn btn-dark" name="borrar" value="Borrar">
+								</div>
+								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
+									<button type="button" onclick="location.reload()" class="btn btn-dark" data-dismiss="modal">Regresar</button>
+								</div>
 							</div>
 						</form><br>
 					</div><!--termina contenedor del formulario-->

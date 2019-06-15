@@ -39,8 +39,8 @@
 									<option disabled selected>--Filtrar Por--</option>
 									<option value="1">Todos</option>
 									<option value="2">Id</option>						
-									<option value="3">Username</option>
-									<option value="4">rol</option>
+									<option value="3">Nombre</option>
+									<option value="4">Dui</option>
 							</select>
 						</div>
 						<div class="form-group col-xs-10 col-sm-10 col-md-8">
@@ -70,7 +70,6 @@
 							    <th scope="col">Especialidad</th>
 							    <th scope="col">Fecha Nacimiento</th>
 							    <th scope="col">Usuario</th>
-							    <th scope="col">Estado</th>
 							    <th scope="col" colspan="2">Acciones</th>
 						    </tr>
 					  </thead>

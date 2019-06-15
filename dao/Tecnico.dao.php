@@ -41,16 +41,32 @@ class clsTecnicoDAO{
 			return $contenedor[0];
 		}
 
+		public static function listarUsuarios(){
+			$con = new clsConexion();
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='2' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid);";
+			$contenedor = $con->ejecutarConsulta($query);
+			$con->cerrarConexion();
+			return $contenedor;
+		}
+
+		public static function listarUsuariosMod($id){
+			$con = new clsConexion();
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='2' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid AND P.userid!='$id');";
+			$contenedor = $con->ejecutarConsulta($query);
+			$con->cerrarConexion();
+			return $contenedor;
+		}
+
 	public static function listarDatos($parametro, $valor){
 		$con = new clsConexion();
 		if($parametro == 1){
-			$contenedor = $con->ejecutarConsulta("SELECT T1.idTecnico, T1.nombreCompleto, T1.direccion, T1.telefono, T1.dui, T1.especialidad, T1.fechaNac, T2.username, T1.estado from tecnicos T1 INNER JOIN usuario T2 on T1.userid = T2.userid WHERE T1.estado !='0';");	
+			$contenedor = $con->ejecutarConsulta("SELECT T1.idTecnico, T1.nombreCompleto, T1.direccion, T1.telefono, T1.dui, T1.especialidad, T1.fechaNac, T2.username from tecnicos T1 INNER JOIN usuario T2 on T1.userid = T2.userid WHERE T1.estado !='0';");	
 		}else if($parametro == 2){
-			$contenedor = $con->ejecutarConsulta("SELECT idCliente, nombreCompleto, fechaNac, direccion, telefono, dui, idDepto, userid, estado from cliente WHERE idCliente = '%$valor%' WHERE estado !='0'" );	
+			$contenedor = $con->ejecutarConsulta("SELECT T1.idTecnico, T1.nombreCompleto, T1.direccion, T1.telefono, T1.dui, T1.especialidad, T1.fechaNac, T2.username from tecnicos T1 INNER JOIN usuario T2 on T1.userid = T2.userid WHERE T1.estado !='0' AND T1.idTecnico LIKE '%$valor%';" );	
 		}else if($parametro == 3){
-			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE username LIKE '%$valor%'");	
+			$contenedor = $con->ejecutarConsulta("SELECT T1.idTecnico, T1.nombreCompleto, T1.direccion, T1.telefono, T1.dui, T1.especialidad, T1.fechaNac, T2.username from tecnicos T1 INNER JOIN usuario T2 on T1.userid = T2.userid WHERE T1.estado !='0' AND T1.nombreCompleto LIKE '%$valor%';");	
 		}else if($parametro == 4){
-			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE rol LIKE '%$valor%'");	
+			$contenedor = $con->ejecutarConsulta("SELECT T1.idTecnico, T1.nombreCompleto, T1.direccion, T1.telefono, T1.dui, T1.especialidad, T1.fechaNac, T2.username from tecnicos T1 INNER JOIN usuario T2 on T1.userid = T2.userid WHERE T1.estado !='0' AND T1.dui LIKE '%$valor%';");	
 		}
 		
 		$con->cerrarConexion();
@@ -69,8 +85,7 @@ class clsTecnicoDAO{
 				"<td>". $fila[4] ."</td>".				
 				"<td>". $fila[5] ."</td>".	
 				"<td>". $fila[6] ."</td>".	
-				"<td>". $fila[7] ."</td>".	
-				"<td>". $fila[8] ."</td>".	
+				"<td>". $fila[7] ."</td>".
 				"<td><a data-controls-modal='#agregarModal2' data-backdrop='static' style='margin-top: 4%; color: white;' data-toggle='modal' id='". $fila[0] ."' data-target='#agregarModal2' class='modificar btn btn-primary btn-sm' >Modificar</a></td>".
 					"<td><a style='margin-top: 4%; color: white;' id='". $fila[0] ."' class='eliminar btn btn-primary btn-sm'>Eliminar</a></td>".
 				"</tr>";

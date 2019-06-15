@@ -39,7 +39,7 @@ $(document).ready(function(){
 			}
 		}
 		if(parametro==4){
-			if(valor!="" && !(isNaN(valor))){
+			if(valor!=""){
 				buscarDatos();
 			}else if(valor==""){
 				parametro = 1;
