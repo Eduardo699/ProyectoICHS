@@ -49,7 +49,7 @@
 					</div>	
 					<div class="form-row">
 						<div class="form-group col-xs-4 col-sm-4 col-md-4">
-							<span class="btn btn-primary"  data-toggle="modal" data-target="#agregarModal" onclick="cargarCliente()">Ingresar Nuevo Cliente <span class="fas fa-user-plus"></span>
+							<span class="btn btn-primary" data-toggle="modal" data-target="#agregarModal" onclick="cargarCliente()">Ingresar Nuevo Cliente <span class="fas fa-user-plus"></span>
 						</span>
 						</div>
 					</div>		

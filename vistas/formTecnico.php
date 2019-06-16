@@ -33,7 +33,7 @@ body{
 	}
 
 </style>
-<script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
+<script type="text/javascript" src="../js/formTecnico.validaciones.js"></script>
 <script>
 	
 
@@ -93,7 +93,7 @@ body{
 				
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<form id="formUsuarios" action="../controladores/Tecnico.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
+						<form id="formTecnicos" action="../controladores/Tecnico.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
 							<div class="form-row">
 							    <input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" readonly>
 							      	<input placeholder="Código" type="hidden" class="form-control" id="txtCodigo" name="codigo">
@@ -102,14 +102,14 @@ body{
 							    	<br>
 							      	<label for="txtNombre1">Primer Nombre</label>
 							      	<input placeholder="Primer nombre" type="text" class="form-control" id="txtNombre1" name="txtNombre1">
-							      	<div id="mensajeUsername" class=""></div>
+							      	<div id="mensajeNombre1" class=""></div>
 										</div>
 									
 									<div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtNombre2">Segundo Nombre</label>
 							      	<input placeholder="Segundo nombre" type="text" class="form-control" id="txtNombre2" name="txtNombre2">
-							      	<div id="mensajeUsername" class=""></div>
+							      	<div id="mensajeNombre2" class=""></div>
 							    </div>
 							</div>
 							
@@ -118,14 +118,14 @@ body{
 							    	<br>
 							      	<label for="txtApellido1">Primer Apellido</label>
 							      	<input placeholder="Primer apellido" type="text" class="form-control" id="txtApellido1" name="txtApellido1">
-							      	<div id="mensajeUsername" class=""></div>
+							      	<div id="mensajeNombre3" class=""></div>
 										</div>
 									
 									<div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtApellido2">Segundo Apellido</label>
 							      	<input placeholder="Segundo apellido" type="text" class="form-control" id="txtApellido2" name="txtApellido2">
-							      	<div id="mensajeUsername" class=""></div>
+							      	<div id="mensajeNombre4" class=""></div>
 							    </div>
 							</div>
 
@@ -134,7 +134,7 @@ body{
 							    	<br>
 							      	<label for="txtDireccion">Dirección</label>
 							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtDireccion" name="direccion">
-							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	<div id="mensajeDireccion" class=""></div>
 							      	
 							    </div>
 
@@ -142,7 +142,7 @@ body{
 							    	<br>
 							      	<label for="txtTelefono">Teléfono</label>
 							      	<input placeholder="Ej. 7809-0932" type="text" class="form-control" id="txtTelefono" name="telefono">
-							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	<div id="mensajeTelefono" class=""></div>
 							    </div>
 
 							   
@@ -157,14 +157,14 @@ body{
 							    	<br>
 							      	<label for="txtDui">DUI</label>
 							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui">
-							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	<div id="mensajeDui" class=""></div>
 							    </div>
 
 							    <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtEspecialidad">Especialidad</label>
 							      	<input placeholder="Especialidad" type="text" class="form-control" id="txtEspecialidad" name="especialidad">
-							      	<div id="mensajeConfirmPassword" class=""></div>
+							      	<div id="mensajeEspecialidad" class=""></div>
 							      	
 							    </div>
 
@@ -175,8 +175,8 @@ body{
 							      	 <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtFecha">Fecha de nacimiento</label>
-							      	<input type="date" class="form-control" id="txtFecha" name="fecha">
-							      	<div id="mensajePassword" class=""></div>
+							      	<input type="date" class="form-control" id="txtFecha" name="fecha" min="1950-01-01" max="2000-12-31">
+							      	<div id="mensajeFecha" class=""></div>
 							    </div>
 							   
 
@@ -184,12 +184,12 @@ body{
 							    	<br>
 							      	<label for="usuarioC">Identificador de usuario</label>
 							      	<select class="custom-select" id="usuarioC" name="usuario">
-							      		<option disabled selected value="">--Seleccione una opción--</option>
+							      		
 							      		<?php foreach(clsTecnicoDao::listarUsuarios() as $fila): ?>
 							      			<option value="<?=$fila[0]?>"><?=$fila[1]?></option>
 							      		<?php endforeach ?>
 							      	</select>
-							      	<div id="mensajeAvatar" class=""></div><br><br>
+							      	<div id="mensajeUsuario" class=""></div><br><br>
 							    </div>
 							</div>	
 							

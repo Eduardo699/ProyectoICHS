@@ -55,7 +55,7 @@ class clsClienteDAO{
 
 		public static function listarDepartamentos(){
 			$con = new clsConexion();
-			$query = "SELECT idDepartamento, nombre from departamento";
+			$query = "SELECT idDepartamento, nombre from departamento WHERE estado !='0'";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
