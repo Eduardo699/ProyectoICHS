@@ -1,4 +1,4 @@
-var parametro = 1;
+var parametro =1;
 var valor = "";
 var estado = "input";
 
@@ -12,8 +12,9 @@ $(document).ready(function(){
 			buscarDatos();
 			$("#parametroBusqueda").val("");
 			$("#parametroBusqueda").prop('disabled',true);
-		}else if(parametro!=1){
-			$("#parametroBusqueda").prop('disabled', false);
+		}
+		else if(parametro!=1){
+			$("#parametroBusqueda").prop('disabled',false);
 		}
 	});
 
@@ -32,24 +33,17 @@ $(document).ready(function(){
 		if(parametro==3){
 			if(valor!="" && isNaN(valor)){
 				buscarDatos();
-			}else if(valor==""){
+			}
+			else if(valor==""){
 				parametro = 1;
 				buscarDatos();
 				parametro = 3;
 			}
 		}
-		if(parametro==4){
-			if(valor!="" && isNaN(valor)){
-				buscarDatos();
-			}else if(valor==""){
-				parametro = 1;
-				buscarDatos();
-				parametro = 4;
-			}
-		}
 	});
 
-  $("body #contenedorTabla table").on("click","a", function(e){
+
+$("body #contenedorTabla table").on("click","a", function(e){
         //e.preventDefault();
         var clase = $(this).attr("class");
         var modificar = clase.substring(0,9);
@@ -69,7 +63,7 @@ $(document).ready(function(){
                 var id = $(this).attr('id');
                 var array = id.split(".");
                 id = array[0];
-                id= '../controladores/Usuario.controlador.php?a=elim&id=' + id;
+                id= '../controladores/Diagnosticos.controlador.php?a=elim&id=' + id;
                Swal.fire({
                   title: 'Eliminado!',
                   text: 'El registro ha sido eliminado satisfactoriamente.',
@@ -106,29 +100,45 @@ $(document).ready(function(){
 });
 
  function buscarDatos(){
-      $.ajax({
-        url: '../dao/Usuarios.dao.php',
-        type: 'POST',
-        dataType: 'html',
-        data: {consulta: parametro, valor: valor},
-      })
-      .done(function(respuesta){
-        $("#cuerpoTabla").replaceWith(respuesta);
+        
+    	$.ajax({
+    		url: '../dao/Diagnosticos.dao.php',
+    		type: 'POST',
+    		dataType: 'html',
+    		data: {consulta: parametro, valor: valor},
+    	})
+    	.done(function(respuesta){
+    		$("#cuerpoTabla").replaceWith(respuesta);
             imprimirAltura();
-      })
-      .fail(function(){
-        console.log("Error");
-      })
+    	})
+    	.fail(function(){
+    		console.log("Error");
+    	})
 }
 
 function cargar(){      
         $.ajax({                
-            url: 'formUsuarios.php',
+            url: 'formDiagnosticos.php',
             success: function(response){                                    
-                $('#resultado').load('formUsuarios.php');
+                $('#resultado').load('formDiagnosticos.php');
             }
     });
 }
+
+ function cargar2(id, usuario){
+        $.ajax({
+            url: 'formModificarDiagnosticos.php',
+            type: 'POST',
+            dataType: 'html',
+            data: {id: id, us: usuario},
+        })
+        .done(function(respuesta){
+            $('#resultado2').replaceWith(respuesta);
+        })
+        .fail(function(){
+            console.log("Error");
+        })
+    }
 
 function imprimirAltura(){
         var altura = $("#dgv").css('height');
@@ -148,5 +158,3 @@ function imprimirAltura(){
 }
 
 
-
-	 

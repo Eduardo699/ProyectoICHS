@@ -66,6 +66,18 @@ if(isset($_GET['form'])){
 						?>
 				
 				</figure>
+
+
+					<ul class="full-box list-unstyled text-center	" >	
+						<li>
+							<a href="#" class="btn-exit-system">
+								<i class="zmdi zmdi-settings"><b style="font-family: calibri">&nbsp Configuracion</b></i>
+							</a>
+						</li>
+					</ul>
+				
+
+
 			</div>
 			
 			<!-- SideBar Menu -->
@@ -112,6 +124,12 @@ if(isset($_GET['form'])){
 						});
 					});
 
+					$("#categorias").click(function(){
+						$("#mostrador").load(rutaCategorias,function(data){
+							$(this).html(data);					
+						});
+					});
+
 					$("#reportes").click(function(){
 						$("#mostrador").load(rutaReportes,function(data){
 							$(this).html(data);					
@@ -123,9 +141,10 @@ if(isset($_GET['form'])){
 				var rutaUsuarios = "indexUsuarios.php";
 				var rutaTecnicos = "indexTecnicos.php";
 				var rutaClientes = "indexClientes.php";
-				var rutaDepartamentos = "indexDepartamentos.php";
-				var rutaTickets = "indexTickets.php";
+				var rutaDepartamentos = "indexDepartamento.php";
+				var rutaTickets = "formTicket.php";
 				var rutaDiagnosticos = "indexDiagnosticos.php";
+				var rutaCategorias = "indexCategoria.php";
 				var rutaReportes = "indexReportes.php";
 				
 
@@ -134,18 +153,19 @@ if(isset($_GET['form'])){
 				//VARIABLE QUE ME ALMACENA LOS ELEMENTOS DEL MENU PARA CADA USUARIO
 				var elementos = "";
 
-				if(rol==2){
-					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR el director de proyecto
-					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
+				if(rol=='Cliente'){
+					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL CLIENTES
+					elementos+='<div id="tickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-ticket-alt"></span> &nbsp Tickets </label></div>';
+
 
 				}
-				else if(rol==3){
-					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL CLIENTE
-					elementos+='<div id="tickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-ticket-alt"></span> &nbsp Tickets </label></div>';
+				else if(rol=='Tecnico'){
+					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL TECNICO		
+					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
 
 										
 				}
-				else if(rol==1){
+				else if(rol=='Administrador'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL ADMIN					
 					elementos+='<div id="usuarios" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Usuarios </label></div>';
 
@@ -155,9 +175,9 @@ if(isset($_GET['form'])){
 
 					elementos+='<div id="departamentos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-building"></span> &nbsp Departamentos </label></div>';
 
-					elementos+='<div id="tickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-ticket-alt"></span> &nbsp Tickets </label></div>';
-
 					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
+
+					elementos+='<div id="categorias" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-tasks"></span> &nbsp Categorias </label></div>';
 
 					elementos+='<div id="reportes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Reportes </label></div>';
 					
@@ -175,58 +195,6 @@ if(isset($_GET['form'])){
 		</section>
 
 
-
-
-
-
-			<!--ul class="list-unstyled full-box dashboard-sideBar-Menu">
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-view-dashboard zmdi-hc-fw"></i> Categoria
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-face zmdi-hc-fw"></i> Clientes
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="fas fa-building"></i> Departamentos
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-timer zmdi-hc-fw"></i> Diagnosticos
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-male-alt zmdi-hc-fw"></i> Tecnicos
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-book zmdi-hc-fw"></i> Tickets
-					</a>
-				</li>
-
-				<li>
-					<a href="home.html">
-						<i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Usuarios
-					</a>
-				</li>
-
-			</ul>
-		</div>
-	</section-->
-
 	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
@@ -237,7 +205,7 @@ if(isset($_GET['form'])){
 				</li>
 					
 				<li>
-					<a href="../index.php" class="btn-exit-system">
+					<a href="logout.php" class="btn-exit-system">
 						<i class="zmdi zmdi-power"></i>
 					</a>
 				</li>

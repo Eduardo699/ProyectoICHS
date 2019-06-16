@@ -1,7 +1,7 @@
 <?php  
 	require_once('../dao/Clientes.dao.php');
 	require_once "scripts.php";
-	//require_once"../controladores/controladorSesion.php";
+	require_once"../controladores/controladorSesion.php";
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,8 @@
 		<div class="container"><!--inicia el contenedor fluido-->
 		<div class="row"><!--inicia primera fila-->
 			<div class="col-xs-12 col-md-12 col-sm-12 col-sm-12">
-				<br><br><form id="formBusqueda">
+				<br><h1 style="text-align: center;">Clientes &nbsp<span class="fas fa-users"></span></h1><br>
+				<form id="formBusqueda">
 					<div class="form-row">
 						<div class="form-group col-xs-12 col-sm-12 col-md-4">
 							<select id="cmbFiltro" name="filtro" class="custom-select">
@@ -49,7 +50,7 @@
 					</div>	
 					<div class="form-row">
 						<div class="form-group col-xs-4 col-sm-4 col-md-4">
-							<span class="btn btn-primary" data-toggle="modal" data-target="#agregarModal" onclick="cargarCliente()">Ingresar Nuevo Cliente <span class="fas fa-user-plus"></span>
+							<span class="btn btn-primary"  data-toggle="modal" data-target="#agregarModal" onclick="cargarCliente()">Ingresar Nuevo Cliente <span class="fas fa-user-plus"></span>
 						</span>
 						</div>
 					</div>		

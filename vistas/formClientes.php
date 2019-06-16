@@ -1,6 +1,7 @@
 <?php  
 require_once('../dao/Clientes.dao.php');
 require_once "scripts.php";
+require_once"../controladores/controladorSesion.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,55 +35,6 @@ body{
 
 </style>
 <script type="text/javascript" src="../js/formUsuarios.validaciones.js"></script>
-<script type="text/javascript" src="../js/formCliente.validaciones.js"></script>
-<script>
-	
-
-	$(document).ready(function () {
-
-	var nombre1 = "";
-	var nombre2 = "";
-	var apellido1 = "";
-	var apellido2 = "";
-
-	var code1 = "";
-	var code2 = "";
-	var code3 = "";
-	var code4 = "";
-
-    $("#txtNombre1").keyup(function () {
-        nombre1 = $(this).val();
-        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);
-        code1 = nombre1.substr(0,1).toUpperCase();
-        $("#txtCodigo").val(code1+code2+code3+code4);
-    });
-
-    $("#txtNombre2").keyup(function () {
-        nombre2 = $(this).val();
-        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2);  
-        code2 = nombre2.substr(0,1).toUpperCase();
-        $("#txtCodigo").val(code1+code2+code3+code4);
-    });
-
-    $("#txtApellido1").keyup(function () {
-        apellido1 = $(this).val();
-        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2); 
-        code3 = apellido1.substr(0,1).toUpperCase();
-        $("#txtCodigo").val(code1+code2+code3+code4);
-    });
-
-    $("#txtApellido2").keyup(function () {
-        apellido2 = $(this).val();
-        $("#txtNombre").val(nombre1+" "+nombre2+" "+apellido1+" "+apellido2); 
-        code4 = apellido2.substr(0,1).toUpperCase();
-        $("#txtCodigo").val(code1+code2+code3+code4);
-    });
-
-
-
-
-});
-</script>
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -90,58 +42,28 @@ body{
 				
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<form id="formClientes" action="../controladores/Cliente.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
+						<form id="formUsuarios" action="../controladores/Cliente.controlador.php?a=ingr&origen=$origen" method="POST" enctype="multipart/form-data">					
 							<div class="form-row">
-							    
-							    	
-							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" readonly>
-							      	<input placeholder="Código" type="hidden" class="form-control" id="txtCodigo" name="codigo">
-
-									<div class="form-group col-md-6">
+							    <div class="form-group col-md-12">
 							    	<br>
-							      	<label for="txtNombre1">Primer Nombre</label>
-							      	<input placeholder="Primer nombre" type="text" class="form-control" id="txtNombre1" name="txtNombre1">
-							      	<div id="mensajeNombre1" class=""></div>
-										</div>
-									
-									<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtNombre2">Segundo Nombre</label>
-							      	<input placeholder="Segundo nombre" type="text" class="form-control" id="txtNombre2" name="txtNombre2">
-							      	<div id="mensajeNombre2" class=""></div>
+							      	<label for="txtNombre">Nombre Completo</label>
+							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre">
+							      	<div id="mensajeUsername" class=""></div>
 							    </div>
 							</div>
-							
-							<div class="form-row">
-								<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtApellido1">Primer Apellido</label>
-							      	<input placeholder="Primer apellido" type="text" class="form-control" id="txtApellido1" name="txtApellido1">
-							      	<div id="mensajeNombre3" class=""></div>
-										</div>
-									
-									<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtApellido2">Segundo Apellido</label>
-							      	<input placeholder="Segundo apellido" type="text" class="form-control" id="txtApellido2" name="txtApellido2">
-							      	<div id="mensajeNombre4" class=""></div>
-							    </div>
-							</div>
-							
-
 							<div class="form-row">
 							    <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtFecha">Fecha de nacimiento</label>
-							      	<input type="date" class="form-control" id="txtFecha" name="fecha" min="1950-01-01" max="2000-12-31">
-							      	<div id="mensajeFecha" class=""></div>
+							      	<input type="date" class="form-control" id="txtFecha" name="fecha">
+							      	<div id="mensajePassword" class=""></div>
 							    </div>
 
 							    <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtDireccion">Dirección</label>
 							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtDireccion" name="direccion">
-							      	<div id="mensajeDireccion" class=""></div>
+							      	<div id="mensajeConfirmPassword" class=""></div>
 							    </div>
 							</div>
 
@@ -150,7 +72,7 @@ body{
 							    	<br>
 							      	<label for="txtTelefono">Teléfono</label>
 							      	<input placeholder="Ej. 7809-0932" type="text" class="form-control" id="txtTelefono" name="telefono">
-							      	<div id="mensajeTelefono" class=""></div>
+							      	<div id="mensajeConfirmPassword" class=""></div>
 							    </div>
 							
 
@@ -159,7 +81,7 @@ body{
 							    	<br>
 							      	<label for="txtDui">DUI</label>
 							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui">
-							      	<div id="mensajeDui" class=""></div>
+							      	<div id="mensajeConfirmPassword" class=""></div>
 							    </div>
 							</div>
 
@@ -168,24 +90,24 @@ body{
 							    	<br>
 							      	<label for="cmbDepartamento">Departamento</label>
 							      	<select class="custom-select" id="cmbDepartamento" name="dep">
-							      		
+							      		<option disabled selected value="">--Seleccione una opción--</option>
 							      		<?php foreach(clsClienteDao::listarDepartamentos() as $fila): ?>
 							      			<option value="<?= $fila[0]?>"><?= $fila[1]?></option>
 							      		<?php endforeach ?>
 							      	</select>
-							      	<div id="mensajeDepartamento" class=""></div><br><br>
+							      	<div id="mensajeRol" class=""></div><br><br>
 							    </div>
 
 							      <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="usuarioC">Identificador de usuario</label>
 							      	<select class="custom-select" id="usuarioC" name="usuario">
-							      		
+							      		<option disabled selected value="">--Seleccione una opción--</option>
 							      		<?php foreach(clsClienteDao::listarUsuarios() as $fila): ?>
 							      			<option value="<?= $fila[0]?>"><?= $fila[1]?></option>
 							      		<?php endforeach?>
 							      	</select>
-							      	<div id="mensajeUsuario" class=""></div><br><br>
+							      	<div id="mensajeAvatar" class=""></div><br><br>
 							    </div>
 							</div>	
 							

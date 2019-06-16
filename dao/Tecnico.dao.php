@@ -21,7 +21,7 @@ class clsTecnicoDAO{
 //"', fechaNac='". $cli->getFechaNac() ."'
 		public static function modificarRegistro($Tec){
 			$con = new clsConexion();
-			$query = "UPDATE tecnicos set idTecnico='".$Tec->getIdRes()."', nombreCompleto='". $Tec->getNombre() ."', direccion='". $Tec->getDireccion() ."', telefono = '". $Tec->getTelefono() ."', dui='".$Tec->getDui()."', especialidad='".$Tec->getEspecialidad()."', fechaNac='".$Tec->getFechaNac()."', userid = '".$Tec->getIdUser()."', estado = '".$Tec->getEstado()."' WHERE idTecnico='". $Tec->getId() ."'";
+			$query = "UPDATE tecnicos set nombreCompleto='". $Tec->getNombre() ."', direccion='". $Tec->getDireccion() ."', telefono = '". $Tec->getTelefono() ."', dui='".$Tec->getDui()."', especialidad='".$Tec->getEspecialidad()."', fechaNac='".$Tec->getFechaNac()."', userid = '".$Tec->getIdUser()."', estado = '".$Tec->getEstado()."' WHERE idTecnico='". $Tec->getId() ."'";
 			$con->ejecutarActualizacion($query,"Técnico modificado","modificar el técnico");
 			$con->cerrarConexion();
 		}
@@ -55,36 +55,6 @@ class clsTecnicoDAO{
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
-		}
-
-		public static function correlativoTecnico(){
-			$con = new clsConexion();
-			$query = "SELECT idTecnico from tecnicos";
-			$contenedor = $con->ejecutarConsulta($query);
-
-			$i = 0;
-			$mayor = 0;
-			foreach ($contenedor as $row) {
-
-				$aux = strlen($row[0]);
-				
-				$res = substr($row[0], 6,$aux);
-
-				if ($i == 0) {
-					$mayor = $res;
-				}
-
-				else{
-					if ($res>$mayor) {
-						$mayor = $res;
-					}
-				}
-
-				$i++;
-			}
-
-			$con->cerrarConexion();
-			return $mayor;
 		}
 
 	public static function listarDatos($parametro, $valor){
@@ -124,7 +94,7 @@ class clsTecnicoDAO{
 			$salida.= "</tbody>";
 			echo $salida;
 		}else{
-			echo "<tr id='cuerpoTablaTecnicos'><td colspan='13'><h5>No existe un valor para la busqueda con parámetro: $valor</h5><img src='../../imagenes/robot.png' height='90' width='90'></td></tr>";
+			echo "<tr id='cuerpoTablaTecnicos'><td colspan='13'><h5>No existe un valor para la busqueda con parámetro: $valor</h5><img src='../imagenes/robot.png' height='90' width='90'></td></tr>";
 		}
 	}
 

@@ -6,7 +6,7 @@
 		case 'ingr':
 			$obj = new clsUsuario();
 			$obj->setUsername($_POST['username']);
-			$obj->setPassword($_POST['password']);
+			$obj->setPassword(hash("sha256", $_POST['password']));
 			$obj->setRol($_POST['rol']);
 		
 		if(empty($_FILES['avatar']['name'])){			

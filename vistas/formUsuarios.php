@@ -1,5 +1,6 @@
 <?php  
 require_once('../dao/Usuarios.dao.php');
+require_once"../controladores/controladorSesion.php";
 require_once "scripts.php";
 ?>
 
@@ -72,9 +73,9 @@ body{
 							      	<label for="cmbRol">Rol</label>
 							      	<select class="custom-select" id="cmbRol" name="rol">
 							      		<option disabled selected>--Seleccione una opción--</option>
-							      		<option value="1">Administrador</option>
-							      		<option value="2">Cliente</option>
-							      		<option value="3">Tecnico</option>
+							      		<option value="Administrador">Administrador</option>
+							      		<option value="Cliente">Cliente</option>
+							      		<option value="Tecnico">Tecnico</option>
 							      	</select>
 							      	<div id="mensajeRol" class=""></div><br><br>
 							    </div>

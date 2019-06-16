@@ -5,7 +5,8 @@
 /*@import url('./bootstrap-material-design.min.css');
 /*@import url('./ripples.min.css');
 /* Sweet Alert 2 */
-@import url('./sweetalert2.css');
+@import url('../plugins/sweetalert.css');
+@import url('../plugins/sweetalert2.min.js');
 /* Malihu jQuery custom content scroller 3.1.5 */
 @import url('./jquery.mCustomScrollbar.css');
 /* Material Design Iconic Font 2.2.0 */

@@ -1,7 +1,7 @@
 <?php
 	require_once('../dao/Categoria.dao.php');
 	require_once('scripts.php');
-	//require_once"../controladores/controladorSesion.php";
+	require_once"../controladores/controladorSesion.php";
 	if(isset($_POST['id'])){
 		$obj = CategoriaDao::obtenerRegistroPorId($_POST['id']);
 		echo "<script>var tipo = '". $obj[1] ."';</script>";

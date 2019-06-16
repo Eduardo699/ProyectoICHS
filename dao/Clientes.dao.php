@@ -17,7 +17,7 @@ class clsClienteDAO{
 
 		public static function modificarRegistro($cli){
 			$con = new clsConexion();
-			$query = "UPDATE cliente set idCliente='".$cli->getIdRes()."', nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
+			$query = "UPDATE cliente set nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
 			$con->ejecutarActualizacion($query,"Cliente modificado","modificar el cliente");
 			$con->cerrarConexion();
 		}
@@ -55,42 +55,11 @@ class clsClienteDAO{
 
 		public static function listarDepartamentos(){
 			$con = new clsConexion();
-			$query = "SELECT idDepartamento, nombre from departamento WHERE estado !='0'";
+			$query = "SELECT idDepartamento, nombre from departamento";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
 		}
-
-		public static function correlativoCliente(){
-			$con = new clsConexion();
-			$query = "SELECT idCliente from cliente";
-			$contenedor = $con->ejecutarConsulta($query);
-
-			$i = 0;
-			$mayor = 0;
-			foreach ($contenedor as $row) {
-
-				$aux = strlen($row[0]);
-				
-				$res = substr($row[0], 6,$aux);
-
-				if ($i == 0) {
-					$mayor = $res;
-				}
-
-				else{
-					if ($res>$mayor) {
-						$mayor = $res;
-					}
-				}
-
-				$i++;
-			}
-
-			$con->cerrarConexion();
-			return $mayor;
-		}
-
 
 	public static function listarDatos($parametro, $valor){
 		$con = new clsConexion();
@@ -129,7 +98,7 @@ class clsClienteDAO{
 			$salida.= "</tbody>";
 			echo $salida;
 		}else{
-			echo "<tr id='cuerpoTablaClientes'><td colspan='13'><h5>No existe un valor para la busqueda con parámetro: $valor</h5><img src='../../imagenes/robot.png' height='90' width='90'></td></tr>";
+			echo "<tr id='cuerpoTablaClientes'><td colspan='13'><h5>No existe un valor para la busqueda con parámetro: $valor</h5><img src='../imagenes/robot.png' height='90' width='90'></td></tr>";
 		}
 	}
 

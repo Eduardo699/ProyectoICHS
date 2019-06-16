@@ -5,7 +5,6 @@ class clsTecnico
 {
 	
 	private $id;
-	private $idRes;
 	private $nombre;
 	private $direccion;
 	private $telefono;
@@ -19,7 +18,6 @@ class clsTecnico
 	function __construct()
 	{
 		$this->id = "";
-		$this->idRes = "";
 		$this->nombre = "";
 		$this->direccion = "";
 		$this->telefono = "";
@@ -35,10 +33,6 @@ class clsTecnico
 
 	public function getId(){
 		return $this->id;
-	}
-
-	public function getIdRes(){
-		return $this->idRes;
 	}
 
 	public function getNombre(){
@@ -78,10 +72,6 @@ class clsTecnico
 
  	public function setId($value){
  		$this->id = $value;
- 	}
-
- 	public function setIdRes($value){
- 		$this->idRes = $value;
  	}
 
  	public function setNombre($value){

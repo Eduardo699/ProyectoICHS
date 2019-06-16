@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2019 a las 00:42:16
+-- Tiempo de generación: 16-06-2019 a las 11:47:23
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -76,28 +76,13 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idCliente`, `nombreCompleto`, `fechaNac`, `direccion`, `telefono`, `dui`, `userid`, `idDepartamento`, `estado`) VALUES
-('AJPC194', 'Prueba2', '2019-09-02', 'Prueba2', 'Prueba2', 'Prueba2', 1, 6, 1),
-('AMEA1911', 'Alirio Mateo Espinoza Alvarado', '2019-06-12', 'Sonsonate, Sonzacate', '7834-3432', '98463403-9', 1, 4, 1),
-('CECF1912', 'Clavel Esmeralda Castro Fuentes', '2019-06-07', 'Sonsonate, Sonzacate', '7834-1111', '90332345-1', 1, 6, 1),
-('CHMJ1913', 'Carlos Hermenegildo Menjivar Jimenez', '2019-06-05', 'Sonsonate, Sonzacate', '1111-3432', '98463403-7', 1, 6, 1),
-('CJEF198', 'Carlos Javier Clavel Fuentes', '2019-06-07', 'Sonsonate, Sonzacate', '7834-3432', '98463403-0', 1, 2, 1),
-('DACC196', 'Daniel Alexander Castro Campos', '2019-06-20', 'Sonsonate, Sonzacate', '7834-3432', '98463403-0', 1, 5, 1),
-('DAMC196', 'Daniel Alexander Menjivar Castro', '2019-06-27', 'Sonsonate, Sonzacate', '7834-1111', '98463403-7', 1, 7, 1),
-('DECA19', 'Damaris Esmeralda Castro Aguilar', '2019-06-15', 'Sonsonate, Sonzacate', '7834-1111', '90332345-1', 1, 3, 0),
-('EJMC', 'Ernesto Javier Meléndez Castaneda', '2019-06-15', 'Sonsonate, Sonzacate', '7154-5654', '98463403-7', 1, 5, 0),
-('FBAC197', 'Fátima Beatriz Aguilar Campos', '2019-06-26', 'Sonsonate, Sonzacate', '7834-1111', '98463403-0', 1, 4, 1),
-('Hola3', 'Miriam Elena Valladares Lopez', '2019-06-14', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 1, 1, 0),
-('JARC192', 'José Adalberto Rivera Cruz', '1985-03-01', 'La Libertad, Zaragoza, condominio los otakus #2', '7676-0502', '43215867-0', 6, 3, 1),
-('JCRP191', 'Eduardo Alexander Espinoza Alvarado', '1990-05-02', 'La Libertad, Santa Tecla, calle Principal #12', '7676-0909', '43520061-2', 1, 6, 1),
-('JEBM1915', 'Jorge Edgardo Barahona Molina', '2019-05-30', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 10, 2, 1),
-('JFRF1910', 'Javier Francisco Rivas Fuentes', '2019-06-06', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 1, 4, 1),
-('KESA196', 'Karla Esmeralda Sosa Aguilar', '1990-07-04', 'San Salvador, col. Robles', '7532-1345', '78633245-9', 1, 4, 1),
-('KJOR196', 'Kevin Javier Orellana Ruballo', '2019-06-13', 'Sonsonate, Sonzacate', '7834-1111', '98463403-0', 1, 5, 1),
-('MEMC199', 'Melannie Elizabeth Menjivar Castaneda', '2019-06-27', 'Sonsonate, Sonzacate', '7834-3432', '98463403-0', 1, 5, 1),
-('MEMR196', 'María Estela Menjivar Rivas', '2019-06-13', 'Sonsonate, Sonzacate', '7834-3432', '98463403-7', 1, 2, 0),
-('META1914', 'Maritza Esmeralda Toledo Arce', '2019-06-07', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 8, 1, 1),
-('PBFC193', 'Paola Beatriz Fernandez Chicas', '1995-02-01', 'San Salvador, Mejicanos, Com. Barrios #5', '7575-5353', '81276345-3', 7, 5, 1),
-('RRIP195', 'Rafel Roberto Iraheta Pérez', '1996-01-01', 'San Salvador, Soyapango, col. los honestos 2', '7632-2045', '09870054-3', 14, 2, 0);
+('AJPC194', 'Alexis Josue Pérez Cruz', '1987-06-23', 'La Libertad, Antiguo Cuscatlán, col. los naranjos ', '7590-3214', '95674328-3', 9, 7, 1),
+('JARC192', 'José Adalberto Rivera Cruz', '1985-03-01', 'La Libertad, Zaragoza, condominio los otakus #2', '7676-0502', '43215867-0', 11, 3, 1),
+('JCRP191', 'Juan Carlos Romero Portilllo', '1990-05-02', 'La Libertad, Santa Tecla, calle Principal #12', '7676-0909', '43520061-2', 12, 1, 1),
+('JMAM195', 'jose mariano arce martinez', '2019-06-04', 'calle concepcion', '7485-9658', '95862498-9', 10, 5, 1),
+('KASA196', 'Karla Abigail Sosa Aguilar', '1990-07-04', 'San Salvador, col. Robles', '7532-1345', '78633245-9', 9, 4, 1),
+('PBFC193', 'Paola Beatriz Fernandez Chicas', '1995-02-01', 'San Salvador, Mejicanos, Com. Barrios #5', '7575-5353', '81276345-3', 10, 5, 1),
+('RRIP195', 'Rafel Roberto Iraheta Pérez', '1996-01-01', 'San Salvador, Soyapango, col. los honestos 2', '7632-2045', '09870054-3', 11, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -133,8 +118,8 @@ INSERT INTO `departamento` (`idDepartamento`, `nombre`, `descripcion`, `estado`)
 
 CREATE TABLE `diagnostico` (
   `idDiagnostico` int(11) NOT NULL,
-  `fechaAsignacion` datetime NOT NULL,
-  `fechaCierre` datetime NOT NULL,
+  `fechaAsignacion` date NOT NULL,
+  `fechaCierre` date NOT NULL,
   `diagnostico` varchar(150) COLLATE latin1_spanish_ci NOT NULL,
   `solucion` varchar(350) COLLATE latin1_spanish_ci NOT NULL,
   `idTecnico` varchar(11) COLLATE latin1_spanish_ci NOT NULL,
@@ -149,12 +134,12 @@ CREATE TABLE `diagnostico` (
 --
 
 INSERT INTO `diagnostico` (`idDiagnostico`, `fechaAsignacion`, `fechaCierre`, `diagnostico`, `solucion`, `idTecnico`, `idTicket`, `idCategoria`, `estadoDiagnostico`, `estado`) VALUES
-(1, '2019-06-11 08:24:51', '2019-06-14 16:21:18', 'Problemas con la batería CMOS, necesidad de ser reemplazada', 'Se verificó que la falla no fuese de Software, posteriormente se analizó la batería CMOS y se llegó a la conclusión de que esta debía ser reemplazada.', 'ADAO191', 1, 8, 'Cerrado', 1),
-(2, '2019-06-11 09:12:16', '2019-06-14 14:17:06', 'Paquetería de office no actualizada', 'Se procedió a verificar si el problema no era por las memorias RAM, luego de descartar esta opción se llegó a la conclusión que era debido a que la paquetería de office no estaba actualizada.', 'EAAS192', 2, 10, 'Cerrado', 1),
-(3, '2019-06-11 14:15:30', '2019-06-15 16:31:19', 'Problema debido a tarjeta de video', 'Se vio si la tarjeta de vídeo estaba bien asentada, siendo este problema de las manchas parpadeantes en la pantalla.', 'AEDS194', 3, 6, 'Cerrado', 1),
-(4, '2019-06-11 13:21:24', '2019-06-16 10:20:20', 'Ventilador dañado', 'Se verificó que la energía eléctrica llegará a los ventiladores, luego de esto se vio si estaban bien conectados, finalmente, se vio si el ventilador funcionaba en otra pc, resultando que no, se procedió a analizarlo a detalle y se llegó a la conclusión que el motor estaba dañado.', 'DAAM193', 4, 5, 'Cerrado', 1),
-(5, '2019-06-11 08:26:22', '2019-06-14 10:13:26', 'Suciedad en motherboard', 'Primero se procedió a ver las configuraciones de pantalla para descartar esta opción, luego, se vio que la tarjeta madre presentaba una suciedad no habitual, se aplicó una limpieza general en la motherboard, siendo esta la solución.', 'RACF196', 5, 7, 'Cerrado', 1),
-(6, '2019-06-11 07:17:18', '2019-06-15 10:30:31', 'Driver de audio desactualizado', 'Se revisó el administrador de dispositivos en búsqueda de fallos en los controladores, encontrando que el driver de audio se encontraba desactualizado, por lo que se procedió a actualizarlo.', 'JJCP195', 6, 11, 'Cerrado', 1);
+(1, '2019-06-11', '2019-06-14', 'Problemas con la batería CMOS, necesidad de ser reemplazada', 'Se verificó que la falla no fuese de Software, posteriormente se analizó la batería CMOS.', 'ADAO191', 1, 8, 'Cerrado', 1),
+(2, '2019-06-11', '2019-06-14', 'Paquetería de office no actualizada', 'Se llegó a la conclusión que era debido a que la paquetería de office no estaba actualizada.', 'EAAS192', 2, 10, 'Cerrado', 1),
+(3, '2019-06-11', '2019-06-15', 'Problema debido a tarjeta de video', 'Se vio si la tarjeta de vídeo estaba bien asentada, siendo este problema de las manchas parpadeantes en la pantalla.', 'AEDS194', 3, 6, 'Cerrado', 1),
+(4, '2019-06-11', '2019-06-16', 'Ventilador dañado', 'Se verificó que la energía eléctrica llegará a los ventiladores, luego de esto se vio si estaban bien conectados, finalmente, se vio si el ventilador funcionaba en otra pc, resultando que no, se procedió a analizarlo a detalle y se llegó a la conclusión que el motor estaba dañado.', 'DAAM193', 4, 5, 'Cerrado', 1),
+(5, '2019-06-11', '2019-06-14', 'Suciedad en motherboard', 'Primero se procedió a ver las configuraciones de pantalla para descartar esta opción, luego, se vio que la tarjeta madre presentaba una suciedad no habitual, se aplicó una limpieza general en la motherboard, siendo esta la solución.', 'RACF196', 5, 7, 'Cerrado', 1),
+(6, '2019-06-11', '2019-06-15', 'Driver de audio desactualizado', 'Se revisó el administrador de dispositivos en búsqueda de fallos en los controladores, encontrando que el driver de audio se encontraba desactualizado, por lo que se procedió a actualizarlo.', 'JCEP195', 6, 11, 'Cerrado', 1);
 
 -- --------------------------------------------------------
 
@@ -179,17 +164,12 @@ CREATE TABLE `tecnicos` (
 --
 
 INSERT INTO `tecnicos` (`idTecnico`, `nombreCompleto`, `direccion`, `telefono`, `dui`, `especialidad`, `fechaNac`, `userid`, `estado`) VALUES
-('ADAO191', 'Alexis David Aguilar Olmedo', 'San Salvador, Ciudad Delgado, col. los eraldos 2', '7198-9423', '87653412-1', 'Hardware', '1996-01-05', 12, 1),
+('ADAO191', 'Alexis David Aguilar Olmedo', 'San Salvador, Ciudad Delgado, col. los eraldos 2', '7198-9423', '87653412-1', 'Hardware', '1996-01-05', 5, 1),
 ('AEDS194', 'Alirio Esaú Díaz Sosa', 'La Libertad, Quezaltepeque, com. cafesoso ', '7643-0895', '87875623-2', 'Hardware', '1994-03-27', 4, 1),
-('ARRF1910', 'Abraham Roberto Ruballo Fuentes', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 'Hardware', '2019-06-14', 9, 1),
-('DAAM193', 'Daniel Alexander Angel Morales', 'La Libertad, Playa el Majahual, col. la piraya 2', '7453-0954', '76503218-3', 'Hardware', '2000-05-05', 5, 1),
-('DAEP197', 'Daniel Antonio Estrada Portillo', 'Sonsonate, Sonzacate', '7834-3432', '90332345-1', 'Software', '2019-06-13', 1, 1),
-('EAAS192', 'Eduardo Antonio Aguilar Solórzano', 'San Salvador, Mejicanos, Col. la gloria 2', '7634-2434', '76541234-3', 'Software', '2000-05-22', 3, 1),
-('JJCP195', 'Juan José Castaneda Portillo', 'Sonsonate, Juayúa, col. conejos 3', '7674-8458', '87542098-2', 'Software', '1998-04-29', 1, 1),
-('JVCS199', 'Jordan Victor Castro Salinas', 'Sonsonate, Sonzacate', '7834-3432', '90332345-1', 'Hardware', '2019-06-21', 1, 0),
-('KMFC1911', 'Katherine Marisol Fernandez Cordova', 'Sonsonate, Sonzacate', '7834-3432', '98463403-1', 'Software', '2019-06-14', 11, 1),
-('MECF198', 'María Elizabeth Castro Fuentes', 'Sonsonate, Sonzacate', '7834-3432', '98463403-7', 'Hardware', '2019-06-19', 1, 0),
-('RACF196', 'Rocio Alejandra Chicas Fortis', 'La Libertad, Antiguo Cuscatlán', '7654-2442', '76540909-2', 'Hardware', '1999-05-21', 15, 1);
+('DAAM193', 'Daniel Alexander Angel Morales', 'La Libertad, Playa el Majahual, col. la piraya 2', '7453-0954', '76503218-3', 'Hardware', '2000-05-05', 6, 1),
+('EAAS192', 'Eduardo Antonio Aguilar Solórzano', 'San Salvador, Mejicanos, Col. la gloria 2', '7634-2434', '76541234-3', 'Software', '2000-05-22', 7, 1),
+('JCEP195', 'Juan Carlos Estrada Portillo', 'Sonsonate, Juayúa, col. conejos 3', '7674-8458', '87542098-2', 'Software', '1998-04-29', 8, 1),
+('RACF196', 'Rocio Alejandra Chicas Fortis', 'La Libertad, Antiguo Cuscatlán', '7654-2442', '76540909-2', 'Hardware', '1999-05-21', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -217,7 +197,7 @@ INSERT INTO `ticket` (`idTicket`, `fechaCreacion`, `asunto`, `descripcion`, `adj
 (3, '2019-06-10 16:21:18', 'Problemas con la imagen de la pantalla', 'Ya hace varios días que he venido presentando este problema, el cual consiste en unas líneas blancas que me aparecen repentinamente en mi pantalla, lo que me provoca molestias ya que es muy molesto que aparezcan cada 5 minutos.', NULL, 'PBFC193', 1),
 (4, '2019-06-10 13:40:53', 'sobrecalentamiento del case ', 'Buenos días, hoy les traigo un problema referente al calor que almacena el case, no se el por que, pero esto me provoca miedo al trabajar porque puede provocar un incendio o puede dañar los componentes internos.', NULL, 'AJPC194', 1),
 (5, '2019-06-10 15:28:51', 'la computadora no da imagen', 'El dia de ayer me ocurrio que al encender la computadora, esta no brindo imagen, revise que estuviera bien conectada, incluido el cable VGA, sin embargo, aun asi no da imagen.', NULL, 'RRIP195', 1),
-(6, '2019-06-10 15:47:21', 'la computadora no reproduce audio', 'Buenas tardes, el dia de ayer cuando me disponía a reproducir un video que el departamento de publicidad y mercadotecnía había elaborado, sucede que la compùtadora no reproducio el audio, pero el video si lo reproducio, este problema es reciente, puesto que un día anterior había reproducido videos y el audio funcionaba correctamente.', NULL, 'KESA196', 1);
+(6, '2019-06-10 15:47:21', 'la computadora no reproduce audio', 'Buenas tardes, el dia de ayer cuando me disponía a reproducir un video que el departamento de publicidad y mercadotecnía había elaborado, sucede que la compùtadora no reproducio el audio, pero el video si lo reproducio, este problema es reciente, puesto que un día anterior había reproducido videos y el audio funcionaba correctamente.', NULL, 'KASA196', 1);
 
 -- --------------------------------------------------------
 
@@ -229,7 +209,7 @@ CREATE TABLE `usuario` (
   `username` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
   `password` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
   `avatar` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
-  `rol` int(11) NOT NULL,
+  `rol` varchar(255) COLLATE latin1_spanish_ci NOT NULL,
   `userid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
@@ -238,21 +218,19 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`username`, `password`, `avatar`, `rol`, `userid`) VALUES
-('admin1', 'f865b53623b121fd34ee5426c792e5c33af8c227', 'user1.jpg', 1, 1),
-('admin2', 'f865b53623b121fd34ee5426c792e5c33af8c227', 'user3.jpg', 1, 2),
-('eduardo', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'usuario3.jpg', 2, 3),
-('alirio', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'usuario1.jpg', 2, 4),
-('daniel', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'user5.jpg', 2, 5),
-('jose', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 6),
-('paola', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 7),
-('josue', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 8),
-('eduardo', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 9),
-('carlos', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 10),
-('juan', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 11),
-('alexis', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 12),
-('karla', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 13),
-('rafael', '9de99a66bd630ed59bacb6b6506e3f9c41ed269e', 'defecto.jpg', 3, 14),
-('rocio', 'b2b39d11f6adad79682eb4db5b92b6b76fcaff41', 'defecto.jpg', 2, 15);
+('eduardo', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario1.jpg', 'Administrador', 1),
+('alirio', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario4.jpg', 'Administrador', 2),
+('daniel', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'user5.jpg', 'Administrador', 3),
+('alexis', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario.jpg', 'Administrador', 4),
+('juan', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 5),
+('carlos', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 6),
+('mariano', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'user3.jpg', 'Tecnico', 7),
+('luis', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'usuario4.jpg', 'Tecnico', 8),
+('rocio', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario8.jpg', 'Cliente', 9),
+('andrea', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario2.jpg', 'Cliente', 10),
+('angy', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'user4.jpg', 'Cliente', 11),
+('rafael', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario3.jpg', 'Cliente', 12),
+('jorge', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario3.jpg', 'Administrador', 13);
 
 --
 -- Índices para tablas volcadas
@@ -283,9 +261,9 @@ ALTER TABLE `departamento`
 --
 ALTER TABLE `diagnostico`
   ADD PRIMARY KEY (`idDiagnostico`),
+  ADD KEY `fk_diagnostico_tecnico` (`idTecnico`),
   ADD KEY `fk_diagnostico_ticket` (`idTicket`),
-  ADD KEY `fk_diagnostico_categoria` (`idCategoria`),
-  ADD KEY `fk_diagnostico_tecnico` (`idTecnico`) USING BTREE;
+  ADD KEY `fk_diagnostico_categoria` (`idCategoria`);
 
 --
 -- Indices de la tabla `tecnicos`
@@ -339,7 +317,7 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
@@ -357,7 +335,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `diagnostico`
   ADD CONSTRAINT `fk_diagnostico_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`),
-  ADD CONSTRAINT `fk_diagnostico_tecnico` FOREIGN KEY (`idTecnico`) REFERENCES `tecnicos` (`idTecnico`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_diagnostico_tecnico` FOREIGN KEY (`idTecnico`) REFERENCES `tecnicos` (`idTecnico`),
   ADD CONSTRAINT `fk_diagnostico_ticket` FOREIGN KEY (`idTicket`) REFERENCES `ticket` (`idTicket`);
 
 --
@@ -370,7 +348,7 @@ ALTER TABLE `tecnicos`
 -- Filtros para la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `fk_ticket_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_ticket_cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

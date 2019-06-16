@@ -72,7 +72,7 @@ $salida='
 <section>
 	<table id="encabezado">
 	<tr>
-		<td style="width: 10%;"><img src="../../imagenes/robot.png" height="60px" width="60px"></td>
+		<td style="width: 10%;"><img src="../../imagenes/logo.png" height="55px" width="110px"></td>
 		<td style="width: 75%; font-size: 28px; font-weight: bold;"><span style="margin-left: 1.5%;">Reporte de Tickets cerrados por tipo</span></td>
 		<td style="width: 15%; text-align: center;"><b style="font-size: 13px;">'. $fechaLocal . "<br>" . $horaLocal .'</b></td>
 	</tr>

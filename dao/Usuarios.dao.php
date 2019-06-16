@@ -28,7 +28,7 @@ class clsUsuarioDAO{
 		}else if($parametro == 2){
 			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE userid = $valor");	
 		}else if($parametro == 3){
-			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE username LIKE '%$valor%'");	
+			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE username LIKE '%$valor%'");
 		}else if($parametro == 4){
 			$contenedor = $con->ejecutarConsulta("SELECT userid, avatar, username, rol from usuario WHERE rol LIKE '%$valor%'");	
 		}
@@ -82,3 +82,4 @@ class clsUsuarioDAO{
 }
 
 ?>
+

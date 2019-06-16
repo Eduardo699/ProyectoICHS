@@ -29,11 +29,14 @@
 	require'modelos/clsConexion.php';
 	if(!empty($_POST['login'])){
 		$usuario = $_POST["UserEmail"];
-		//$contra = hash("sha256", $_POST["UserPass"]);
-		$contra = $_POST["UserPass"];
+		$contra = hash("sha256", $_POST["UserPass"]);
+		//$contra = $_POST["UserPass"];
 
 		$con=new mysqli("localhost","root","","bdsistema");
-		$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
+
+		//$sql="SELECT * FROM cliente as c, usuario as u WHERE username ='$usuario' AND password ='$contra' AND u.userid=c.userid";
+		//$res=$con->query($sql);
+$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
 		
 
 		if($res->num_rows>0){
@@ -42,11 +45,13 @@
 				$_SESSION["usuario"]=$row["username"];
 				$_SESSION["id"]=$row["userid"];
 				$_SESSION["rol"]=$row["rol"];
+				$_SESSION["nombreC"]=$row["nombreCompleto"];
 				header('Location:vistas/dashboard.php');
 			}
 
 		}else{
-			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos</center></div>";
+			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos
+			o el usuario no pertenece a ningun cliente(contacte a un administrador de ser asi.)</center></div>";
 		}
 		
 	}
