@@ -30,6 +30,7 @@
 			require_once('../vistas/scripts.php');
 			if($this->conexion->query($sql)){
 				echo "<script>
+					var cor = '". $correcto ."';
 					setTimeout(function(){
 						Swal.fire({
 							type: 'success',
@@ -40,7 +41,12 @@
 						});
 					},1);
 					setTimeout(function(){
-						self.location = '../vistas/dashboard.php';
+						if(cor!='Ticket agregado'){
+							self.location = '../vistas/dashboard.php';
+						}
+						else{
+							self.location = '../vistas/correo.php';
+						}
 					},1500);
 				</script>";
 			}

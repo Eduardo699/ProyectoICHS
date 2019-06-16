@@ -10,7 +10,7 @@
 		 	$obj->setFechaCreacion($horaLocal);
 		 	$obj->setAsunto($_POST['asunto']);
 		 	$obj->setDescripcion($_POST['descripcion']);
-		 	$obj->setIdCliente('2');
+		 	$obj->setIdCliente('AJPC194');
 		 	$obj->setEstado('1');
 
 		 	//Adjuntar imagen
