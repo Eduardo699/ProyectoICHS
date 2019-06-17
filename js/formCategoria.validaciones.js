@@ -63,7 +63,9 @@ $(document).ready(function(){
 			band = 0;
 			for(var i = 0; i < valor.length;i++){
 				aux =  valor.charCodeAt(i);
-				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32)){
+				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32) || (aux==225) || (aux==233) || (aux==237) || (aux==243) 
+				|| (aux==250) || (aux==193) || (aux==201) || (aux==205) || (aux==211) || (aux==218) || (aux==241) || (aux==209)
+				|| (aux>=48 && aux<=57) || (aux==35) ){
 					band = band;
 				}
 				else{
@@ -72,7 +74,7 @@ $(document).ready(function(){
 			}
 			if(band!=0){
 				$("#txtNombre").attr('class','form-control is-invalid').focus();
-				$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor, solo introduzca letras (*)</b></di>");
+				$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor, solo introduzca letras, numeros y # (*)</b></di>");
 				nombre = false;
 			}
 			else{
@@ -101,7 +103,10 @@ $(document).ready(function(){
 			band = 0;
 			for(var i = 0; i < valor.length;i++){
 				aux =  valor.charCodeAt(i);
-				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32)){
+				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32) || (aux==130) || (aux==160) || (aux==161) || (aux==162) || (aux==163)
+				|| (aux==96) || (aux==225) || (aux==233) || (aux==237) || (aux==243) || (aux==250) || (aux==193) || (aux==201)
+				|| (aux==205) || (aux==211) || (aux==218) || (aux==241) || (aux==209) || (aux==46) || (aux==44) || (aux==40) || (aux==41)
+				|| (aux>=48 && aux<=57) || (aux==35) ){
 					band = band;
 				}
 				else{
@@ -110,7 +115,7 @@ $(document).ready(function(){
 			}
 			if(band!=0){
 				$("#txtDescripcion").attr('class','form-control is-invalid').focus();
-				$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Por favor, solo introduzca letras (*)</b></di>");
+				$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Por favor, solo introduzca letras, numeros, parentesis, comas, puntos y #</b></di>");
 				descripcion = false;
 			}
 			else{

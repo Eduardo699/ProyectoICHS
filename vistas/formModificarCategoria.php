@@ -4,7 +4,7 @@
 	require_once"../controladores/controladorSesion.php";
 	if(isset($_POST['id'])){
 		$obj = CategoriaDao::obtenerRegistroPorId($_POST['id']);
-		echo "<script>var tipo = '". $obj[1] ."';</script>";
+		echo "<script>var tipoS = '". $obj[1] ."';</script>";
 	}
 ?>
 
@@ -27,7 +27,7 @@
 <script type="text/javascript" src="../js/formCategoria.validaciones.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#cmbTipo").val(tipo);
+		$("#cmbTipo").val(tipoS);
 		
 		$(document).keydown(function(e){ 
         	if (e.keyCode == 27){

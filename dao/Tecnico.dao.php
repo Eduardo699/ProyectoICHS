@@ -43,7 +43,7 @@ class clsTecnicoDAO{
 
 		public static function listarUsuarios(){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid);";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid) ORDER BY C.userid DESC;";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
@@ -51,7 +51,7 @@ class clsTecnicoDAO{
 
 		public static function listarUsuariosMod($id){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid AND P.userid!='$id');";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid AND P.userid!='$id') ORDER BY C.userid DESC;";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;

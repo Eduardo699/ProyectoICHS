@@ -154,6 +154,12 @@ if(isset($_GET['form'])){
 							$(this).html(data);					
 						});
 					});
+
+					$("#graficos").click(function(){
+						$("#mostrador").load(rutaGraficos,function(data){
+							$(this).html(data);					
+						});
+					});
 				});
 
 				var rutaUsuarios = "indexUsuarios.php";
@@ -167,6 +173,7 @@ if(isset($_GET['form'])){
 				var listaTickets = "indexTickets.php";
 				var rutaDiagnosticosTec = "indexDiagnosticosTec.php";
 				var rutaTicketsTec = "indexTicketsTec.php";
+				var rutaGraficos = "indexGraficas.php";
 
 				
 				function validarPermisos(){
@@ -202,6 +209,8 @@ if(isset($_GET['form'])){
 					elementos+='<div id="categorias" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-tasks"></span> &nbsp Categorias </label></div>';
 
 					elementos+='<div id="listaTickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Tickets </label></div>';
+
+					elementos+='<div id="graficos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Graficos </label></div>';
 
 					elementos+='<div id="reportes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Reportes </label></div>';
 					
