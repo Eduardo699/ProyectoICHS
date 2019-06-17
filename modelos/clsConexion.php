@@ -17,6 +17,10 @@
 			$this->conexion->set_charset("utf8");
 		}
 
+		public function getConexion(){
+			return $this->conexion;
+		}
+
 		public function ejecutarConsulta($sql){
 			$contenedor = $this->conexion->query($sql);
 			return $contenedor->fetch_all();
