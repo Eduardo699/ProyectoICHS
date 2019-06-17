@@ -21,7 +21,7 @@ class clsTecnicoDAO{
 //"', fechaNac='". $cli->getFechaNac() ."'
 		public static function modificarRegistro($Tec){
 			$con = new clsConexion();
-			$query = "UPDATE tecnicos set nombreCompleto='". $Tec->getNombre() ."', direccion='". $Tec->getDireccion() ."', telefono = '". $Tec->getTelefono() ."', dui='".$Tec->getDui()."', especialidad='".$Tec->getEspecialidad()."', fechaNac='".$Tec->getFechaNac()."', userid = '".$Tec->getIdUser()."', estado = '".$Tec->getEstado()."' WHERE idTecnico='". $Tec->getId() ."'";
+			$query = "UPDATE tecnicos set nombreCompleto='". $Tec->getNombre() ."', direccion='". $Tec->getDireccion() ."', telefono = '". $Tec->getTelefono() ."', dui='".$Tec->getDui()."', especialidad='".$Tec->getEspecialidad()."', fechaNac='".$Tec->getFechaNac()."', userid = '".$Tec->getIdUser()."' WHERE idTecnico='". $Tec->getId() ."'";
 			$con->ejecutarActualizacion($query,"Técnico modificado","modificar el técnico");
 			$con->cerrarConexion();
 		}
@@ -43,7 +43,7 @@ class clsTecnicoDAO{
 
 		public static function listarUsuarios(){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='2' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid);";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid);";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
@@ -51,7 +51,7 @@ class clsTecnicoDAO{
 
 		public static function listarUsuariosMod($id){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='2' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid AND P.userid!='$id');";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Tecnico' AND NOT EXISTS(SELECT * from tecnicos as P WHERE P.userid = C.userid AND P.userid!='$id');";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;

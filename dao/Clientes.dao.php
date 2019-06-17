@@ -39,7 +39,7 @@ class clsClienteDAO{
 
 		public static function listarUsuarios(){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='3' AND NOT EXISTS(SELECT * from cliente as P WHERE P.userid = C.userid);";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Cliente' AND NOT EXISTS(SELECT * from cliente as P WHERE P.userid = C.userid);";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;
@@ -47,7 +47,7 @@ class clsClienteDAO{
 
 		public static function listarUsuariosMod($id){
 			$con = new clsConexion();
-			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='3' AND NOT EXISTS(SELECT * from cliente as P WHERE P.userid = C.userid AND P.userid!='$id');";
+			$query = "SELECT distinct C.userid, C.username from usuario as C WHERE C.rol='Cliente' AND NOT EXISTS(SELECT * from cliente as P WHERE P.userid = C.userid AND P.userid!='$id');";
 			$contenedor = $con->ejecutarConsulta($query);
 			$con->cerrarConexion();
 			return $contenedor;

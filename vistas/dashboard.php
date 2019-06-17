@@ -169,6 +169,7 @@ if(isset($_GET['form'])){
 				}
 				else if(rol=='Tecnico'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL TECNICO		
+					
 					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
 
 										

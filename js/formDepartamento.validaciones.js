@@ -28,9 +28,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#resetear").click(function(){
-		resetear();
-	});
+	$("#resetear").click(resetear);
 
 });
 
@@ -81,7 +79,7 @@ $(document).ready(function(){
 			band = 0;
 			for(var i = 0; i < valor.length;i++){
 				aux =  valor.charCodeAt(i);
-				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32)){
+				if((aux>=65 && aux<=90) || (aux>=97 && aux<=122) || (aux==32) || (aux==130) || (aux==160) || (aux==161) || (aux==162) || (aux==163) || (aux==96) ){
 					band = band;
 				}
 				else{
@@ -117,9 +115,6 @@ $(document).ready(function(){
 		con = 0;
 		$("#txtNombre").attr('class','form-control');
 		$("#txtDescripcion").attr('class','form-control');
-
-		$("#txtNombre").val("");
-		$("#txtDescripcion").val("");
 
 		$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class=''></di>");
 		$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class=''></di>");

@@ -24,7 +24,7 @@
 		background-color:  #F1F0F0;
 	}
 </style>
-<script type="text/javascript" src="../js/formDepartamentos.validaciones.js"></script>
+<script type="text/javascript" src="../js/formDepartamento.validaciones.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		//$("#cmbTipo").val(tipo);
@@ -48,7 +48,7 @@
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
 						<br><form id="formDepartamento" action="../controladores/Departamento.controlador.php?a=edit" method="POST">					
 							<div class="form-row">
-							    <div class="form-group col-md-8">
+							    <div class="form-group col-md-12">
 							    	<br>
 							      	<label for="txtNombre">Nombre</label>
 									<input value="<?=$obj[1]?>" maxlength="50" type="text" class="form-control" id="txtNombre" name="nombre">

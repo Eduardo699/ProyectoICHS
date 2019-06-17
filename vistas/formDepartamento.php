@@ -21,7 +21,6 @@
 	}
 </style>
 <script type="text/javascript" src="../js/formDepartamento.validaciones.js"></script>
-<script type="text/javascript" src="../js/formContrato.validaciones.js"></script>
 
 <body><!--oncontextmenu="return false" onkeydown="return false" bloquear teclado y click derecho-->
 	<div class="container-fluid">
@@ -33,7 +32,7 @@
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
 						<br><form id="formDepartamento" action="../controladores/Departamento.controlador.php?a=ingr" method="POST">					
 							<div class="form-row">
-							    <div class="form-group col-md-8">
+							    <div class="form-group col-md-12">
 							    	<br>
 							      	<label for="txtNombre">Nombre</label>
 									<input maxlength="50" type="text" class="form-control" id="txtNombre" name="nombre">

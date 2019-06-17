@@ -5,14 +5,14 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 			$obj = new clsCliente();
-			$obj->setId('Hola3');
+			$obj->setId($_POST['idCliente']);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
-			$obj->setIdDept($_POST['dep']);
-			$obj->setIdUser(1);
+			$obj->setIdDept($_POST['departamento']);
+			$obj->setIdUser($_POST['usuario']);
 			$obj->setEstado(1);
 			clsCLienteDao::agregarRegistro($obj);
 		break;
@@ -24,8 +24,8 @@
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
 			$obj->setDui($_POST['dui']);
-			$obj->setIdDept($_POST['dep']);
-			$obj->setIdUser(1);
+			$obj->setIdDept($_POST['departamento']);
+			$obj->setIdUser($_POST['usuario']);
 			$obj->setEstado(1);
 			
 			clsClienteDao::modificarRegistro($obj);

@@ -39,9 +39,9 @@
 			$mail->setFrom($emailFrom,$emailFromName);
 			$mail->addAddress($emailTo,$emailToName);
 			//Asunto del correo
-			$mail->Subject = 'Prueba de envio de correo';
+			$mail->Subject = 'Nuevo Ticket';
 			//Toda la informacion que se necesita enviar escrita
-			$mail->msgHTML("Aqui va la descripcion del correo electronico");
+			$mail->msgHTML("Se ah creado un nuevo ticket, ya puedes revisarlo");
 			$mail->AltBody = "HTML messaging not supported";
 			//Se envia el mensaje, si no ha habido problema la variable $exito sera TRUE
 			$exito = $mail->Send();

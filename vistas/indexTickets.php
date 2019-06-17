@@ -6,7 +6,7 @@
 	$tipo = 1;
 	$dato = "";
 	if($_SESSION['rol']!="Administrador"){
-		$tipo = 2;
+		$tipo = 3;
 		$dato = $_SESSION['idPersona'];
 	}
 ?>
