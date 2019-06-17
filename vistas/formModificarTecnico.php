@@ -43,6 +43,16 @@ body{
 <script type="text/javascript" src="../js/formTecnico.validaciones.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+
+		var code = "";
+
+
+		 code = $("#txtId").val();
+
+        code = code.substr(6).toUpperCase();
+        $("#cod").val(code);
+    
+
 		$("#cmbTipo").val(tipo);
 		$("#usuarioC").val(us);
 		
@@ -65,7 +75,9 @@ body{
 							<div class="form-row">
 							    <div class="form-group col-md-12">
 							    	<br>
-							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnico">
+							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnico" id="txtId">
+							    	<input type="hidden" value="<?=$obj[0]?>" name="idTecnicoT" id="txtIdT">
+							    	<input type="hidden" name="cod" id="cod">
 							      	<label for="txtNombre">Nombre Completo</label>
 							      	<input placeholder="Nombre" type="text" class="form-control" id="txtNombre" name="nombre" value="<?=$obj[1]?>">
 							      	<div id="mensajeNombre" class=""></div>		

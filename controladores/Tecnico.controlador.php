@@ -5,7 +5,9 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 			$obj = new clsTecnico();
-			$obj->setId($_POST['idTecnico']);
+			$co = clsTecnicoDao::correlativoTecnico();
+			$co++;
+			$obj->setId($_POST['idTecnico'].$co);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);
@@ -18,7 +20,8 @@
 		break;
 		case 'edit':
 			$obj = new clsTecnico();
-			$obj->setId($_POST['idTecnico']);
+			$obj->setId($_POST['idTecnicoT']);
+			$obj->setIdRes($_POST['idTecnico'].$_POST['cod']);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setDireccion($_POST['direccion']);
 			$obj->setTelefono($_POST['telefono']);

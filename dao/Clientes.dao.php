@@ -17,7 +17,7 @@ class clsClienteDAO{
 
 		public static function modificarRegistro($cli){
 			$con = new clsConexion();
-			$query = "UPDATE cliente set nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
+			$query = "UPDATE cliente set idCliente = '".$cli->getIdRes()."',nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
 			$con->ejecutarActualizacion($query,"Cliente modificado","modificar el cliente");
 			$con->cerrarConexion();
 		}
@@ -61,6 +61,36 @@ class clsClienteDAO{
 			return $contenedor;
 		}
 
+		public static function correlativoCliente(){
+			$con = new clsConexion();
+			$query = "SELECT idCliente from cliente";
+			$contenedor = $con->ejecutarConsulta($query);
+
+			$i = 0;
+			$mayor = 0;
+			foreach ($contenedor as $row) {
+
+				$aux = strlen($row[0]);
+				
+				$res = substr($row[0], 6,$aux);
+
+				if ($i == 0) {
+					$mayor = $res;
+				}
+
+				else{
+					if ($res>$mayor) {
+						$mayor = $res;
+					}
+				}
+
+				$i++;
+			}
+
+			$con->cerrarConexion();
+			return $mayor;
+		}
+
 	public static function listarDatos($parametro, $valor){
 		$con = new clsConexion();
 		if($parametro == 1){
@@ -72,6 +102,8 @@ class clsClienteDAO{
 		}else if($parametro == 4){
 			$contenedor = $con->ejecutarConsulta("SELECT T1.idCliente, T1.nombreCompleto, T1.fechaNac, T1.direccion, T1.telefono, T1.dui, T2.nombre, T3.username from cliente T1 INNER JOIN departamento T2 on T1.idDepartamento = T2.idDepartamento INNER JOIN usuario T3 on T1.userid = T3.userid WHERE T1.estado !='0' AND T1.dui LIKE '%$valor%'");	
 		}
+
+
 		
 		$con->cerrarConexion();
 		if($contenedor){

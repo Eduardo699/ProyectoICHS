@@ -97,7 +97,7 @@ $(document).ready(function(){
 					}
 					if(aux==32){
 						contador++;
-						if(contador<3){
+						if(contador<4){
 							i++;
 							valorId += valor[i];
 							i--;
@@ -118,8 +118,8 @@ $(document).ready(function(){
 					$("#txtNombre").attr('class', 'form-control is-valid');
 					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='valid-feedback'><b>Campo completado correctamente </b></di>");
 					nombre = true;
-					var fecha = new Date();
-					var anio = fecha.getFullYear();
+					
+					var anio = "19";
 					valorId += anio;
 					valorId = valorId.toUpperCase();
 					$("#txtId").val(valorId);

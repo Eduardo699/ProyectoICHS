@@ -35,6 +35,9 @@ body{
 
 </style>
 <script type="text/javascript" src="../js/formTecnico.validaciones.js"></script>
+
+
+
 <body>
 	<div class="container-fluid">
 		<div class="row">

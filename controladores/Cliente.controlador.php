@@ -5,7 +5,9 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 			$obj = new clsCliente();
-			$obj->setId($_POST['idCliente']);
+			$co = clsClienteDao::correlativoCliente();
+			$co++;
+			$obj->setId($_POST['idCliente'].$co);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
@@ -18,7 +20,8 @@
 		break;
 		case 'edit':
 			$obj = new clsCliente();
-			$obj->setId($_POST['idCliente']);
+			$obj->setId($_POST['idClienteR']);
+			$obj->setIdRes($_POST['idCliente'].$_POST['cod']);
 			$obj->setNombre($_POST['nombre']);
 			$obj->setFechaNac($_POST['fecha']);
 			$obj->setDireccion($_POST['direccion']);
