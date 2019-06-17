@@ -36,7 +36,7 @@
 
 		//$sql="SELECT * FROM cliente as c, usuario as u WHERE username ='$usuario' AND password ='$contra' AND u.userid=c.userid";
 		//$res=$con->query($sql);
-$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
+		$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
 		
 
 		if($res->num_rows>0){
@@ -45,13 +45,42 @@ $res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password 
 				$_SESSION["usuario"]=$row["username"];
 				$_SESSION["id"]=$row["userid"];
 				$_SESSION["rol"]=$row["rol"];
-				$_SESSION["nombreC"]=$row["nombreCompleto"];
+				$_SESSION["idPersona"]="";
+			}
+			if($_SESSION['rol']=="Administrador"){
 				header('Location:vistas/dashboard.php');
+			}
+			else{
+				if($_SESSION['rol']=="Cliente"){
+					$res=$con->query("SELECT idCliente from cliente where userid = '". $_SESSION["id"] ."'");
+					if($res->num_rows>0){
+						while($row = mysqli_fetch_array($res)){
+							$_SESSION["idPersona"]=$row["idCliente"];
+						}
+						header('Location:vistas/dashboard.php');
+					}
+					else{
+						echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos(contacte a un administrador en caso de que este experimentando problemas al iniciar sesión.)</center></div>";
+						session_destroy();
+					}
+				}
+				else if($_SESSION['rol']=="Tecnico"){
+					$res=$con->query("SELECT idTecnico from tecnicos where userid = '". $_SESSION["id"] ."'");
+					if($res->num_rows>0){
+						while($row = mysqli_fetch_array($res)){
+							$_SESSION["idPersona"]=$row["idTecnico"];
+						}
+						header('Location:vistas/dashboard.php');
+					}
+					else{
+						echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos(contacte a un administrador en caso de que este experimentando problemas al iniciar sesión.)</center></div>";
+						session_destroy();
+					}
+				}
 			}
 
 		}else{
-			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos
-			o el usuario no pertenece a ningun cliente(contacte a un administrador de ser asi.)</center></div>";
+			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos</center></div>";
 		}
 		
 	}

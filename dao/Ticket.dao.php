@@ -11,6 +11,19 @@
 			$con->cerrarConexion();
 		}
 
+		public static function listarDatos($tipo,$dato){
+			$con = new clsConexion();
+			$query = "";
+			if($tipo==1){
+				$query = "SELECT idTicket, fechaCreacion, asunto, descripcion,adjunto FROM ticket WHERE estado!='0'";
+			}
+			else{
+				$query = "SELECT idTicket, fechaCreacion, asunto, descripcion,adjunto FROM ticket WHERE idCliente='". $dato ."' AND estado!='0'";
+			}
+			$contenedor = $con->ejecutarConsulta($query);
+			return $contenedor;
+		}
+
 	}
 
 ?>

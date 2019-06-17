@@ -10,6 +10,7 @@ if (!isset($_SESSION['id'])){
 	
 }
 else{
+	//echo "<script>var idPersona = '". $_SESSION['idPersona'] ."'; alert(idPersona);</script>";
 	echo "<script>var rol = '". $_SESSION['rol'] ."'</script>";
 
 }
@@ -136,6 +137,11 @@ if(isset($_GET['form'])){
 						});
 					});
 
+					$("#listaTickets").click(function(){
+						$("#mostrador").load(listaTickets,function(data){
+							$(this).html(data);					
+						});
+					});
 				});
 
 				var rutaUsuarios = "indexUsuarios.php";
@@ -146,6 +152,7 @@ if(isset($_GET['form'])){
 				var rutaDiagnosticos = "indexDiagnosticos.php";
 				var rutaCategorias = "indexCategoria.php";
 				var rutaReportes = "indexReportes.php";
+				var listaTickets = "indexTickets.php";
 				
 
 				
@@ -156,6 +163,7 @@ if(isset($_GET['form'])){
 				if(rol=='Cliente'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL CLIENTES
 					elementos+='<div id="tickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-ticket-alt"></span> &nbsp Tickets </label></div>';
+					elementos+='<div id="listaTickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Mis Tickets </label></div>';
 
 
 				}
@@ -178,6 +186,8 @@ if(isset($_GET['form'])){
 					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
 
 					elementos+='<div id="categorias" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-tasks"></span> &nbsp Categorias </label></div>';
+
+					elementos+='<div id="listaTickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Tickets </label></div>';
 
 					elementos+='<div id="reportes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Reportes </label></div>';
 					

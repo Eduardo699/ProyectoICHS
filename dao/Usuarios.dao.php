@@ -66,7 +66,8 @@ class clsUsuarioDAO{
 
 	public static function agregarRegistro($user){
 			$con = new clsConexion();
-			$con->ejecutarActualizacion("INSERT INTO usuario (username,password,rol,avatar) VALUES ('". $user->getUsername() ."' ,'". $user->getPassword() ."','". $user->getRol() ."', '". $user->getAvatar() ."') ");      
+			$sql = "INSERT INTO usuario (username,password,rol,avatar) VALUES ('". $user->getUsername() ."' ,'". $user->getPassword() ."','". $user->getRol() ."', '". $user->getAvatar() ."') ";
+			$con->ejecutarActualizacion($sql,"Usuario agregado","agregar el usuario");      
 			$con->cerrarConexion();
 	}
 

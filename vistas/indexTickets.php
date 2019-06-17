@@ -1,92 +1,65 @@
-   
-   <!DOCTYPE html>
-<html lang="en">
+<?php  
+	require_once('../dao/Ticket.dao.php');
+	require_once "scripts.php";
+	require_once"../controladores/controladorSesion.php";
+	//echo "<script>var idPersona = '". $_SESSION['idPersona'] ."';</script>";
+	$tipo = 1;
+	$dato = "";
+	if($_SESSION['rol']!="Administrador"){
+		$tipo = 2;
+		$dato = $_SESSION['idPersona'];
+	}
+?>
+
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<!--Siempre coloca el bootstrap.min.css como primer enlace-->
-	<link rel="stylesheet" href="css/tutorial.css">
-	
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Index de Categorias</title>
 </head>
-<body>
+<style type="text/css">
 
-	<div class="contenedor">
-		<div class="container-fluid">
-			<div class="page-header">
-			  <h1 class="text-titles">Systema <small>Tickets</small></h1>
-			</div>
-		</div>
-		<div class="full-box text-center" style="padding: 30px 10px;">
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets abiertos
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="far fa-file-alt"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Tickets Cerrados
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-file-import"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">10</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Asignar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-check"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-				<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Cerrar un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i class="fas fa-calendar-times"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">7</p>
-					<small>Tickets</small>
-				</div>
-			</article>
+	body{
+		background-color:  #F1F0F0;
+	}
 
-			<article class="full-box tile">
-				<div class="full-box tile-title text-center text-titles text-uppercase">
-					Crear un ticket
-				</div>
-				<div class="full-box tile-icon text-center">
-					<i font-size="20px" class="far fa-calendar"></i>
-				</div>
-				<div class="full-box tile-number text-titles">
-					<p class="full-box">70</p>
-					<small>Tickets</small>
-				</div>
-			</article>
-			
-		</div>
-		
-	</div>
+	#contenedorTabla{
+		height: 500px;
+		overflow: scroll;
+	}	
 	
+
+	#dgv th,td{
+		text-align: center;
+	}
+
+</style>
+<body>
+	<div class="container-fluid">
+		<div class="row"><!--inicia segunda fila-->
+			<div id="contenedorTabla" class="table-responsive"><!--inicia contenedor de la tabla-->
+				<br><br><table id="dgv" class="table  table-hover table-dark">
+					  <thead>
+						    <tr class="bg-primary">
+							    <th scope="col">Id</th>
+							    <th scope="col">Fecha Creacion</th>
+							    <th scope="col">Asunto</th>
+							    <th scope="col">Descripcion</th>
+						    </tr>
+					  </thead>
+					  <tbody id="cuerpoTabla">
+						<?php foreach(TicketDao::listarDatos($tipo,$dato) as $fila): ?>
+							<tr>
+								<th style="width: 5%;"><?=$fila[0]?></th>
+								<td style="width: 10%;"><?=date("d/m/Y h:i A", strtotime($fila[1])); ?></td>
+								<td style="width: 15%;"><?=$fila[2]?></td>
+								<td style="text-align: justify; width: 70%;"><?=$fila[3]?></td>
+							</tr>
+						<?php endforeach ?>
+					  </tbody>
+				</table>
+			</div><!--termina contenedor de la tabla-->
+		</div><!--termina segunda fila-->
+	</div><!--termina el contenedor fluido-->
+
 </body>
 </html>
-
