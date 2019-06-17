@@ -125,6 +125,18 @@ if(isset($_GET['form'])){
 						});
 					});
 
+					$("#diagnosticosTec").click(function(){
+						$("#mostrador").load(rutaDiagnosticosTec,function(data){
+							$(this).html(data);					
+						});
+					});
+
+					$("#listaTicketsTec").click(function(){
+						$("#mostrador").load(rutaTicketsTec,function(data){
+							$(this).html(data);					
+						});
+					});
+
 					$("#categorias").click(function(){
 						$("#mostrador").load(rutaCategorias,function(data){
 							$(this).html(data);					
@@ -153,7 +165,8 @@ if(isset($_GET['form'])){
 				var rutaCategorias = "indexCategoria.php";
 				var rutaReportes = "indexReportes.php";
 				var listaTickets = "indexTickets.php";
-				
+				var rutaDiagnosticosTec = "indexDiagnosticosTec.php";
+				var rutaTicketsTec = "indexTicketsTec.php";
 
 				
 				function validarPermisos(){
@@ -170,9 +183,9 @@ if(isset($_GET['form'])){
 				else if(rol=='Tecnico'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL TECNICO		
 					
-					elementos+='<div id="diagnosticos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
+					elementos+='<div id="diagnosticosTec" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
 
-										
+					elementos+='<div id="listaTicketsTec" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Tickets </label></div>';									
 				}
 				else if(rol=='Administrador'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL ADMIN					

@@ -55,7 +55,7 @@
 		})
 		.done(function(respuesta){
 			var r = parseInt(respuesta.length);
-			if(r>=3900 && r<=4000){
+			if(r>=3900 && r<=5000){
 				$("#mensaje").text('Correo enviado con éxito');
 				Swal.fire({
 					imageUrl: rutaExito,

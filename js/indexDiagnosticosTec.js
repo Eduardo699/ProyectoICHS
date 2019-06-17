@@ -47,40 +47,7 @@ $("body #contenedorTabla table").on("click","a", function(e){
         //e.preventDefault();
         var clase = $(this).attr("class");
         var modificar = clase.substring(0,9);
-        var eliminar = clase.substring(0,8);
-
-        if(eliminar=="eliminar"){
-            Swal.fire({
-              title: '¿Desea eliminar el registro?',
-              text: "Una vez eliminado, no será capaz de recuperar el registro!",
-              type: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Si, deseo eliminarlo!'
-            }).then((result) => {
-              if (result.value) {
-                var id = $(this).attr('id');
-                var array = id.split(".");
-                id = array[0];
-                id= '../controladores/Diagnosticos.controlador.php?a=elim&id=' + id;
-               Swal.fire({
-                  title: 'Eliminado!',
-                  text: 'El registro ha sido eliminado satisfactoriamente.',
-                  type: 'success',
-                  showConfirmButton: false,
-                });
-                setTimeout(function(){
-                    location.href=id;
-                }, 1000);
-                //termina if
-              }
-              else{
-              }
-            });
-        }
-
-        else if(modificar=="modificar"){
+        if(modificar=="modificar"){
             var valores = $(this).attr('id');
             var id="";
             var usuario = "";
@@ -102,7 +69,7 @@ $("body #contenedorTabla table").on("click","a", function(e){
 function buscarDatos(){
         
     	$.ajax({
-    		url: '../dao/Diagnosticos.dao.php',
+    		url: '../dao/DiagnosticosTec.dao.php',
     		type: 'POST',
     		dataType: 'html',
     		data: {consulta: parametro, valor: valor},
@@ -116,21 +83,13 @@ function buscarDatos(){
     	})
 }
 
-function cargar(){      
-        $.ajax({                
-            url: 'formDiagnosticos.php',
-            success: function(response){                                    
-                $('#resultado').load('formDiagnosticos.php');
-            }
-    });
-}
 
  function cargar2(id, usuario){
         $.ajax({
-            url: 'formModificarDiagnosticos.php',
+            url: 'formModificarDiagnosticosTec.php',
             type: 'POST',
             dataType: 'html',
-            data: {id: id, us: usuario},
+            data: {id: id},
         })
         .done(function(respuesta){
             $('#resultado2').replaceWith(respuesta);

@@ -37,46 +37,13 @@
 		
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<form id="formDiagnosticos" action="../controladores/Diagnosticos.controlador.php?a=ingr" method="POST">					
+						<form id="formDiagnosticos" action="../controladores/Diagnosticos.controlador.php?a=ingr" method="POST">
 							<div class="form-row">
-								<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtFechaAsignacion">Fecha de Asginación</label>
-									<input type="date" min="" max=""  class="form-control" id="txtFechaAsignacion" name="fechaAsignacion">
-									<div id="mensajeFechaAsignacion" class=""></div>
-							    </div>
-
-							    <div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtFechaCierre">Fecha de Cierre</label>
-									<input disabled type="date" min="" max=""  class="form-control" id="txtFechaCierre" name="fechaCierre">
-									<div id="mensajeFechaCierre" class=""></div>
-							    </div>
-							</div>
-
-							<div class="form-row">
-							 	<div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtDiagnostico">Diagnostico</label>
-							      	<textarea maxlength="150" style="resize: none;" name="diagnostico" id="txtDiagnostico" class="md-textarea form-control" rows="5"></textarea>
-							      	<div id="mensajeDiagnostico" class=""></div>
-							    </div>
-
-							    <div class="form-group col-md-6">
-							    	<br>
-							      	<label for="txtSolucion">Solución</label>
-							      	<textarea maxlength="150" style="resize: none;" name="solucion" id="txtSolucion" class="md-textarea form-control" rows="5"></textarea>
-							      	<div id="mensajeSolucion" class=""></div>
-							    </div>
-							</div>
-
-							<div class="form-row">
-
 								<div class="form-group col-md-6">
 								    <br>
 								    <label for="cmbIdTecnico">Nombre del Tecnico</label>
 								    <select id="cmbIdTecnico" name="idTecnico" class="custom-select">
-										<option disabled selected value="default">--seleccione una opcion--</option>
+										<option disabled selected value="">--seleccione una opcion--</option>
 										<?php foreach (clsDiagnosticosDAO::listarIdTecnicos() as $fila): ?>
 											<option value="<?= $fila[0] ?>"><?= $fila[1] ?></option>
 										<?php endforeach ?>
@@ -86,43 +53,15 @@
 
 								<div class="form-group col-md-6">
 								    <br>
-								    <label for="cmbIdTicket">Tickets</label>
+								    <label for="cmbIdTicket">Ticket</label>
 								    <select id="cmbIdTicket" name="idTicket" class="custom-select">
-										<option disabled selected value="default">--seleccione una opcion--</option>
+										<option disabled selected value="">--seleccione una opcion--</option>
 										<?php foreach (clsDiagnosticosDAO::listarIdTicket() as $fila): ?>
 											<option value="<?= $fila[0] ?>"><?= $fila[1] ?></option>
 										<?php endforeach ?>
 									</select>
 									<div id="mensajeIdTicket" class=""></div>
 								</div>
-
-							</div>
-
-
-							<div class="form-row">
-
-								<div class="form-group col-md-6">
-								    <br>
-								    <label for="cmbIdCategoria">Categoria</label>
-								    <select id="cmbIdCategoria" name="idCategoria" class="custom-select">
-										<option disabled selected value="default">--seleccione una opcion--</option>
-										<?php foreach (clsDiagnosticosDAO::listarIdCategoria() as $fila): ?>
-											<option value="<?= $fila[0] ?>"><?= $fila[1] ?></option>
-										<?php endforeach ?>
-									</select>
-									<div id="mensajeIdCategoria" class=""></div>
-								</div>
-
-								<div class="form-group col-md-6">
-							    	<br>
-							    	<label for="cmbEstadoDiagnostico">Estado del Diagnostico</label>
-							    	<select id="cmbEstadoDiagnostico" name="estadoDiagnostico" class="custom-select">
-										<option disabled selected value="default">--seleccione una opcion--</option>
-										<option value="Abierto">Abierto</option>
-										<option value="Cerrado">Cerrado</option>
-									</select>
-									<div id="mensajeEstadoDiagnostico" class=""></div>
-							    </div>
 
 							</div>
 

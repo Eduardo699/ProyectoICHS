@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2019 a las 11:47:23
+-- Tiempo de generación: 17-06-2019 a las 10:17:41
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 5.6.40
+-- Versión de PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdsistema`
+-- Base de datos: `bdauxiliar`
 --
 
 -- --------------------------------------------------------
@@ -118,13 +118,13 @@ INSERT INTO `departamento` (`idDepartamento`, `nombre`, `descripcion`, `estado`)
 
 CREATE TABLE `diagnostico` (
   `idDiagnostico` int(11) NOT NULL,
-  `fechaAsignacion` date NOT NULL,
-  `fechaCierre` date NOT NULL,
-  `diagnostico` varchar(150) COLLATE latin1_spanish_ci NOT NULL,
-  `solucion` varchar(350) COLLATE latin1_spanish_ci NOT NULL,
+  `fechaAsignacion` datetime NOT NULL,
+  `fechaCierre` datetime DEFAULT NULL,
+  `diagnostico` varchar(150) COLLATE latin1_spanish_ci DEFAULT NULL,
+  `solucion` varchar(350) COLLATE latin1_spanish_ci DEFAULT NULL,
   `idTecnico` varchar(11) COLLATE latin1_spanish_ci NOT NULL,
   `idTicket` int(11) NOT NULL,
-  `idCategoria` int(11) NOT NULL,
+  `idCategoria` int(11) DEFAULT NULL,
   `estadoDiagnostico` varchar(8) COLLATE latin1_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
@@ -134,12 +134,12 @@ CREATE TABLE `diagnostico` (
 --
 
 INSERT INTO `diagnostico` (`idDiagnostico`, `fechaAsignacion`, `fechaCierre`, `diagnostico`, `solucion`, `idTecnico`, `idTicket`, `idCategoria`, `estadoDiagnostico`, `estado`) VALUES
-(1, '2019-06-11', '2019-06-14', 'Problemas con la batería CMOS, necesidad de ser reemplazada', 'Se verificó que la falla no fuese de Software, posteriormente se analizó la batería CMOS.', 'ADAO191', 1, 8, 'Cerrado', 1),
-(2, '2019-06-11', '2019-06-14', 'Paquetería de office no actualizada', 'Se llegó a la conclusión que era debido a que la paquetería de office no estaba actualizada.', 'EAAS192', 2, 10, 'Cerrado', 1),
-(3, '2019-06-11', '2019-06-15', 'Problema debido a tarjeta de video', 'Se vio si la tarjeta de vídeo estaba bien asentada, siendo este problema de las manchas parpadeantes en la pantalla.', 'AEDS194', 3, 6, 'Cerrado', 1),
-(4, '2019-06-11', '2019-06-16', 'Ventilador dañado', 'Se verificó que la energía eléctrica llegará a los ventiladores, luego de esto se vio si estaban bien conectados, finalmente, se vio si el ventilador funcionaba en otra pc, resultando que no, se procedió a analizarlo a detalle y se llegó a la conclusión que el motor estaba dañado.', 'DAAM193', 4, 5, 'Cerrado', 1),
-(5, '2019-06-11', '2019-06-14', 'Suciedad en motherboard', 'Primero se procedió a ver las configuraciones de pantalla para descartar esta opción, luego, se vio que la tarjeta madre presentaba una suciedad no habitual, se aplicó una limpieza general en la motherboard, siendo esta la solución.', 'RACF196', 5, 7, 'Cerrado', 1),
-(6, '2019-06-11', '2019-06-15', 'Driver de audio desactualizado', 'Se revisó el administrador de dispositivos en búsqueda de fallos en los controladores, encontrando que el driver de audio se encontraba desactualizado, por lo que se procedió a actualizarlo.', 'JCEP195', 6, 11, 'Cerrado', 1);
+(1, '2019-06-11 00:00:00', '2019-06-14 00:00:00', 'Problemas con la batería CMOS, necesidad de ser reemplazada', 'Se verificó que la falla no fuese de Software, posteriormente se analizó la batería CMOS.', 'ADAO191', 1, 8, 'Cerrado', 1),
+(2, '2019-06-11 00:00:00', '2019-06-14 00:00:00', 'Paquetería de office no actualizada', 'Se llegó a la conclusión que era debido a que la paquetería de office no estaba actualizada.', 'EAAS192', 2, 10, 'Cerrado', 1),
+(3, '2019-06-11 00:00:00', '2019-06-15 00:00:00', 'Problema debido a tarjeta de video', 'Se vio si la tarjeta de vídeo estaba bien asentada, siendo este problema de las manchas parpadeantes en la pantalla.', 'AEDS194', 3, 6, 'Cerrado', 1),
+(4, '2019-06-11 00:00:00', '2019-06-16 00:00:00', 'Ventilador dañado', 'Se verificó que la energía eléctrica llegará a los ventiladores, luego de esto se vio si estaban bien conectados, finalmente, se vio si el ventilador funcionaba en otra pc, resultando que no, se procedió a analizarlo a detalle y se llegó a la conclusión que el motor estaba dañado.', 'DAAM193', 4, 5, 'Cerrado', 1),
+(5, '2019-06-11 00:00:00', '2019-06-14 00:00:00', 'Suciedad en motherboard', 'Primero se procedió a ver las configuraciones de pantalla para descartar esta opción, luego, se vio que la tarjeta madre presentaba una suciedad no habitual, se aplicó una limpieza general en la motherboard, siendo esta la solución.', 'RACF196', 5, 7, 'Cerrado', 1),
+(6, '2019-06-11 00:00:00', '2019-06-15 00:00:00', 'Driver de audio desactualizado', 'Se revisó el administrador de dispositivos en búsqueda de fallos en los controladores, encontrando que el driver de audio se encontraba desactualizado, por lo que se procedió a actualizarlo.', 'JCEP195', 6, 11, 'Cerrado', 1);
 
 -- --------------------------------------------------------
 

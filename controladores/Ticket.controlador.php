@@ -4,13 +4,15 @@
 	switch ($_GET['a']) {
 		case 'ingr':
 		 	$obj = new Ticket();
+		 	session_start();
+		 	$cliente = $_SESSION['idPersona'];
 		 	ini_set('date.timezone', 'America/El_Salvador');
 		 	$horaLocal = date('Y-m-d H:i:s',time());
 
 		 	$obj->setFechaCreacion($horaLocal);
 		 	$obj->setAsunto($_POST['asunto']);
 		 	$obj->setDescripcion($_POST['descripcion']);
-		 	$obj->setIdCliente('AJPC194');
+		 	$obj->setIdCliente($cliente);
 		 	$obj->setEstado('1');
 
 		 	//Adjuntar imagen

@@ -20,15 +20,17 @@
 
 		public static function listarDatos($parametro, $valor){
 			$con = new clsConexion();
+			session_start();
+			$dato = $_SESSION['idPersona'];
 
 			if($parametro == 1){
-				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTecnico, idTicket, idCategoria, estadoDiagnostico FROM `diagnostico` WHERE estado = 1";
+				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTicket, idCategoria, estadoDiagnostico FROM diagnostico WHERE idTecnico='". $dato ."' AND estado = 1";
 			}
 			else if($parametro == 2){
-				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTecnico, idTicket, idCategoria, estadoDiagnostico FROM `diagnostico` WHERE estado = 1 and idDiagnostico = $valor";
+				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTicket, idCategoria, estadoDiagnostico FROM diagnostico WHERE idTecnico='". $dato ."' AND estado = 1 and idDiagnostico = $valor";
 			}
 			else if($parametro == 3){
-				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTecnico, idTicket, idCategoria, estadoDiagnostico FROM `diagnostico` WHERE estado = 1 and estadoDiagnostico LIKE '%$valor%'";
+				$query = "SELECT idDiagnostico, fechaAsignacion, fechaCierre, diagnostico, solucion, idTicket, idCategoria, estadoDiagnostico FROM diagnostico WHERE idTecnico='". $dato ."' AND estado = 1 and estadoDiagnostico LIKE '%$valor%'";
 			}
 
 			$contenedor = $con->ejecutarConsulta($query);
@@ -37,6 +39,7 @@
 			if($contenedor){
 				$aux = 1;
 				$salida =  "<tbody id='cuerpoTabla'> ";
+
 						foreach($contenedor as $fila):
 						if(is_null($fila[2])){
 							$cierre = "Sin cerrar";
@@ -56,13 +59,12 @@
 						else{
 							$solucion = $fila[4];
 						}
-						if(is_null($fila[7])){
+						if(is_null($fila[6])){
 							$categoria = "Sin categoria";
 						}
 						else{
-							$categoria= $fila[7];
+							$categoria= $fila[6];
 						}
-
 					  	$salida .= "<tr>
 					  		<th scope='row'>". $fila[0] ."</th> ".
 					  		"<td>". date("d/m/Y h:i A", strtotime($fila[1])) ."</td>".
@@ -70,12 +72,14 @@
 					  		"<td>". $diagnostico ."</td>".
 					  		"<td>". $solucion ."</td>".
 					  		"<td>". $fila[5] ."</td>".
-					  		"<td>". $fila[6] ."</td>".
-					  		"<td>". $categoria ."</td>".					  		
-					  		"<td>". $fila[8] ."</td>".
-					  		"<td><a data-controls-modal='your_div_id' data-backdrop='static' data-keyboard='false' style='margin-top: 4%; color: white;' data-toggle='modal' id='". $fila[0] . ".". $fila[0]. "' data-target='#agregarModal2' class='modificar btn btn-primary btn-sm' >Modificar</a></td>".
-					  		"<td><a style='margin-top: 4%; color: white;' id='". $fila[0] ."' class='eliminar btn btn-primary btn-sm'>Eliminar</a></td>";
-					  
+					  		"<td>". $categoria ."</td>".
+					  		"<td>". $fila[7] ."</td>";
+					  		if($fila[7]!="Cerrado"){
+					  			$salida.=" <td><a data-controls-modal='your_div_id' data-backdrop='static' data-keyboard='false' style='margin-top: 4%; color: white; cursor: pointer;' data-toggle='modal' id='". $fila[0] . ".". $fila[0]. "' data-target='#agregarModal2' class='modificar btn btn-primary btn-sm' >Modificar</a></td>";
+					  		}
+					  		else{
+					  			$salida.=" <td><a style='margin-top: 4%; color: white;' class='modificar btn btn-secondary btn-sm' >Cerrado</a></td>";
+					  		}
 					  	$salida.="</tr>";
 					  	$aux++;
 						endforeach;
@@ -87,17 +91,9 @@
 			}
 		}
 
-		public static function agregarRegistro($emp){
-			$con = new clsConexion();
-			$sql = "INSERT INTO diagnostico (fechaAsignacion, idTecnico, idTicket, estadoDiagnostico, estado) VALUES('". $emp->getFechaAsignacion() . "','". $emp->getIdTecnico() . "','". $emp->getIdTicket() ."','". $emp->getEstadoDiagnostico() . "','". $emp->getEstado() . "') ";
-			$con->ejecutarActualizacion($sql,"Diagnostico agregado","agregar el diagnostico");
-
-			$con->cerrarConexion();
-		}
-
 		public static function buscarPorId($id){
 			$con = new clsConexion();
-			$contenedor = $con->ejecutarConsulta("SELECT idDiagnostico, idTecnico FROM diagnostico WHERE idDiagnostico = $id");
+			$contenedor = $con->ejecutarConsulta("SELECT idDiagnostico, diagnostico, solucion, idCategoria, estadoDiagnostico FROM diagnostico WHERE idDiagnostico = $id");
 
 			$con->cerrarConexion();
 			return $contenedor[0];
@@ -105,17 +101,16 @@
 
 		public static function modificarRegistroPorId($emp){
 			$con = new clsConexion();
-			$sql = "UPDATE diagnostico set idTecnico = '". $emp->getIdTecnico() ."' WHERE idDiagnostico = '". $emp->getIdDiagnostico() . "'";
+			if($emp->getEstadoDiagnostico()=="Cerrado"){
+				$sql = "UPDATE diagnostico set fechaCierre = '". $emp->getFechaCierre() . "', diagnostico = '". $emp->getDiagnostico() . "', solucion = '". $emp->getSolucion() . "', idCategoria = '". $emp->getIdCategoria() . "' , estadoDiagnostico = '". $emp->getEstadoDiagnostico() . "' WHERE idDiagnostico = '". $emp->getIdDiagnostico() . "'";
+			}
+			else{
+				$sql = "UPDATE diagnostico set diagnostico = '". $emp->getDiagnostico() . "', solucion = '". $emp->getSolucion() . "', idCategoria = '". $emp->getIdCategoria() . "' , estadoDiagnostico = '". $emp->getEstadoDiagnostico() . "' WHERE idDiagnostico = '". $emp->getIdDiagnostico() . "'";
+			}
+			
 			$con->ejecutarActualizacion($sql,"Diagnostico modificado","modificar el Diagnostico");
 			$con->cerrarConexion();
 		}
-
-		/*public static function eliminarPorId($id){
-			$con = new clsConexion();
-			$sql = "UPDATE diagnostico set estado = 0 WHERE idDiagnostico = $id";
-			$con->ejecutarActualizacion($sql,"Diagnostico eliminado","eliminar el Diagnostico",6);
-			$con->cerrarConexion();
-		}*/
 
 		public static function listarIdTecnicos(){
 			$con = new clsConexion();
@@ -138,6 +133,15 @@
 			$contenedor = $con->ejecutarConsulta("SELECT idCategoria, nombre from categoria where estado = 1");
 
 			$con->cerrarConexion();
+			return $contenedor;
+		}
+
+		public static function listarTickets(){
+			$con = new clsConexion();
+			//session_start();
+			$dato = $_SESSION['idPersona'];
+			$query = "SELECT T.idTicket, T.fechaCreacion, T.asunto, T.descripcion,T.adjunto FROM ticket as T INNER JOIN diagnostico as D WHERE  T.idTicket=D.idTicket  AND D.idTecnico='". $dato ."' AND T.estado!='0' AND D.estado!='0'";
+			$contenedor = $con->ejecutarConsulta($query);
 			return $contenedor;
 		}
 

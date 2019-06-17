@@ -1,14 +1,8 @@
 <?php  
-	require_once('../dao/Ticket.dao.php');
+	require_once('../dao/DiagnosticosTec.dao.php');
 	require_once "scripts.php";
 	require_once"../controladores/controladorSesion.php";
 	//echo "<script>var idPersona = '". $_SESSION['idPersona'] ."';</script>";
-	$tipo = 1;
-	$dato = "";
-	if($_SESSION['rol']!="Administrador"){
-		$tipo = 2;
-		$dato = $_SESSION['idPersona'];
-	}
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +41,7 @@
 						    </tr>
 					  </thead>
 					  <tbody id="cuerpoTabla">
-						<?php foreach(TicketDao::listarDatos($tipo,$dato) as $fila): ?>
+						<?php foreach(clsDiagnosticosDAO::listarTickets() as $fila): ?>
 							<tr>
 								<th style="width: 5%;"><?=$fila[0]?></th>
 								<td style="width: 10%;"><?=date("d/m/Y h:i A", strtotime($fila[1])); ?></td>
