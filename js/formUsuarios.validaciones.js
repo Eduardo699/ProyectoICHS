@@ -4,8 +4,15 @@ var contra = false;
 var confirmarContra = false;
 var rol = false;
 var avatar = false;
+var empezarV = false;
 
 $(document).ready(function(){
+
+	setInterval(function(){
+		if(empezarV==true){
+			validarUsuario();
+		}
+	},1500);
 
 	$("#formUsuarios").submit(function(){
 		validarAvatar();
@@ -48,6 +55,13 @@ $(document).ready(function(){
 	$("#avatar").change(function(){
 		if(con>0){
 			validarAvatar();
+		}
+	});
+
+	$("#txtUsername").blur(function(){
+		var aux = $("#txtUsername").val();
+		if(aux!="" && empezarV==false){
+			empezarV = true;
 		}
 	});
 

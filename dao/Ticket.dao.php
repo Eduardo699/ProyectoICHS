@@ -7,7 +7,7 @@
 		public static function agregarRegistro($tic){
 			$con = new clsConexion();
 			$query = "INSERT INTO ticket (fechaCreacion, asunto, descripcion, adjunto, idCliente, estado) VALUES('". $tic->getFechaCreacion() ."','". $tic->getAsunto() ."','". $tic->getDescripcion() ."','". $tic->getAdjunto() ."','". $tic->getIdCliente()."','". $tic->getEstado() ."')";
-			$con->ejecutarActualizacion($query,"Ticket agregado","agregar el ticket");
+			$con->ejecutarActualizacion($query,"Ticket agregado","agregar el ticket",7);
 			$con->cerrarConexion();
 		}
 
