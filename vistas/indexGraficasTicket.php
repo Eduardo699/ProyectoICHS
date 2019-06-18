@@ -1,6 +1,10 @@
 <?php
 
 include "../modelos/clsConexion.php";
+require_once"../controladores/controladorSesion.php";
+if ($_SESSION["rol"]!="Administrador") {
+  header("Location: dashboard.php");
+}
 
 $obj=new clsConexion();
 ?>

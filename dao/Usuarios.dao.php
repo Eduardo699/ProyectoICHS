@@ -19,6 +19,11 @@ if(isset($_POST['consulta'])){
 
 }
 
+if(isset($_POST['solicitarV'])){
+	$parametro = $_POST['parametro'];
+	clsUsuarioDAO::validarNombreUsuario($parametro);
+}
+
 class clsUsuarioDAO{
 
 	public static function listarDatos($parametro, $valor){
@@ -94,6 +99,22 @@ class clsUsuarioDAO{
 			$con->ejecutarActualizacion($query,"Usuario modificado","modificar Usuario",7);
 			$con->cerrarConexion();
 		}
+
+
+	public static function validarNombreUsuario($parametro){
+		$con = new clsConexion();
+		$contenedor = $con->ejecutarConsulta("SELECT username FROM usuario WHERE username = '$parametro'");
+		$arreglo = array();
+		if(count($contenedor)==0){
+			$arreglo[0] = "invalido";
+		}
+		else{
+			$arreglo[0] = "valido";
+		}
+		$json = json_encode($arreglo);
+		echo $json;
+		$con->cerrarConexion();
+	}
 
 }
 

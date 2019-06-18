@@ -77,9 +77,11 @@ $(document).ready(function(){
 			}
 			else{
 				if(valor.length>=5 && valor.length<=30){
+					/*
 					$("#txtUsername").attr('class','form-control is-valid');
 					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='valid-feedback'> Campo completado correctamente </di>");
-					usuario = true;
+					usuario = true;*/
+					validarNombreUReal();
 				}
 				else{
 					$("#txtUsername").attr('class','form-control is-invalid').focus();
@@ -194,7 +196,7 @@ $(document).ready(function(){
 		}
 	}
 
-		function validarAvatar(){
+	function validarAvatar(){
 		var valor = $("#avatar").val();
 		if(valor==null){
 			$("#avatar").attr('class','custom-select is-invalid').focus();
@@ -222,4 +224,31 @@ $(document).ready(function(){
 		$("#mensajeConfirmPassword").replaceWith("<div id='mensajeConfirmPassword' class=''></di>");
 		$("#mensajeRol").replaceWith("<div id='mensajeRol' class=''></di>");
 		$("#mensajeAvatar").replaceWith("<div id='mensajeAvatar' class=''></di>");
+	}
+
+	function validarNombreUReal(){
+		var parametro = $("#txtUsername").val();
+		if(parametro!=""){
+			$.ajax({
+				url: '../dao/Usuarios.dao.php',
+				type: 'POST',
+				data: {solicitarV: 1, parametro: parametro}
+			})
+			.done(function(respuesta){
+				let aux = JSON.parse(respuesta);
+				if(aux[0]!="invalido"){
+					$("#txtUsername").attr('class','form-control is-invalid').focus();
+					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='invalid-feedback'><b>Nombre de usuario en uso, ingrese otro nombre de usuario (*)</b></di>");
+					usuario = false;
+				}
+				else{
+					$("#txtUsername").attr('class','form-control is-valid');
+					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='valid-feedback'> Campo completado correctamente </di>");
+					usuario = true;
+				}
+			})
+			.fail(function(){
+				console.log("Error");
+			})
+		}
 	}

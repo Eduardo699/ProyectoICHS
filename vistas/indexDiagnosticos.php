@@ -72,7 +72,7 @@ body{
 							<th scope="col">Ticket</th>
 							<th scope="col">Categoria</th>
 							<th scope="col">Estado</th>
-							<th colspan="2" scope="col">Opciones de<br>Manipulacion</th>
+							<th colspan="2" scope="col">Opción</th>
 						</tr>
 					</thead>
 					<tbody id="cuerpoTabla">

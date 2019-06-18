@@ -73,8 +73,7 @@
 					  		"<td>". $fila[6] ."</td>".
 					  		"<td>". $categoria ."</td>".					  		
 					  		"<td>". $fila[8] ."</td>".
-					  		"<td><a data-controls-modal='your_div_id' data-backdrop='static' data-keyboard='false' style='margin-top: 4%; color: white;' data-toggle='modal' id='". $fila[0] . ".". $fila[0]. "' data-target='#agregarModal2' class='modificar btn btn-primary btn-sm' >Modificar</a></td>".
-					  		"<td><a style='margin-top: 4%; color: white;' id='". $fila[0] ."' class='eliminar btn btn-primary btn-sm'>Eliminar</a></td>";
+					  		"<td><a data-controls-modal='your_div_id' data-backdrop='static' data-keyboard='false' style='margin-top: 4%; color: white;' data-toggle='modal' id='". $fila[0] . ".". $fila[0]. "' data-target='#agregarModal2' class='modificar btn btn-primary btn-sm' >Modificar</a></td>";
 					  
 					  	$salida.="</tr>";
 					  	$aux++;
@@ -127,7 +126,7 @@
 
 		public static function listarIdTicket(){
 			$con = new clsConexion();
-			$contenedor = $con->ejecutarConsulta("SELECT idTicket, asunto from ticket where estado = 1");
+			$contenedor = $con->ejecutarConsulta("SELECT T.idTicket, T.asunto from ticket as T WHERE NOT EXISTS (SELECT * from diagnostico as D where T.idTicket = D.idTicket)");
 
 			$con->cerrarConexion();
 			return $contenedor;
