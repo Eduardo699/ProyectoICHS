@@ -67,7 +67,7 @@ class clsUsuarioDAO{
 	public static function agregarRegistro($user){
 			$con = new clsConexion();
 			$sql = "INSERT INTO usuario (username,password,rol,avatar) VALUES ('". $user->getUsername() ."' ,'". $user->getPassword() ."','". $user->getRol() ."', '". $user->getAvatar() ."') ";
-			$con->ejecutarActualizacion($sql,"Usuario agregado","agregar el usuario");      
+			$con->ejecutarActualizacion($sql,"Usuario agregado","agregar el usuario",1);      
 			$con->cerrarConexion();
 	}
 
@@ -91,7 +91,7 @@ class clsUsuarioDAO{
 		public static function modificarRegistro($usu){
 			$con = new clsConexion();
 			$query = "UPDATE usuario set password='". $usu->getPassword() ."', avatar='". $usu->getAvatar() ."' WHERE userid='". $usu->getId() ."'";
-			$con->ejecutarActualizacion($query,"Usuario modificado","modificar Usuario");
+			$con->ejecutarActualizacion($query,"Usuario modificado","modificar Usuario",7);
 			$con->cerrarConexion();
 		}
 

@@ -15,21 +15,21 @@ class clsTecnicoDAO{
 	public static function agregarRegistro($Tec){
 			$con = new clsConexion();
 			$query = "INSERT INTO tecnicos (idTecnico, nombreCompleto, direccion, telefono, dui, especialidad, fechaNac, userid, estado) VALUES('". $Tec->getId() ."','". $Tec->getNombre() ."','". $Tec->getDireccion()."','".$Tec->getTelefono()."','".$Tec->getDui()."','".$Tec->getEspecialidad()."','". $Tec->getFechaNac()."','". $Tec->getIdUser()."','".$Tec->getEstado()."')";
-			$con->ejecutarActualizacion($query,"Técnico agregado","agregar el técnico");
+			$con->ejecutarActualizacion($query,"Técnico agregado","agregar el técnico",2);
 			$con->cerrarConexion();
 		}
 //"', fechaNac='". $cli->getFechaNac() ."'
 		public static function modificarRegistro($Tec){
 			$con = new clsConexion();
 			$query = "UPDATE tecnicos set idTecnico = '".$Tec->getIdRes()."', nombreCompleto='". $Tec->getNombre() ."', direccion='". $Tec->getDireccion() ."', telefono = '". $Tec->getTelefono() ."', dui='".$Tec->getDui()."', especialidad='".$Tec->getEspecialidad()."', fechaNac='".$Tec->getFechaNac()."', userid = '".$Tec->getIdUser()."' WHERE idTecnico='". $Tec->getId() ."'";
-			$con->ejecutarActualizacion($query,"Técnico modificado","modificar el técnico");
+			$con->ejecutarActualizacion($query,"Técnico modificado","modificar el técnico",2);
 			$con->cerrarConexion();
 		}
 
 		public static function eliminarRegistro($Tec){
 			$con = new clsConexion();
 			$query = "UPDATE tecnicos set estado='". $Tec->getEstado() ."' WHERE idTecnico='". $Tec->getId() ."'";
-			$con->ejecutarActualizacion($query,"Técnico eliminado","eliminar el técnico");
+			$con->ejecutarActualizacion($query,"Técnico eliminado","eliminar el técnico",2);
 			$con->cerrarConexion();
 		}
 

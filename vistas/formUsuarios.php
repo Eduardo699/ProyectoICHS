@@ -88,15 +88,15 @@ body{
 							    </div>
 							</div>						  
 							<div class="row">
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
+							    <div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
 							    	<input type="submit" value="Agregar" name="enviar" class="btn btn-dark">
 							    </div>
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
+							    <div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
 							    	<input id="resetear" type="reset" value="Borrar" name="borrrar" class="btn btn-dark">
 							    </div>
-							    <div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-3 col-lg-4">
-							    	<button type="button" class="btn btn-dark" data-dismiss="modal">Regresar</button>
-							    </div>
+							    <div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
+									<a href="dashboard.php?form=1" class="btn btn-dark">Regresar</a>
+								</div>							    
 							</div>
 						</form><br>
 					</div><!--termina contenedor del formulario-->

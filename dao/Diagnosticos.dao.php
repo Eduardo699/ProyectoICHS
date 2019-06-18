@@ -90,7 +90,7 @@
 		public static function agregarRegistro($emp){
 			$con = new clsConexion();
 			$sql = "INSERT INTO diagnostico (fechaAsignacion, idTecnico, idTicket, estadoDiagnostico, estado) VALUES('". $emp->getFechaAsignacion() . "','". $emp->getIdTecnico() . "','". $emp->getIdTicket() ."','". $emp->getEstadoDiagnostico() . "','". $emp->getEstado() . "') ";
-			$con->ejecutarActualizacion($sql,"Diagnostico agregado","agregar el diagnostico");
+			$con->ejecutarActualizacion($sql,"Diagnostico agregado","agregar el diagnostico",5);
 
 			$con->cerrarConexion();
 		}
@@ -106,14 +106,14 @@
 		public static function modificarRegistroPorId($emp){
 			$con = new clsConexion();
 			$sql = "UPDATE diagnostico set idTecnico = '". $emp->getIdTecnico() ."' WHERE idDiagnostico = '". $emp->getIdDiagnostico() . "'";
-			$con->ejecutarActualizacion($sql,"Diagnostico modificado","modificar el Diagnostico");
+			$con->ejecutarActualizacion($sql,"Diagnostico modificado","modificar el Diagnostico",5);
 			$con->cerrarConexion();
 		}
 
 		/*public static function eliminarPorId($id){
 			$con = new clsConexion();
 			$sql = "UPDATE diagnostico set estado = 0 WHERE idDiagnostico = $id";
-			$con->ejecutarActualizacion($sql,"Diagnostico eliminado","eliminar el Diagnostico",6);
+			$con->ejecutarActualizacion($sql,"Diagnostico eliminado","eliminar el Diagnostico",5);
 			$con->cerrarConexion();
 		}*/
 

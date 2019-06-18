@@ -1,9 +1,9 @@
 <?php  
 require_once "scripts.php";
-/*require_once"../controladores/controladorsesion.php";
+require_once"../controladores/controladorsesion.php";
 if ($_SESSION['rol']=="Cliente"){
   header("location: dashboard.php");
-}*/
+}
 ?>
 
 <!DOCTYPE html>

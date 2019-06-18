@@ -11,21 +11,21 @@
 		public static function agregarRegistro($dep){
 			$con = new clsConexion();
 			$query = "INSERT INTO departamento (nombre, descripcion,estado) VALUES('". $dep->getNombre() ."','". $dep->getDescripcion() ."','". $dep->getEstado()."')";
-			$con->ejecutarActualizacion($query,"Departamento agregado","agregar departamento");
+			$con->ejecutarActualizacion($query,"Departamento agregado","agregar departamento",4);
 			$con->cerrarConexion();
 		}
 
 		public static function modificarRegistro($dep){
 			$con = new clsConexion();
 			$query = "UPDATE departamento set nombre='". $dep->getNombre() ."', descripcion='". $dep->getDescripcion() ."', estado = '". $dep->getEstado() ."' WHERE idDepartamento='". $dep->getIdDepartamento() ."'";
-			$con->ejecutarActualizacion($query,"Departamento modificado","modificar departamento");
+			$con->ejecutarActualizacion($query,"Departamento modificado","modificar departamento",4);
 			$con->cerrarConexion();
 		}
 
 		public static function eliminarRegistro($dep){
 			$con = new clsConexion();
 			$query = "UPDATE departamento set estado='". $dep->getEstado() ."' WHERE idDepartamento='". $dep->getIdDepartamento() ."'";
-			$con->ejecutarActualizacion($query,"Departamento eliminado","eliminar departamento");
+			$con->ejecutarActualizacion($query,"Departamento eliminado","eliminar departamento",4);
 			$con->cerrarConexion();
 		}
 

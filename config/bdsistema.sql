@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2019 a las 10:17:41
+-- Tiempo de generación: 18-06-2019 a las 02:39:16
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdauxiliar`
+-- Base de datos: `bdsistema`
 --
 
 -- --------------------------------------------------------
@@ -221,8 +221,8 @@ INSERT INTO `usuario` (`username`, `password`, `avatar`, `rol`, `userid`) VALUES
 ('eduardo', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario1.jpg', 'Administrador', 1),
 ('alirio', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario4.jpg', 'Administrador', 2),
 ('daniel', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'user5.jpg', 'Administrador', 3),
-('alexis', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario.jpg', 'Administrador', 4),
-('juan', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 5),
+('alexis', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario3.jpg', 'Administrador', 4),
+('juan', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'user3.jpg', 'Tecnico', 5),
 ('carlos', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 6),
 ('mariano', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'user3.jpg', 'Tecnico', 7),
 ('luis', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'usuario4.jpg', 'Tecnico', 8),

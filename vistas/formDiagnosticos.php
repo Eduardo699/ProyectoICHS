@@ -74,8 +74,8 @@
 									<input id="resetear" type="reset" class="btn btn-dark" name="borrar" value="Borrar">
 								</div>
 								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
-									<button type="button" class="btn btn-dark" data-dismiss="modal">Regresar</button>
-								</div>
+									<a href="dashboard.php?form=5" class="btn btn-dark">Regresar</a>
+								</div>	
 							</div>
 						</form><br>	
 					</div><!--termina contenedor del formulario-->

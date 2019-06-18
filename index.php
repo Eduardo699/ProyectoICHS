@@ -26,64 +26,78 @@
 		</div>
 	</form>
 	<?php 
-	require'modelos/clsConexion.php';
+	$con=new mysqli("localhost","root","","bdsistema");
 	if(!empty($_POST['login'])){
-		$usuario = $_POST["UserEmail"];
-		$contra = hash("sha256", $_POST["UserPass"]);
-		//$contra = $_POST["UserPass"];
+		$usuario =mysqli_escape_string($con,$_POST["UserEmail"]);
+		$contra =mysqli_escape_string($con, hash("sha256", $_POST["UserPass"]));
 
-		$con=new mysqli("localhost","root","","bdsistema");
-
-		//$sql="SELECT * FROM cliente as c, usuario as u WHERE username ='$usuario' AND password ='$contra' AND u.userid=c.userid";
-		//$res=$con->query($sql);
-		$res=$con->query("SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'");
-		
+		$sql="SELECT * FROM usuario WHERE username ='$usuario' AND password ='$contra'";
+		$res=$con->query($sql);
+	
 
 		if($res->num_rows>0){
-			while($row = mysqli_fetch_array($res)){
-				session_start();
-				$_SESSION["usuario"]=$row["username"];
-				$_SESSION["id"]=$row["userid"];
-				$_SESSION["rol"]=$row["rol"];
-				$_SESSION["idPersona"]="";
-			}
-			if($_SESSION['rol']=="Administrador"){
-				header('Location:vistas/dashboard.php');
-			}
-			else{
-				if($_SESSION['rol']=="Cliente"){
-					$res=$con->query("SELECT idCliente from cliente where userid = '". $_SESSION["id"] ."'");
-					if($res->num_rows>0){
-						while($row = mysqli_fetch_array($res)){
-							$_SESSION["idPersona"]=$row["idCliente"];
-						}
-						header('Location:vistas/dashboard.php');
-					}
-					else{
-						echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos(contacte a un administrador en caso de que este experimentando problemas al iniciar sesión.)</center></div>";
-						session_destroy();
-					}
+
+		while($row = mysqli_fetch_array($res)){
+
+				if ($row["rol"]=="Administrador") {
+					session_start();
+					$_SESSION["usuario"]=$row["username"];
+					$_SESSION["id"]=$row["userid"];
+					$_SESSION["rol"]=$row["rol"];
+					header('Location:vistas/dashboard.php');
 				}
-				else if($_SESSION['rol']=="Tecnico"){
-					$res=$con->query("SELECT idTecnico from tecnicos where userid = '". $_SESSION["id"] ."'");
-					if($res->num_rows>0){
-						while($row = mysqli_fetch_array($res)){
-							$_SESSION["idPersona"]=$row["idTecnico"];
-						}
-						header('Location:vistas/dashboard.php');
+				if ($row["rol"]=="Tecnico") {
+					$res3=$con->query("SELECT * FROM tecnicos as t, usuario as u WHERE u.userid=t.userid");
+					if ($res3->num_rows>0) {
+					while ($row3=mysqli_fetch_array($res3)) {
+					session_start();
+					$_SESSION["usuario"]=$row["username"];
+					$_SESSION["id"]=$row["userid"];
+					$_SESSION["rol"]=$row["rol"];
+					$_SESSION["nombreT"]=$row3["nombreCompleto"];
+					$_SESSION["idPersona"]=$row3["idTecnico"];
+					header('Location:vistas/dashboard.php');	
+
 					}
-					else{
-						echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos(contacte a un administrador en caso de que este experimentando problemas al iniciar sesión.)</center></div>";
-						session_destroy();
-					}
+
 				}
+				else{
+						
+						echo "<div style='background-color: #FAB1AD;'><center>El usuario no pertenece a ningun tecnico(contacte a un administrador de ser asi.)</center></div>";
+					}
 			}
+
+				if ($row["rol"]=="Cliente") {
+
+					$sql2="SELECT * FROM cliente as c, usuario as u WHERE u.userid=c.userid";
+					$res2=$con->query($sql2);
+					if ($res2->num_rows>0) {
+					while ($row2=mysqli_fetch_array($res2)) {
+					session_start();
+					$_SESSION["usuario"]=$row["username"];
+					$_SESSION["id"]=$row["userid"];
+					$_SESSION["rol"]=$row["rol"];
+					$_SESSION["nombreC"]=$row2["nombreCompleto"];
+					$_SESSION["idPersona"]=$row2["idCliente"];
+					header('Location:vistas/dashboard.php');
+
+						}
+					}else{
+						
+						echo "<div style='background-color: #FAB1AD;'><center>El usuario no pertenece a ningun cliente(contacte a un administrador de ser asi.)</center></div>";
+					}
+
+					
+				}
+			
+		}//cierre de while :v
 
 		}else{
 			echo "<div style='background-color: #FAB1AD;'><center>Usuario o contraseña no son válidos</center></div>";
 		}
 		
 	}
+	mysqli_close($con);
 
  ?>
 	<!--====== Scripts -->

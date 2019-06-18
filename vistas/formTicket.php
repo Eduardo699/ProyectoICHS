@@ -30,7 +30,7 @@
 		
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<br><form id="formTicket" action="../controladores/Ticket.controlador.php?a=ingr" method="POST">					
+						<br><form id="formTicket" action="../controladores/Ticket.controlador.php?a=ingr" method="POST" enctype="multipart/form-data">					
 							<div class="form-row">
 							    <div class="form-group col-md-8">
 							    	<br>

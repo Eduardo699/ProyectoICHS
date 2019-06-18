@@ -11,21 +11,21 @@ class clsClienteDAO{
 	public static function agregarRegistro($cli){
 			$con = new clsConexion();
 			$query = "INSERT INTO cliente (idCliente, nombreCompleto, fechaNac, direccion, telefono, dui, idDepartamento, userid, estado) VALUES('". $cli->getId() ."','". $cli->getNombre() ."','". $cli->getFechaNac() ."','". $cli->getDireccion()."','".$cli->getTelefono()."','".$cli->getDui()."','".$cli->getIdDept()."','".$cli->getIdUser()."','".$cli->getEstado()."')";
-			$con->ejecutarActualizacion($query,"Cliente agregado","agregar el cliente");
+			$con->ejecutarActualizacion($query,"Cliente agregado","agregar el cliente",3);
 			$con->cerrarConexion();
 		}
 
 		public static function modificarRegistro($cli){
 			$con = new clsConexion();
 			$query = "UPDATE cliente set idCliente = '".$cli->getIdRes()."',nombreCompleto='". $cli->getNombre() ."', fechaNac='". $cli->getFechaNac() ."', direccion='". $cli->getDireccion() ."', telefono = '". $cli->getTelefono() ."', dui='".$cli->getDui()."', userid='".$cli->getIdUser()."', idDepartamento = '".$cli->getIdDept()."', estado = '".$cli->getEstado()."' WHERE idCliente='". $cli->getId() ."'";
-			$con->ejecutarActualizacion($query,"Cliente modificado","modificar el cliente");
+			$con->ejecutarActualizacion($query,"Cliente modificado","modificar el cliente",3);
 			$con->cerrarConexion();
 		}
 
 		public static function eliminarRegistro($cli){
 			$con = new clsConexion();
 			$query = "UPDATE cliente set estado='". $cli->getEstado() ."' WHERE idCliente='". $cli->getId() ."'";
-			$con->ejecutarActualizacion($query,"Cliente eliminado","eliminar el cliente");
+			$con->ejecutarActualizacion($query,"Cliente eliminado","eliminar el cliente",3);
 			$con->cerrarConexion();
 		}
 

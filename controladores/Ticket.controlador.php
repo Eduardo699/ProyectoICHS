@@ -15,14 +15,19 @@
 		 	$obj->setIdCliente($cliente);
 		 	$obj->setEstado('1');
 
-		 	//Adjuntar imagen
-			/*if(!(empty($_FILES['adjunto']['name']))){			
-				 $obj->setAdjunto('hola');
-				 $nombre=$_FILES['adjunto']['name'];
-				 $origen=$_FILES['adjunto']['tmp_name'];
-				 $destino="../vistas/userpics/". $nombre;
-				 copy($origen, $destino);
-			}*/
+		 	if(empty($_FILES['adjunto']['name'])){			
+			$defecto = "defecto.jpg";
+			$obj->setAdjunto($defecto);			 
+		}else{
+			
+			 $obj->setAdjunto($_FILES['adjunto']['name']);
+			 $nombre=$_FILES['adjunto']['name'];
+			 $origen=$_FILES['adjunto']['tmp_name'];
+			 $destino="../vistas/ticketsfoto/".$nombre;
+			 copy($origen, $destino);
+
+		}
+
 			TicketDao::agregarRegistro($obj);
 
 		break;

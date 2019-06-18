@@ -82,8 +82,8 @@ if(isset($_POST['id'])){
 										<input type="submit" class="btn btn-dark" name="enviar" value="Modificar">
 									</div>
 									<div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-6">
-										<a href="dashboard.php" class="btn btn-dark">Regresar</a>
-									</div>
+										<a href="dashboard.php?form=5" class="btn btn-dark">Regresar</a>
+									</div>	
 								</div>
 							</form><br>	
 						</div><!--termina contenedor del formulario-->

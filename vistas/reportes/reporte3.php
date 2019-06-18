@@ -1,5 +1,10 @@
 <?php
-	require 'dompdf/vendor/autoload.php';
+require_once"../../controladores/controladorSesion.php";
+if ($_SESSION["rol"]=="Cliente") {
+	header("location:../dashboard.php");
+}
+
+	require "dompdf/vendor/autoload.php";
 	use Dompdf\Dompdf;
 	require_once('../../modelos/clsConexion.php');
 	require_once('../scripts.php');
@@ -133,5 +138,6 @@ $dompdf->render();
 ob_end_clean();
 // Output the generated PDF to Browser
 $dompdf->stream("reporte.pdf", array("Attachment" => 0));
+
 
 ?>

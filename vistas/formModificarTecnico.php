@@ -146,9 +146,8 @@ body{
 							      	</select>
 							      	<div id="mensajeUsuarioC" class=""></div><br><br>
 							    </div>
-							</div>	
+							</div>								
 							
-							<br>
 							<div class="form-row">
 								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
 									<input type="submit" class="btn btn-dark" name="enviar" value="Modificar">
@@ -157,8 +156,8 @@ body{
 									<input id="resetear" type="reset" class="btn btn-dark" name="borrar" value="Resetear">
 								</div>
 								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
-									<button type="button" onclick="location.reload()" class="btn btn-dark" data-dismiss="modal">Regresar</button>
-								</div>
+									<a href="dashboard.php?form=2" class="btn btn-dark">Regresar</a>
+								</div>	
 							</div>
 						</form><br>
 					</div><!--termina contenedor del formulario-->

@@ -30,7 +30,7 @@
 			$this->conexion->close();
 		}
 
-		public function ejecutarActualizacion($sql, $correcto, $mal){
+		public function ejecutarActualizacion($sql, $correcto, $mal, $form){
 			require_once('../vistas/scripts.php');
 			if($this->conexion->query($sql)){
 				echo "<script>
@@ -46,7 +46,7 @@
 					},1);
 					setTimeout(function(){
 						if(cor!='Ticket agregado'){
-							self.location = '../vistas/dashboard.php';
+							self.location = '../vistas/dashboard.php?form=$form';
 						}
 						else{
 							self.location = '../vistas/correo.php';
@@ -66,7 +66,7 @@
 						});
 					},1);
 					setTimeout(function(){
-							self.location = '../vistas/dashboard.php';
+							self.location = '../vistas/dashboard.php?form=$form';
 						},1250);
 				</script>";
 			}

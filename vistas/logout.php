@@ -1,12 +1,11 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 session_start();
 session_destroy();
 $_SESSION['usuario']="";
 $_SESSION['rol']="";
+$_SESSION['nombreC']="";
+$_SESSION['id']="";
+$_SESSION['nombreT']="";
+$_SESSION['idPersona']="";
 header('location:../index.php');
+?>

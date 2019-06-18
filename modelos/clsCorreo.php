@@ -30,6 +30,7 @@
 				$cliente = $fila[0];
 				$asun = $fila[1];
 				$cuerpo = $fila[2];
+				$foto = $fila[3];
 			}
 			$salida = "<b>De: </b>".$cliente. "<br><br>";
 			$salida.= "<b>Asunto: </b>".$asun."<br><br>";

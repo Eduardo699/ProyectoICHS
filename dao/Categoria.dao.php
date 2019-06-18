@@ -11,21 +11,21 @@
 		public static function agregarRegistro($cat){
 			$con = new clsConexion();
 			$query = "INSERT INTO categoria (tipo, nombre, descripcion,estado) VALUES('". $cat->getTipo() ."','". $cat->getNombre() ."','". $cat->getDescripcion() ."','". $cat->getEstado()."')";
-			$con->ejecutarActualizacion($query,"Categoría agregada","agregar la categoría");
+			$con->ejecutarActualizacion($query,"Categoría agregada","agregar la categoría",6);
 			$con->cerrarConexion();
 		}
 
 		public static function modificarRegistro($cat){
 			$con = new clsConexion();
 			$query = "UPDATE categoria set tipo='". $cat->getTipo() ."', nombre='". $cat->getNombre() ."', descripcion='". $cat->getDescripcion() ."', estado = '". $cat->getEstado() ."' WHERE idCategoria='". $cat->getIdCategoria() ."'";
-			$con->ejecutarActualizacion($query,"Categoría modificada","modificar la categoría");
+			$con->ejecutarActualizacion($query,"Categoría modificada","modificar la categoría",6);
 			$con->cerrarConexion();
 		}
 
 		public static function eliminarRegistro($cat){
 			$con = new clsConexion();
 			$query = "UPDATE categoria set estado='". $cat->getEstado() ."' WHERE idCategoria='". $cat->getIdCategoria() ."'";
-			$con->ejecutarActualizacion($query,"Categoría eliminada","eliminar la categoría");
+			$con->ejecutarActualizacion($query,"Categoría eliminada","eliminar la categoría",6);
 			$con->cerrarConexion();
 		}
 

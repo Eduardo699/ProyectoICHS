@@ -156,6 +156,8 @@ if(isset($_GET['form'])){
 						});
 					});
 
+					cargarForms();
+
 				});
 
 				var rutaUsuarios = "indexUsuarios.php";
@@ -171,6 +173,52 @@ if(isset($_GET['form'])){
 				var rutaTicketsTec = "indexTicketsTec.php";
 				var rutaGraficos = "indexGraficas.php";
 				var rutaConfiguracion = "formModificarUsuarios.php";
+
+				function cargarForms(){
+
+					
+					if(form==1){
+						$("#mostrador").load(rutaUsuarios,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==2){
+						$("#mostrador").load(rutaTecnicos,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==3){
+						$("#mostrador").load(rutaClientes,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==4){
+						$("#mostrador").load(rutaDepartamentos,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==5){
+						$("#mostrador").load(rutaDiagnosticos,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==6){
+						$("#mostrador").load(rutaCategorias,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==7){
+						$("#mostrador").load(rutaConfiguracion,function(data){
+							$(this).html(data);
+						});
+					}
+				}
 
 				
 				function validarPermisos(){

@@ -1,5 +1,6 @@
 <?php
 	require_once('scripts.php');
+	require_once"../controladores/controladorSesion.php";
 ?>
 <!DOCTYPE html>
 <html>
