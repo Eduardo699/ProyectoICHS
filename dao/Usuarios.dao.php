@@ -80,6 +80,21 @@ class clsUsuarioDAO{
 		return $contenedor[0];
 	}
 
+	public static function obtenerRegistroPorId($id){
+			$con = new clsConexion();
+			$query = "SELECT userid, password, avatar FROM usuario WHERE userid='". $id ."'";
+			$contenedor = $con->ejecutarConsulta($query);
+			$con->cerrarConexion();
+			return $contenedor[0];
+		}
+
+		public static function modificarRegistro($usu){
+			$con = new clsConexion();
+			$query = "UPDATE usuario set password='". $usu->getPassword() ."', avatar='". $usu->getAvatar() ."' WHERE userid='". $usu->getId() ."'";
+			$con->ejecutarActualizacion($query,"Usuario modificado","modificar Usuario");
+			$con->cerrarConexion();
+		}
+
 }
 
 ?>

@@ -68,17 +68,6 @@ if(isset($_GET['form'])){
 				
 				</figure>
 
-
-					<ul class="full-box list-unstyled text-center	" >	
-						<li>
-							<a href="#" class="btn-exit-system">
-								<i class="zmdi zmdi-settings"><b style="font-family: calibri">&nbsp Configuracion</b></i>
-							</a>
-						</li>
-					</ul>
-				
-
-
 			</div>
 			
 			<!-- SideBar Menu -->
@@ -160,6 +149,13 @@ if(isset($_GET['form'])){
 							$(this).html(data);					
 						});
 					});
+
+					$("#configuracion").click(function(){
+						$("#mostrador").load(rutaConfiguracion,function(data){
+							$(this).html(data);					
+						});
+					});
+
 				});
 
 				var rutaUsuarios = "indexUsuarios.php";
@@ -174,6 +170,7 @@ if(isset($_GET['form'])){
 				var rutaDiagnosticosTec = "indexDiagnosticosTec.php";
 				var rutaTicketsTec = "indexTicketsTec.php";
 				var rutaGraficos = "indexGraficas.php";
+				var rutaConfiguracion = "formModificarUsuarios.php";
 
 				
 				function validarPermisos(){
@@ -183,7 +180,10 @@ if(isset($_GET['form'])){
 				if(rol=='Cliente'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL CLIENTES
 					elementos+='<div id="tickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-ticket-alt"></span> &nbsp Tickets </label></div>';
+
 					elementos+='<div id="listaTickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Mis Tickets </label></div>';
+
+					elementos+='<div id="configuracion" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto "><label style="color: white;"><span class="zmdi zmdi-settings"></span> &nbsp Configuracion </label></div>';
 
 
 				}
@@ -193,6 +193,9 @@ if(isset($_GET['form'])){
 					elementos+='<div id="diagnosticosTec" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-clipboard-list"></span> &nbsp Diagnosticos </label></div>';
 
 					elementos+='<div id="listaTicketsTec" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Tickets </label></div>';									
+
+					elementos+='<div id="configuracion" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto "><label style="color: white;"><span class="zmdi zmdi-settings"></span> &nbsp Configuracion </label></div>';
+
 				}
 				else if(rol=='Administrador'){
 					//AGREGO LOS ELEMENTOS DEL MENU QUE PODRA USAR EL ADMIN					
@@ -213,6 +216,8 @@ if(isset($_GET['form'])){
 					elementos+='<div id="graficos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Graficos </label></div>';
 
 					elementos+='<div id="reportes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Reportes </label></div>';
+
+					elementos+='<div id="configuracion" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto "><label style="color: white;"><span class="zmdi zmdi-settings"></span> &nbsp Configuracion </label></div>';
 					
 				}
 

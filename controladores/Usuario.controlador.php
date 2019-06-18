@@ -25,6 +25,25 @@
 			clsUsuarioDAO::agregarRegistro($obj);
 		
 			break;
+
+			case 'edit':
+				$obj = new clsUsuario();
+				$obj->setId($_POST['userid']);
+				$obj->setPassword(hash("sha256", $_POST['password']));
+			if(empty($_FILES['avatar']['name'])){			
+				$defecto = $_POST['defecto'];
+				$obj->setAvatar($defecto);		 
+			}else{
+			
+				 $obj->setAvatar($_FILES['avatar']['name']);
+				 $nombre=$_FILES['avatar']['name'];
+				 $origen=$_FILES['avatar']['tmp_name'];
+				 $destino="../vistas/userpics/".$nombre;
+				 copy($origen, $destino);
+
+		}
+			clsUsuarioDAO::modificarRegistro($obj);
+		break;
 		
 		default:
 			# code...

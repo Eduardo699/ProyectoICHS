@@ -83,7 +83,7 @@ body{
 							      <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="avatar">Avatar</label>
-							      	<input type="file" class="form-control" id="avatar" name="avatar">
+							      	<input type="file" class="form-control" id="avatar" name="avatar" value="df">
 							      	<div id="mensajeAvatar" class=""></div><br><br>
 							    </div>
 							</div>						  

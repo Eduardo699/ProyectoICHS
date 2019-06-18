@@ -11,7 +11,7 @@
 			$this->servidor = "localhost";
 			$this->usuario = "root";
 			$this->clave = "";
-			$this->base = "bdauxiliar";
+			$this->base = "bdsistema";
 
 			$this->conexion = new mysqli($this->servidor, $this->usuario, $this->clave, $this->base);
 			$this->conexion->set_charset("utf8");
