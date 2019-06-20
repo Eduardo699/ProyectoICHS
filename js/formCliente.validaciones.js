@@ -112,7 +112,7 @@ $(document).ready(function(){
 				nombre = false;
 			}
 			else{
-				if(valor.length>=15 && valor.length<=50){
+				if(valor.length>=5 && valor.length<=50){
 					$("#txtNombre").attr('class', 'form-control is-valid');
 					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='valid-feedback'><b>Campo completado correctamente </b></di>");
 					nombre = true;
@@ -124,7 +124,7 @@ $(document).ready(function(){
 				}
 				else{
 					$("#txtNombre").attr('class', 'form-control is-invalid').focus();
-					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor introduzca caracteres en un rango de 15 - 50 (*)</b></di>");
+					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor introduzca caracteres en un rango de 5 - 50 (*)</b></di>");
 					nombre = false;
 				}
 			}
@@ -188,14 +188,14 @@ $(document).ready(function(){
 				direccion = false;
 			}
 			else{
-				if(valor.length>=15 && valor.length<=100){
+				if(valor.length>=5 && valor.length<=100){
 					$("#txtDireccion").attr('class','form-control is-valid');
 					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='valid-feedback'> Campo completado correctamente </di>");
 					direccion = true;
 				}
 				else{
 					$("#txtDireccion").attr('class','form-control is-invalid').focus();
-					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 15 - 100</b></di>");
+					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 5 - 100</b></di>");
 					direccion = false;
 				}
 			}			

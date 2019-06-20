@@ -84,7 +84,7 @@ body{
 
 							<div class="form-row">			
 
-							<div class="form-group col-md-6">
+								<div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtDui">DUI</label>
 							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui">
@@ -94,11 +94,14 @@ body{
 							    <div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtEspecialidad">Especialidad</label>
-							      	<input placeholder="Especialidad" type="text" class="form-control" id="txtEspecialidad" name="especialidad">
-							      	<div id="mensajeEspecialidad" class=""></div>
-							      	
+							      	<select class="custom-select" id="txtEspecialidad" name="especialidad">
+							      		<option disabled selected>--Seleccione una opción--</option>
+							      		<option value="Hardware">Hardware</option>
+										<option value="Software">Software</option>
+							      	</select>
+							      	<div id="mensajeEspecialidad" class=""></div>							    
 							    </div>
-
+							 
 							</div>
 
 							<div class="form-row">
@@ -124,7 +127,7 @@ body{
 							    </div>
 							</div>	
 							
-							<br>
+							
 							<div class="form-row">
 								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
 									<input type="submit" class="btn btn-dark" name="enviar" value="Agregar">

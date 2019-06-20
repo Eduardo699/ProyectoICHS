@@ -38,7 +38,7 @@ $(document).ready(function(){
 	function validarAsunto(){
 		var valor = $("#txtAsunto").val();
 		if(valor!=""){
-			if(valor.length>=10 && valor.length<=75){
+			if(valor.length>=1 && valor.length<=75){
 				$("#txtAsunto").attr('class','form-control is-valid');
 				$("#mensajeAsunto").replaceWith("<div id='mensajeAsunto' class='valid-feedback'><b>Campo completado correctamente :)</b></di>");
 				asunto = true;
@@ -51,7 +51,7 @@ $(document).ready(function(){
 		}
 		else{
 			$("#txtAsunto").attr('class','form-control is-invalid').focus();
-			$("#mensajeAsunto").replaceWith("<div id='mensajeAsunto' class='invalid-feedback'><b>Por favor, rellene este campo (*)</b></di>");
+			$("#mensajeAsunto").replaceWith("<div id='mensajeAsunto' class='invalid-feedback'><b>Por favor, rellene este campo (Maximo 75 Caracteres)</b></di>");
 			asunto = false;
 		}
 	}
@@ -59,7 +59,7 @@ $(document).ready(function(){
 	function validarDescripcion(){
 		var valor = $("#txtDescripcion").val();
 		if(valor!=""){
-			if(valor.length>=25 && valor.length<=600){
+			if(valor.length>=1 && valor.length<=250){
 				$("#txtDescripcion").attr('class','form-control is-valid');
 				$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='valid-feedback'><b>Campo completado correctamente :)</b></di>");
 				descripcion = true;
@@ -72,7 +72,7 @@ $(document).ready(function(){
 		}
 		else{
 			$("#txtDescripcion").attr('class','form-control is-invalid').focus();
-			$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Por favor, rellene este campo (*)</b></di>");
+			$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Por favor, rellene este campo (Maximo 250 Caracteres)</b></di>");
 			descripcion = false;
 		}
 	}

@@ -90,16 +90,13 @@ $(document).ready(function(){
 				usuario = false;
 			}
 			else{
-				if(valor.length>=5 && valor.length<=30){
-					/*
-					$("#txtUsername").attr('class','form-control is-valid');
-					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='valid-feedback'> Campo completado correctamente </di>");
-					usuario = true;*/
+				if(valor.length>=3 && valor.length<=30){
+					
 					validarNombreUReal();
 				}
 				else{
 					$("#txtUsername").attr('class','form-control is-invalid').focus();
-					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 5 - 30</b></di>");
+					$("#mensajeUsername").replaceWith("<div id='mensajeUsername' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 3 - 30</b></di>");
 					usuario = false;
 				}
 			}			

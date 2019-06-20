@@ -5,6 +5,12 @@
 
 if(isset($_POST['id'])){
 	$obj = clsDiagnosticosDAO::buscarPorId($_POST['id']);
+	if(count($obj)==5){
+		$tipoC = 'Hardware';
+	}
+	else if(count($obj)==6){
+		$tipoC = $obj[5];
+	}
 
 	$salida = '<!DOCTYPE html>
 	<html>
@@ -48,14 +54,23 @@ if(isset($_POST['id'])){
 						<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
 							<form id="formDiagnosticos" action="../controladores/DiagnosticosTec.controlador.php?a=edit" method="POST">	
 							<div class="form-row">
+								<input type="hidden" id="tipoC" value="'. $tipoC .'" >
+								<div class="form-group col-md-6">
+								    <br>
+								    <label for="cmbOpcion">Categoria</label>
+								    <select id="cmbOpcion" name="idCategoria" class="custom-select">
+										<option value="Hardware">Hardware</option>
+										<option value="Software">Software</option>
+									</select>
+									<div id="mensajeOpcion" class=""></div>
+								</div>
 
 								<div class="form-group col-md-6">
 								    <br>
 								    <input type="hidden" name="id" value="'. $obj[0] .'">
-								    <label for="cmbIdCategoria">Categoria</label>
-								    <select id="cmbIdCategoria" name="idCategoria" class="custom-select">
-										<option disabled selected value="">--seleccione una opcion--</option>';
-											foreach (clsDiagnosticosDAO::listarIdCategoria() as $fila):
+								    <label for="cmbIdCategoria">Componente</label>
+								    <select id="cmbIdCategoria" name="idCategoria" class="custom-select">';
+											foreach (clsDiagnosticosDAO::listarIdCategoria('Hardware') as $fila):
 													$salida.=	'<option value="'.$fila[0].'">'.$fila[1].'</option>';
 											endforeach;
 
@@ -65,7 +80,10 @@ if(isset($_POST['id'])){
 									<div id="mensajeIdCategoria" class=""></div>
 								</div>
 
-								<div class="form-group col-md-6">
+							</div>
+
+							<div class="form-row">
+								<div class="form-group col-md-12">
 							    	<br>
 							    	<label for="cmbEstadoDiagnostico">Estado del Diagnostico</label>
 							    	<input type="hidden" id="catS"  value="'. $obj[3] .'">
@@ -97,9 +115,9 @@ if(isset($_POST['id'])){
 									<div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-6">
 										<input type="submit" class="btn btn-dark" name="enviar" value="Modificar">
 									</div>
-									<div style="text-align: center;" class="form-group col-xs-6 col-sm-6 col-md-6">
-										<a href="dashboard.php" class="btn btn-dark">Regresar</a>
-									</div>
+									<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
+									<a href="dashboard.php?form=8" class="btn btn-dark">Regresar</a>
+								</div>
 								</div>
 							</form><br>	
 						</div><!--termina contenedor del formulario-->

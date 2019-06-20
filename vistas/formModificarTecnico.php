@@ -5,7 +5,7 @@ require_once "scripts.php";
 
 if(isset($_POST['id'])){
 		$obj = clsTecnicoDao::obtenerRegistroPorId($_POST['id']);
-		echo "<script>var tipo = '". $obj[1] ."';</script>";
+		echo "<script>var tipo = '". $obj[5] ."';</script>";
 		echo "<script>var us = '". $obj[7] ."';</script>";
 	}
 ?>
@@ -53,7 +53,7 @@ body{
         $("#cod").val(code);
     
 
-		$("#cmbTipo").val(tipo);
+		$("#txtEspecialidad").val(tipo);
 		$("#usuarioC").val(us);
 		
 		$(document).keydown(function(e){ 
@@ -103,12 +103,9 @@ body{
 							   
 							</div>
 
-							<div class="form-row">
+							<div class="form-row">				
 							
-							
-
-							
-							<div class="form-group col-md-6">
+								<div class="form-group col-md-6">
 							    	<br>
 							      	<label for="txtDui">DUI</label>
 							      	<input placeholder="Ej. 98430940-0" type="text" class="form-control" id="txtDui" name="dui" value="<?=$obj[4]?>">
@@ -117,10 +114,12 @@ body{
 
 							    <div class="form-group col-md-6">
 							    	<br>
-							      	<label for="txtEspecialidad">Especialidad</label>
-							      	<input placeholder="Dirección actual" type="text" class="form-control" id="txtEspecialidad" name="especialidad" value="<?=$obj[5]?>">
-							      	<div id="mensajeEspecialidad" class=""></div>
-							      	
+							      	<label for="txtEspecialidad">Tipo</label>
+									<select class="custom-select" name="especialidad" id="txtEspecialidad" value="<?=$obj[5]?>" >
+										<option value="Hardware">Hardware</option>
+										<option value="Software">Software</option>
+									</select>
+									<div id="mensajeEspecialidad" class=""></div>
 							    </div>
 
 							</div>

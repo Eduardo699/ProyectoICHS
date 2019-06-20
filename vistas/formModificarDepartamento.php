@@ -46,7 +46,7 @@
 		
 				<div class="row"><!--inicia fila que divide la barra lateral con el formulario-->
 					<div id="contenedorForm" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><!--inicia contenedor del formulario-->
-						<br><form id="formDepartamento" action="../controladores/Departamento.controlador.php?a=edit" method="POST">					
+						<form id="formDepartamento" action="../controladores/Departamento.controlador.php?a=edit" method="POST">					
 							<div class="form-row">
 							    <div class="form-group col-md-12">
 							    	<br>

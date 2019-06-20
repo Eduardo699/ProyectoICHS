@@ -14,6 +14,10 @@
 			clsDiagnosticosDAO::listarDatos(3,$valor);
 		}
 	}
+	if(isset($_POST['peticionC'])){
+		$tipo = $_POST['tipo'];
+		clsDiagnosticosDAO::obtenerComponentes($tipo);
+	}
 
 
 	class clsDiagnosticosDAO{
@@ -93,7 +97,10 @@
 
 		public static function buscarPorId($id){
 			$con = new clsConexion();
-			$contenedor = $con->ejecutarConsulta("SELECT idDiagnostico, diagnostico, solucion, idCategoria, estadoDiagnostico FROM diagnostico WHERE idDiagnostico = $id");
+			$contenedor = $con->ejecutarConsulta("SELECT D.idDiagnostico, D.diagnostico, D.solucion, D.idCategoria, D.estadoDiagnostico, C.tipo FROM diagnostico as D INNER JOIN categoria as C WHERE D.idCategoria = C.idCategoria AND D.idDiagnostico = '$id'");	
+			if(count($contenedor)==0){
+				$contenedor = $con->ejecutarConsulta("SELECT D.idDiagnostico, D.diagnostico, D.solucion, D.idCategoria, D.estadoDiagnostico FROM diagnostico as D WHERE D.idDiagnostico = '$id'");
+			}	
 
 			$con->cerrarConexion();
 			return $contenedor[0];
@@ -108,7 +115,7 @@
 				$sql = "UPDATE diagnostico set diagnostico = '". $emp->getDiagnostico() . "', solucion = '". $emp->getSolucion() . "', idCategoria = '". $emp->getIdCategoria() . "' , estadoDiagnostico = '". $emp->getEstadoDiagnostico() . "' WHERE idDiagnostico = '". $emp->getIdDiagnostico() . "'";
 			}
 			
-			$con->ejecutarActualizacion($sql,"Diagnostico modificado","modificar el Diagnostico");
+			$con->ejecutarActualizacion($sql,"Diagnostico modificado","modificar el Diagnostico",8);
 			$con->cerrarConexion();
 		}
 
@@ -128,19 +135,35 @@
 			return $contenedor;
 		}
 
-		public static function listarIdCategoria(){
+		public static function listarIdCategoria($valor){
 			$con = new clsConexion();
-			$contenedor = $con->ejecutarConsulta("SELECT idCategoria, nombre from categoria where estado = 1");
+			$contenedor = $con->ejecutarConsulta("SELECT idCategoria, nombre from categoria where tipo='$valor' AND estado = 1");
 
 			$con->cerrarConexion();
 			return $contenedor;
+		}
+
+		public static function obtenerComponentes($tipo){
+			$con = new clsConexion();
+			$contenedor = $con->ejecutarConsulta("SELECT idCategoria, nombre from categoria where tipo='$tipo' AND estado = 1");
+
+			$con->cerrarConexion();
+			$arreglo = array();
+			$i = 0;
+			foreach ($contenedor as $fila) {
+				$arreglo[$i][0] = $fila[0];
+				$arreglo[$i][1] = $fila[1];
+				$i++;
+			}
+			$json = json_encode($arreglo);
+			echo $json;
 		}
 
 		public static function listarTickets(){
 			$con = new clsConexion();
 			//session_start();
 			$dato = $_SESSION['idPersona'];
-			$query = "SELECT T.idTicket, T.fechaCreacion, T.asunto, T.descripcion,T.adjunto FROM ticket as T INNER JOIN diagnostico as D WHERE  T.idTicket=D.idTicket  AND D.idTecnico='". $dato ."' AND T.estado!='0' AND D.estado!='0'";
+			$query = "SELECT T.idTicket, C.nombreCompleto, C.telefono, T.fechaCreacion, T.asunto, T.descripcion,T.adjunto, C.direccion FROM ticket as T INNER JOIN diagnostico as D INNER JOIN cliente as C WHERE C.idCliente=T.idCliente AND T.idTicket=D.idTicket  AND D.idTecnico='". $dato ."' AND T.estado!='0' AND D.estado!='0'";
 			$contenedor = $con->ejecutarConsulta($query);
 			return $contenedor;
 		}

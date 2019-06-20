@@ -96,14 +96,14 @@ $(document).ready(function(){
 				descripcion = false;
 			}
 			else{
-				if(valor.length>=20 && valor.length<=150){
+				if(valor.length>=1 && valor.length<=250){
 					$("#txtDescripcion").attr('class','form-control is-valid');
 					$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='valid-feedback'><b>Campo completado correctamente :)</b></di>");
 					descripcion = true;
 				}
 				else{
 					$("#txtDescripcion").attr('class','form-control is-invalid').focus();
-					$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 20 - 150</b></di>");
+					$("#mensajeDescripcion").replaceWith("<div id='mensajeDescripcion' class='invalid-feedback'><b>Este campo no debe quedar vacio (maximo 250 caracteres)</b></di>");
 					descripcion = false;
 				}
 			}			

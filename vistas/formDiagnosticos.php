@@ -53,11 +53,11 @@
 
 								<div class="form-group col-md-6">
 								    <br>
-								    <label for="cmbIdTicket">Ticket</label>
+								    <label for="cmbIdTicket">Nº Ticket</label>
 								    <select id="cmbIdTicket" name="idTicket" class="custom-select">
 										<option disabled selected value="">--seleccione una opcion--</option>
 										<?php foreach (clsDiagnosticosDAO::listarIdTicket() as $fila): ?>
-											<option value="<?= $fila[0] ?>"><?= $fila[1] ?></option>
+											<option value="<?= $fila[0] ?>"><?= $fila[0] ?></option>
 										<?php endforeach ?>
 									</select>
 									<div id="mensajeIdTicket" class=""></div>

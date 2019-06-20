@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2019 a las 09:56:17
+-- Tiempo de generación: 20-06-2019 a las 01:55:31
 -- Versión del servidor: 10.1.37-MariaDB
--- Versión de PHP: 7.3.1
+-- Versión de PHP: 5.6.40
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,7 +51,8 @@ INSERT INTO `categoria` (`idCategoria`, `tipo`, `nombre`, `descripcion`, `estado
 (8, 'Hardware', 'Batería CMOS', 'Fallos en el encendido de la PC o desconfiguración en la hora o fecha', 1),
 (9, 'Software', 'Sistema Operativo', 'Fallas generales del sistema operativo', 1),
 (10, 'Software', 'Office', 'Problemas al utilizar la paquetería de Office', 1),
-(11, 'Software', 'Controlador', 'Problemas debido a la falta o desactualización de los drivers', 1);
+(11, 'Hardware', 'Pantalla ', 'Problemas al mostrar imagen', 1),
+(12, 'Hardware', 'Adaptador de red', 'Problemas de conectividad de internet', 1);
 
 -- --------------------------------------------------------
 
@@ -76,9 +77,12 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idCliente`, `nombreCompleto`, `fechaNac`, `direccion`, `telefono`, `dui`, `userid`, `idDepartamento`, `estado`) VALUES
-('EBRL192', 'Esmeralda Beatriz Rosa Lima', '2001-12-17', 'San Julián, Sonsonate', '7154-5654', '98463403-7', 23, 3, 1),
-('EISO193', 'Emanuel Isaac Salinas Orellana', '2001-12-02', 'Sonzacate, Sonsonate', '7843-0943', '02353423-4', 22, 6, 1),
-('MESA191', 'Marcela Elizabeth Sánchez Alvarado', '2001-12-04', 'Santa Tecla, La libertad', '7834-3432', '98463403-1', 21, 1, 1);
+('CERP191', 'Carlos Esau Rivera Palacios', '2001-12-20', 'calle la mascota', '7854-9658', '77862798-0', 18, 7, 1),
+('GARC192', 'German Antonio Rodriguez Campos', '2001-12-14', 'carretera a santa tecla', '7485-8596', '95862798-9', 14, 1, 1),
+('JDP193', 'Jose David Perez', '2001-11-16', 'calle concepcion', '7485-8596', '92862798-0', 13, 6, 1),
+('KAM194', 'Karla Alejandra Martinez', '2001-12-23', 'calle arce pasaje 2', '7485-8596', '95864498-9', 16, 6, 1),
+('MACO195', 'Manuel Alexander Campos Ortega', '2001-12-25', 'calle a santa tecla kilometro 202', '7485-8596', '47841279-5', 15, 7, 1),
+('RCPR196', 'Roberto Carlos Pineda Ramos', '2001-12-21', 'avenida jerusalen', '7458-4754', '95862798-9', 17, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -125,6 +129,24 @@ CREATE TABLE `diagnostico` (
   `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `diagnostico`
+--
+
+INSERT INTO `diagnostico` (`idDiagnostico`, `fechaAsignacion`, `fechaCierre`, `diagnostico`, `solucion`, `idTecnico`, `idTicket`, `idCategoria`, `estadoDiagnostico`, `estado`) VALUES
+(1, '2019-07-18 10:18:23', '2019-06-20 10:16:12', 'Pasta termica mal colocada', 'Se procedio a aplicar pasta termica de forma correcta en el microprocesador', 'DAA19', 1, 1, 'Cerrado', 1),
+(2, '2019-06-18 07:23:25', NULL, NULL, NULL, 'DAA19', 2, NULL, 'Abierto', 1),
+(3, '2019-06-11 15:15:24', '2019-06-12 08:17:22', 'RAM mal asentada', 'El modulo de la RAM no estaba bie colocada en la ranura', 'EAA19', 3, 3, 'Cerrado', 1),
+(4, '2019-06-19 14:13:43', NULL, NULL, NULL, 'EAA19', 4, NULL, 'Abierto', 1),
+(5, '2019-06-18 13:25:16', '2019-06-20 11:41:10', 'Ventilador dañado', 'Se procedio a cambiar el ventilador', 'JCE19', 5, 5, 'Cerrado', 1),
+(6, '2019-06-20 08:31:18', NULL, NULL, NULL, 'JCE19', 6, NULL, 'Abierto', 1),
+(7, '2019-06-13 15:22:17', '2019-06-16 12:20:30', 'Motherboard polvosa', 'Se procedio a realizar una limpieza general en la placa madre', 'RAC19', 7, 7, 'Cerrado', 1),
+(8, '2019-06-19 14:28:16', NULL, NULL, NULL, 'RAC19', 8, NULL, 'Abierto', 1),
+(9, '2019-06-16 11:33:32', '2019-06-19 14:27:17', 'Sistema operativo dañado', 'Se reinstalo el sistema operativo', 'ADA19', 9, 9, 'Cerrado', 1),
+(10, '2019-06-19 14:14:43', NULL, NULL, NULL, 'AED19', 10, NULL, 'Abierto', 1),
+(11, '2019-06-19 10:10:35', '2019-06-21 13:29:28', 'Pantalla quebrada', 'Se reemplazo la pantalla', 'DAA19', 11, 11, 'Cerrado', 1),
+(12, '2019-06-19 13:18:37', NULL, NULL, NULL, 'DAA19', 12, NULL, 'Abierto', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -148,12 +170,12 @@ CREATE TABLE `tecnicos` (
 --
 
 INSERT INTO `tecnicos` (`idTecnico`, `nombreCompleto`, `direccion`, `telefono`, `dui`, `especialidad`, `fechaNac`, `userid`, `estado`) VALUES
-('ADAO191', 'Alexis David Aguilar Olmedo', 'San Salvador, Ciudad Delgado, col. los eraldos 2', '7198-9423', '87653412-1', 'Hardware', '1995-05-01', 14, 1),
-('AEDS195', 'Alirio Esaú Díaz Sosa', 'La Libertad, Quezaltepeque.', '7643-0895', '87875623-2', 'Hardware', '1994-03-27', 18, 1),
-('DAAM194', 'Daniel Alexander Angel Morales', 'La Libertad, Playa el Majahual, col. la piraya 2', '7453-0954', '76503218-3', 'Hardware', '1999-05-05', 16, 1),
-('EAAS192', 'Eduardo Antonio Aguilar Solórzano ', 'San Salvador, Mejicanos, Col. la gloria 2', '7634-2434', '76541234-3', 'Software', '2001-05-22', 15, 1),
-('JCEP196', 'Juan Carlos Estrada Portillo', 'Sonsonate, Juayúa, col. conejos 3', '7674-8458', '87542098-2', 'Software', '2001-12-12', 19, 1),
-('RACF193', 'Rocío Alejandra Chicas Fortis', 'La Libertad, Antiguo Cuscatlán', '7654-2442', '76540909-2', 'Hardware', '1999-05-21', 17, 1);
+('ADA19', 'Alexis David Aguilar', 'calle concepcion', '7458-2014', '25620145-8', 'Software', '2001-10-12', 7, 1),
+('AED19', 'Alirio Esau Diaz', 'calle la mascota', '7485-9658', '92862798-9', 'Software', '2001-11-15', 12, 1),
+('DAA19', 'Daniel Alexander Angel', 'calle a santa tecla kilometro 202', '7458-4754', '48541279-5', 'Hardware', '2001-12-13', 9, 1),
+('EAA19', 'Eduardo Antonio Aguilar', 'carretera a santa tecla', '7485-9658', '95862498-9', 'Hardware', '2001-12-01', 8, 1),
+('JCE19', 'Juan Carlos Estrada', 'avenida jerusalen', '7458-4754', '47841279-5', 'Hardware', '2001-12-08', 11, 1),
+('RAC19', 'Rocio Alejandra Chicas', 'calle arce pasaje 2', '7458-4754', '92862798-0', 'Hardware', '2001-12-02', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -170,6 +192,24 @@ CREATE TABLE `ticket` (
   `idCliente` varchar(11) COLLATE latin1_spanish_ci NOT NULL,
   `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ticket`
+--
+
+INSERT INTO `ticket` (`idTicket`, `fechaCreacion`, `asunto`, `descripcion`, `adjunto`, `idCliente`, `estado`) VALUES
+(1, '2019-06-18 09:15:20', 'La PC se calienta demasiado', 'La computadora se calienta demasiado cuando la uso', 'ticket1.jpg', 'CERP191', 1),
+(2, '2019-06-17 07:09:35', 'Problemas con apagones', 'La PC se me apaga de repente cuando estoy trabajando', 'ticket2.jpg', 'CERP191', 1),
+(3, '2019-06-10 09:15:20', 'La computadora no enciende', 'La computadora no enciende y en cambio emite un pitido', 'ticket3.jpg', 'GARC192', 1),
+(4, '2019-06-18 11:12:21', 'No puedo acceder a mis datos', 'Algunos de mis datos se borraron de repente de mi pc', 'ticket4.jpg', 'GARC192', 1),
+(5, '2019-06-17 12:16:08', 'Sobrecalentamiento de pc', 'La pc se sobrecalienta demasiado cuando la uso', 'ticket5.jpg', 'JDP193', 1),
+(6, '2019-06-19 09:29:11', 'computadora no me muestra imagen', 'al encender la pc no me muestra imagen ', 'ticket6.jpg', 'JDP193', 1),
+(7, '2019-06-12 10:22:23', 'La pc se calienta', 'la computadora se calienta mas de lo normal', 'ticket7.jpg', 'KAM194', 1),
+(8, '2019-06-18 08:29:19', 'Problemas de fecha y hora', 'al encender la pc por la mañana, se me desconfigura la hora', 'ticket8.jpg', 'KAM194', 1),
+(9, '2019-06-15 16:21:18', 'no puedo acceder a mis datos', 'la pc tira un error al encender', 'ticket9.jpg', 'MACO195', 1),
+(10, '2019-06-18 09:21:22', 'Office se cierra', 'Office se cierra repentinamente sin guardar cambios', 'ticket10.jpg', 'MACO195', 1),
+(11, '2019-06-18 15:22:18', 'pantalla quebrada', 'el monitor se me cayo y se quebro la pantalla', 'ticket11.jpg', 'RCPR196', 1),
+(12, '2019-06-18 09:21:22', 'no puedo acceder a mi red wifi', 'la computadora no detecta señales wifi', 'ticket12.jpg', 'RCPR196', 1);
 
 -- --------------------------------------------------------
 
@@ -190,20 +230,20 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`username`, `password`, `avatar`, `rol`, `userid`) VALUES
-('Alexis', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 14),
-('Eduardo', '205cc2aec2c81df7397b1328ee09eabb508318b3b577089c186801dba5c505c9', 'eduardo.jpg', 'Tecnico', 15),
-('Daniel', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'daniel.jpg', 'Tecnico', 16),
-('Rocío', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'rocio.jpg', 'Tecnico', 17),
-('Alirio', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'alirio.jpg', 'Tecnico', 18),
-('JuanCa', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'juanca.jpg', 'Tecnico', 19),
-('JoséV', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'usuario.jpg', 'Administrador', 20),
-('Marcela', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario1.jpg', 'Cliente', 21),
-('Emanuel', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario3.jpg', 'Cliente', 22),
-('Esmeralda', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'usuario2.jpg', 'Cliente', 23),
-('Nelson', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'defecto.jpg', 'Cliente', 24),
-('Gracia', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'defecto.jpg', 'Cliente', 25),
-('JhanCarlos', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'defecto.jpg', 'Tecnico', 26),
-('Elena', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'usuario6.jpg', 'Tecnico', 27);
+('reneV', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'defecto.jpg', 'Administrador', 1),
+('alexisT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'alexis.jpg', 'Tecnico', 7),
+('eduardoT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'eduardo.jpg', 'Tecnico', 8),
+('danielT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'daniel.jpg', 'Tecnico', 9),
+('rocioT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'rocio.jpg', 'Tecnico', 10),
+('juanT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'juan.jpg', 'Tecnico', 11),
+('alirioT', '2bd5100f475915a8990f6a4b342ac161e5eb754581d81a4b6462843e63601ada', 'alirio.jpg', 'Tecnico', 12),
+('davidC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'alexis.jpg', 'Cliente', 13),
+('antonioC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'eduardo.jpg', 'Cliente', 14),
+('alexanderC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'daniel.jpg', 'Cliente', 15),
+('alejandraC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'rocio.jpg', 'Cliente', 16),
+('carlosC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'juan.jpg', 'Cliente', 17),
+('esauC', '09a31a7001e261ab1e056182a71d3cf57f582ca9a29cff5eb83be0f0549730a9', 'alirio.jpg', 'Cliente', 18),
+('admin1', '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9', 'defecto.jpg', 'Administrador', 19);
 
 --
 -- Índices para tablas volcadas
@@ -266,7 +306,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idCategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `departamento`
@@ -278,19 +318,19 @@ ALTER TABLE `departamento`
 -- AUTO_INCREMENT de la tabla `diagnostico`
 --
 ALTER TABLE `diagnostico`
-  MODIFY `idDiagnostico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idDiagnostico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idTicket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas
@@ -308,7 +348,7 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `diagnostico`
   ADD CONSTRAINT `fk_diagnostico_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`),
-  ADD CONSTRAINT `fk_diagnostico_tecnico` FOREIGN KEY (`idTecnico`) REFERENCES `tecnicos` (`idTecnico`),
+  ADD CONSTRAINT `fk_diagnostico_tecnico` FOREIGN KEY (`idTecnico`) REFERENCES `tecnicos` (`idTecnico`) ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_diagnostico_ticket` FOREIGN KEY (`idTicket`) REFERENCES `ticket` (`idTicket`);
 
 --

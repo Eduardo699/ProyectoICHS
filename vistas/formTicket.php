@@ -64,7 +64,7 @@
 									<input id="resetear" type="reset" class="btn btn-dark" name="borrar" value="Borrar">
 								</div>
 								<div style="text-align: center;" class="form-group col-xs-4 col-sm-4 col-md-4">
-									<button type="button" onclick="location.reload()" class="btn btn-dark" data-dismiss="modal">Regresar</button>
+									<a href="dashboard.php?form=9" class="btn btn-dark">Regresar</a>
 								</div>
 							</div>
 						</form><br>	

@@ -27,12 +27,13 @@
 	</form>
 	<?php 
 	require'modelos/clsConexion.php';
+	$con=new mysqli("localhost","root","","bdsistema");
 	if(!empty($_POST['login'])){
-		$usuario = $_POST["UserEmail"];
-		$contra = hash("sha256", $_POST["UserPass"]);
+		$usuario =mysqli_escape_string($con,$_POST["UserEmail"]);
+		$contra =mysqli_escape_string($con,hash("sha256", $_POST["UserPass"]));
 		//$contra = $_POST["UserPass"];
 
-		$con=new mysqli("localhost","root","","bdsistema");
+		
 
 		//$sql="SELECT * FROM cliente as c, usuario as u WHERE username ='$usuario' AND password ='$contra' AND u.userid=c.userid";
 		//$res=$con->query($sql);

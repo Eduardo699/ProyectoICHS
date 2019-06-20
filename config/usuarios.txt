@@ -1,36 +1,56 @@
+-----------------------------BASE---------------------------------
+Crear la base de datos con el nombre "bdsistemas"
+----------------------------------------------------------------------
+
 Administradores>>>>
 
-1-)   username: JoséV
+1-)   username: reneV
       password: admin123
 
+1-)   username: admin1
+      password: admin123
 
 
 Tecnicos>>>>>>
 
-1-)   username: Rocio
+1-)   username: alexisT
       password: tecnico123
 
-2-)   username: Alexis
+2-)   username: eduardoT
       password: tecnico123
 
-3-)   username: Alirio
+3-)   username: danielT
       password: tecnico123
 
-y así sucesivamente---
+4-)   username: rocioT
+      password: tecnico123
+
+5-)   username: juanT
+      password: tecnico123
+
+6-)   username: alirioT
+      password: tecnico123
 
 
 Clientes>>>>>>
 
-1-)   username: Esmeralda
+1-)   username: davidC
       password: cliente123
 
-2-)   username: Marcela
+2-)   username: antonioC
       password: cliente123
 
-3-)   username: Emanuel
+3-)   username: alexanderC
       password: cliente123
 
-y así sucesivamente---
-
-4-)   username: rafael
+4-)   username: alejandraC
       password: cliente123
+
+5-)   username: carlosC
+      password: cliente123
+
+6-)   username: esauC
+      password: cliente123
+
+
+

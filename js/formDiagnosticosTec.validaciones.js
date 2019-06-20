@@ -8,20 +8,28 @@ var anioMax = 0;
 var anioMin = 0;
 
 $(document).ready(function(){
+	var s = $("#tipoC").val();
+	var catS = $("#catS").val();
+
+	$("#cmbOpcion").val(s);
+	obtenerComponentesPrimera(s,catS);
+
+
+
 
 	$("#formDiagnosticos").submit(function(){
-		validarEstadoDiagnostico();
+		/*validarEstadoDiagnostico();
 		validarIdCategoria();
 		validarSolucion();
 		validarDiagnostico();
 		con++;
 		if(diagnostico==false || solucion==false || idCategoria==false || estadoDiagnostico==false){
 			return false;
-		}
+		}*/
 	});
 
 	//Llamada a evento de liberacion de tecla de la caja de texto #nombreCompleto
-	$("#txtDiagnostico").keyup(function(){
+	/*$("#txtDiagnostico").keyup(function(){
 		if(con>0){
 			validarDiagnostico();
 		}
@@ -43,6 +51,10 @@ $(document).ready(function(){
 		if(con>0){
 			validarEstadoDiagnostico();
 		}
+	});*/
+	$("#cmbOpcion").change(function(){
+		var aux = $(this).val();
+		obtenerComponentes(aux);
 	});
 
 	$("#resetear").click(resetear);
@@ -53,7 +65,7 @@ $(document).ready(function(){
 ///////INICIAN FUNCIONES DE VALIDACION/////////////
 ///////////////////////////////////////////////////
 
-	function validarDiagnostico(){
+	/*function validarDiagnostico(){
 		var valor = $("#txtDiagnostico").val();
 		if(valor!=""){
 			band = 0;
@@ -73,21 +85,21 @@ $(document).ready(function(){
 				diagnostico = false;
 			}
 			else{
-				if(valor.length>=10 && valor.length<=200){
+				if(valor.length>=1 && valor.length<=250){
 					$("#txtDiagnostico").attr('class','form-control is-valid');
 					$("#mensajeDiagnostico").replaceWith("<div id='mensajeDiagnostico' class='valid-feedback'> Campo completado correctamente </di>");
 					diagnostico = true;
 				}
 				else{
 					$("#txtDiagnostico").attr('class','form-control is-invalid').focus();
-					$("#mensajeDiagnostico").replaceWith("<div id='mensajeDiagnostico' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 10 - 200</b></di>");
+					$("#mensajeDiagnostico").replaceWith("<div id='mensajeDiagnostico' class='invalid-feedback'><b>Este campo no debe quedar vacio (maximo 250 Caracteres)</b></di>");
 					diagnostico = false;
 				}
 			}			
 		}
 		else{
 			$("#txtDiagnostico").attr('class','form-control is-invalid').focus();
-			$("#mensajeDiagnostico").replaceWith("<div id='mensajeDiagnostico' class='invalid-feedback'><b>Por favor, rellene este campo (*)</b></di>");
+			$("#mensajeDiagnostico").replaceWith("<div id='mensajeDiagnostico' class='invalid-feedback'><b>Por favor, rellene este campo (Maximo 250 Caracteres)</b></di>");
 			diagnostico = false;
 		}
 	}
@@ -112,21 +124,21 @@ $(document).ready(function(){
 				solucion = false;
 			}
 			else{
-				if(valor.length>=10 && valor.length<=200){
+				if(valor.length>=1 && valor.length<=250){
 					$("#txtSolucion").attr('class','form-control is-valid');
 					$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class='valid-feedback'> Campo completado correctamente </di>");
 					solucion = true;
 				}
 				else{
 					$("#txtSolucion").attr('class','form-control is-invalid').focus();
-					$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 10 - 200</b></di>");
+					$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class='invalid-feedback'><b>Este campo no debe quedar vacio (maximo 250 Caracteres)</b></di>");
 					solucion = false;
 				}
 			}			
 		}
 		else{
 			$("#txtSolucion").attr('class','form-control is-invalid').focus();
-			$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class='invalid-feedback'><b>Por favor, rellene este campo (*)</b></di>");
+			$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class='invalid-feedback'><b>Por favor, rellene este campo (Maximo 250 Caracteres)</b></di>");
 			solucion = false;
 		}
 	}
@@ -157,7 +169,7 @@ $(document).ready(function(){
 			$("#mensajeEstadoDiagnostico").replaceWith("<div id='mensajeEstadoDiagnostico' class='invalid-feedback'><b>Campo completado correctamente :)</b></di>");
 			estadoDiagnostico = true;
 		}
-	}
+	}*/
 
 	function resetear(){
 		con = 0;
@@ -171,4 +183,67 @@ $(document).ready(function(){
 		$("#mensajeSolucion").replaceWith("<div id='mensajeSolucion' class=''></di>");
 		$("#mensajeIdCategoria").replaceWith("<div id='mensajeIdCategoria' class=''></di>");
 		$("#mensajeEstadoDiagnostico").replaceWith("<div id='mensajeEstadoDiagnostico' class=''></di>");
+	}
+
+
+	function obtenerComponentes(valor){
+		$.ajax({
+			url: '../dao/DiagnosticosTec.dao.php',
+			type: 'POST',
+			data: {peticionC:1, tipo: valor},
+
+		})
+		.done(function(respuesta){
+			let aux = JSON.parse(respuesta);
+			var ids = [];
+			var nombres = [];
+			var salida = '<select id="cmbIdCategoria" name="idCategoria" class="custom-select">';
+			for(var i=0;i<aux.length;i++){
+				ids[i] = aux[i][0];
+				nombres[i] = aux[i][1];
+			}
+			for(var i=0; i<ids.length;i++){
+				salida+= '<option value='+ ids[i] + '>' + nombres[i] + '</option>';
+			}
+			salida+='</select>';
+			$("#cmbIdCategoria").replaceWith(salida);
+
+		})
+		.fail(function(){
+			console.log("Error");
+		});
+	}
+
+	function obtenerComponentesPrimera(valor,id){
+		$.ajax({
+			url: '../dao/DiagnosticosTec.dao.php',
+			type: 'POST',
+			data: {peticionC:1, tipo: valor},
+
+		})
+		.done(function(respuesta){
+			let aux = JSON.parse(respuesta);
+			var ids = [];
+			var nombres = [];
+			var salida = '<select id="cmbIdCategoria" name="idCategoria" class="custom-select">';
+			for(var i=0;i<aux.length;i++){
+				ids[i] = aux[i][0];
+				nombres[i] = aux[i][1];
+			}
+			for(var i=0; i<ids.length;i++){
+				if(ids[i]==id){
+					salida+= '<option selected value='+ ids[i] + '>' + nombres[i] + '</option>';
+				}
+				else{
+					salida+= '<option value='+ ids[i] + '>' + nombres[i] + '</option>';
+				}
+				
+			}
+			salida+='</select>';
+			$("#cmbIdCategoria").replaceWith(salida);
+
+		})
+		.fail(function(){
+			console.log("Error");
+		});
 	}

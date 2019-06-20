@@ -39,6 +39,15 @@
 			else if(valor==1){
 				ruta = "indexGraficasTicket.php";
 			}
+			else if(valor==3){
+				ruta = "indexGraficasCategoria.php";
+			}
+			else if(valor==4){
+				ruta = "indexGraficasHardware.php";
+			}
+			else if(valor==5){
+				ruta = "indexGraficasSoftware.php";
+			}
 		});
 
 		$("#director").click(function(){
@@ -77,6 +86,9 @@
 							<select id="cmbFiltro" name="filtro" class="custom-select">
 									<option value="1">Tipo</option>
 									<option value="2">Departamento</option>
+									<option value="3">Categoria</option>
+									<option value="4">Hardware</option>
+									<option value="5">Software</option>
 							</select>
 						</div>
 						<div class="form-group col-xs-12 col-sm-2 col-md-2">

@@ -54,7 +54,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#txtEspecialidad").keyup(function(){
+	$("#txtEspecialidad").change(function(){
 		if(con>0){
 			validarEspecialidad();
 		}
@@ -114,7 +114,7 @@ $(document).ready(function(){
 				nombre = false;
 			}
 			else{
-				if(valor.length>=15 && valor.length<=50){
+				if(valor.length>=5 && valor.length<=50){
 					$("#txtNombre").attr('class', 'form-control is-valid');
 					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='valid-feedback'><b>Campo completado correctamente </b></di>");
 					nombre = true;
@@ -126,7 +126,7 @@ $(document).ready(function(){
 				}
 				else{
 					$("#txtNombre").attr('class', 'form-control is-invalid').focus();
-					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor introduzca caracteres en un rango de 15 - 50 (*)</b></di>");
+					$("#mensajeNombre").replaceWith("<div id='mensajeNombre' class='invalid-feedback'><b>Por favor introduzca caracteres en un rango de 5 - 50 (*)</b></di>");
 					nombre = false;
 				}
 			}
@@ -160,14 +160,14 @@ $(document).ready(function(){
 				direccion = false;
 			}
 			else{
-				if(valor.length>=15 && valor.length<=100){
+				if(valor.length>=5 && valor.length<=100){
 					$("#txtDireccion").attr('class','form-control is-valid');
 					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='valid-feedback'> Campo completado correctamente </di>");
 					direccion = true;
 				}
 				else{
 					$("#txtDireccion").attr('class','form-control is-invalid').focus();
-					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 15 - 100</b></di>");
+					$("#mensajeDireccion").replaceWith("<div id='mensajeDireccion' class='invalid-feedback'><b>Por favor, Introduzca caracteres en un rango de 5 - 100</b></di>");
 					direccion = false;
 				}
 			}			
@@ -280,42 +280,17 @@ $(document).ready(function(){
 	}
 
 	//Funcion para validar la Especialidad
-	function validarEspecialidad(){
+		function validarEspecialidad(){
 		var valor = $("#txtEspecialidad").val();
-		if(valor!=""){
-			band = 0;
-
-			for(var i = 0; i < valor.length; i++){
-				aux = valor.charCodeAt(i);
-				if( (aux>=65 && aux<=90) ||(aux>=97 && aux<=122) || aux==209 || aux==241 || aux==32 || aux==225 || aux==233 || aux==237 || aux==243 || aux==250 || aux==193 || aux==201 || aux==205 || aux==218  ){
-					band = band;
-				}
-				else{
-					band++;
-				}
-			}
-			if(band!=0){
-				$("#txtEspecialidad").attr('class', 'form-control is-invalid').focus();
-				$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='invalid-feedback'><b>Por favor, solo introduzca letras (*)</b></di>");
-				especialidad = false;
-			}
-			else{
-				if(valor.length>=5 && valor.length<=50){
-					$("#txtEspecialidad").attr('class', 'form-control is-valid');
-					$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='valid-feedback'><b>Campo completado correctamente </b></di>");
-					especialidad = true;
-				}
-				else{
-					$("#txtEspecialidad").attr('class', 'form-control is-invalid').focus();
-					$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='invalid-feedback'><b>Por favor introduzca caracteres en un rango de 5 - 50 (*)</b></di>");
-					especialidad = false;
-				}
-			}
+		if(valor==null){
+			$("#txtEspecialidad").attr('class','custom-select is-invalid').focus();
+			$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='invalid-feedback'><b>Seleccione una opción (*)</b></di>");
+			especialidad = false;
 		}
 		else{
-			$("#txtEspecialidad").attr('class', 'form-control is-invalid').focus();
-			$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='invalid-feedback'><b>Por favor, rellene este campo (*)</b></di>");
-			especialidad = false;
+			$("#txtEspecialidad").attr('class','custom-select is-valid');
+			$("#mensajeEspecialidad").replaceWith("<div id='mensajeEspecialidad' class='invalid-feedback'><b>Campo completado correctamente </b></di>");
+			especialidad = true;
 		}
 	}// Fin de la funcion para validar la Especialidad
 

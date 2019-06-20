@@ -218,6 +218,18 @@ if(isset($_GET['form'])){
 							$(this).html(data);
 						});
 					}
+
+					if(form==8){
+						$("#mostrador").load(rutaDiagnosticosTec,function(data){
+							$(this).html(data);
+						});
+					}
+
+					if(form==9){
+						$("#mostrador").load(rutaTickets,function(data){
+							$(this).html(data);
+						});
+					}
 				}
 
 				
@@ -261,7 +273,7 @@ if(isset($_GET['form'])){
 
 					elementos+='<div id="listaTickets" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-user-plus"></span> &nbsp Tickets </label></div>';
 
-					elementos+='<div id="graficos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Graficos </label></div>';
+					elementos+='<div id="graficos" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-chart-bar"></span> &nbsp Graficos </label></div>';
 
 					elementos+='<div id="reportes" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 color1 efecto"><label style="color: white;"><span class="fas fa-file-alt"></span> &nbsp Reportes </label></div>';
 
